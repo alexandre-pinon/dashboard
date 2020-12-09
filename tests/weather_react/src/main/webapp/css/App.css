@@ -1,0 +1,89 @@
+.App {
+    text-align: center;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  #contain {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.275);
+    z-index: 99;
+    display: none;
+  }
+  
+  .card {
+    width: 32%;
+    height: 30%;
+    margin : 0.6%;
+    position: relative;
+  }
+  
+  /* #Card3{
+    height: 80vh;
+  }
+  
+  #Card3 .img {
+    height: 80%;
+  } */
+   
+  #containNavbar {
+    position: relative;
+  }
+  
+  #containCard{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-flow: row wrap ;
+    justify-content: center;
+  }
+  
+  #sidebar {
+    width: 33%;
+    height: 100vh;
+    background-color: rgb(201, 201, 201);
+    position: absolute;
+    z-index: 100;
+    margin-left: -100%;
+  }
+  
+  @keyframes slideoff {
+    from { margin-left: 0; }
+    to   { margin-top: -100px; }
+  }
+  
+  .btn-primary {
+    background-color: rgba(255, 255, 255, 0);
+  }
+  
+  .options {
+    position: absolute;
+    margin-top: 15%;
+    margin-left: 65%;
+    width: auto;
+    height: auto;
+    display: none;
+  }
+  
+  #edit {
+    position: absolute;
+    margin-top: 40%;
+    margin-left: -81%;
+    width: auto;
+    height: auto;
+    display: none;
+  }

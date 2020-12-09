@@ -38,9 +38,6 @@ public class LiveWeatherService {
     private CurrentWeather convert(ResponseEntity<String> response) {
         try {
             JsonNode root = objectMapper.readTree(response.getBody());
-            System.out.println("Temp : " + BigDecimal.valueOf(root.path("main").path("temp").asDouble()));
-            System.out.println("Feels : " + BigDecimal.valueOf(root.path("main").path("feels_like").asDouble()));
-            System.out.println("Speed : " + BigDecimal.valueOf(root.path("wind").path("speed").asDouble()));
             return new CurrentWeather(
                 root.path("weather").get(0).path("main").asText(),
                 BigDecimal.valueOf(root.path("main").path("temp").asDouble()),

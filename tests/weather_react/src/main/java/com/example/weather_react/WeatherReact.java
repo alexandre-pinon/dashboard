@@ -1,13 +1,13 @@
-package com.example.react_and_spring_data_rest;
+package com.example.weather_react;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ReactAndSpringDataRestApplication {
+public class WeatherReact {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ReactAndSpringDataRestApplication.class, args);
+		SpringApplication.run(WeatherReact.class, args);
 	}
 
 }

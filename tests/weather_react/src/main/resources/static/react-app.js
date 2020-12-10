@@ -55434,7 +55434,7 @@ var Menu = function Menu() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "./logo.png");
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "images/logo.png");
 
 /***/ }),
 

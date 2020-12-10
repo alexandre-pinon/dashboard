@@ -1,10 +1,10 @@
-package com.example.react_and_spring_data_rest;
+package com.example.weather_react;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ReactAndSpringDataRestApplicationTests {
+class WeatherReactApplicationTests {
 
 	@Test
 	void contextLoads() {

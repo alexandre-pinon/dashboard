@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card'
+import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ListGroup from 'react-bootstrap/ListGroup'
 
@@ -19,7 +20,6 @@ const card = [
     {id: 9,name : "Linkedin" , img : "http://via.placeholder.com/640x360" },
 ]
 
-
 function OpenOption(event) {
 
     var id = event.currentTarget.name
@@ -27,8 +27,6 @@ function OpenOption(event) {
 
     elmt.style.display = 'block'
 }
-
-
 
 function CloseOption(event) {
 
@@ -84,6 +82,19 @@ function CloseEdit(event) {
 console.log(document.getElementsByClassName('options').parentNode)
 
 export const DashBoard = () => {
+
+    const [data, setData]= useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await axios.get('http://localhost:8080/api/weather/weatherByCity/paris/fr', {withCredentials: true})
+            setData(result.data)
+            console.log(result.data)
+        }
+        fetchData()
+    }, [])
+
+
     return(
         <section className="container">
             <div className="row">

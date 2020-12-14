@@ -23,7 +23,7 @@ const card = [
 function OpenOption(event) {
 
     var id = event.currentTarget.name
-    var elmt = document.getElementById(id)
+    var elmt = document.getElementById('options'+id)
 
     elmt.style.display = 'block'
 }
@@ -31,7 +31,7 @@ function OpenOption(event) {
 function CloseOption(event) {
 
     var id = event.currentTarget.name
-    var elmt = document.getElementById(id)
+    var elmt = document.getElementById('options'+id)
     var edit = document.getElementById('edit')
 
     elmt.style.display = 'none'
@@ -50,27 +50,23 @@ function CloseEdit(event) {
     var elmt = document.getElementById(id)
     var panel = elmt.parentNode;
     panel.parentNode.style.display = 'none'
-    var lastC = id.charAt(id.length-1)
     var key = event.currentTarget.name
 
     switch (key) {
         case 'small':
-            var item = document.getElementById(cards+lastC)
-            console.log('enter in small', item)
+            var item = document.getElementById(cards+id)
             item.style.width = '32%'
             item.style.height = '30%'
             break;
         case 'medium':
-            var item = document.getElementById(cards+lastC)
-            var itemImg = document.getElementById("img"+lastC)
-            console.log('enter in medium', item)
+            var item = document.getElementById(cards+id)
+            var itemImg = document.getElementById("img"+id)
             item.style.height = '62.5vh'
             itemImg.style.height = '80%'
 
             break;
         case 'tall':
-            var item = document.getElementById(cards+lastC)
-            console.log('enter in tall' , item , itemImg)
+            var item = document.getElementById(cards+id)
             item.style.width = '65%'
             break;
     
@@ -79,77 +75,177 @@ function CloseEdit(event) {
     }
 }
 
-console.log(document.getElementsByClassName('options').parentNode)
+export class WeatherWidgetOne extends React.Component{
+
+    constructor(){
+        super();
+        this.state = {
+         serverResponse: undefined
+        }
+       }
+       componentDidMount(){
+          this.getData();
+       }
+       async getData(){
+        const res = await axios.get('http://localhost:8080/api/weather/weatherByCity/paris/fr');
+        const { data } = await res;
+        this.setState({serverResponse: data})
+      }
+    
+    render () {
+
+        if (this.state.serverResponse != undefined) {
+
+            var icon = "http://openweathermap.org/img/wn/"+this.state.serverResponse.weather[0].icon+"@2x.png"
+
+            return(
+                    <Card id={"Card"+ this.state.serverResponse.weather[0].id}>
+                        <Card.Img id={'img' + this.state.serverResponse.weather[0].id} className='img' variant="top" src={icon} />
+                        <div className={"options"} id={ 'options' + this.state.serverResponse.weather[0].id}>
+                            <div className={edit + this.state.serverResponse.weather[0].id} id="edit">
+                                <ListGroup>
+                                    <ListGroup.Item id={this.state.serverResponse.weather[0].id} name={'small'} onClick={CloseEdit} action variant="info">
+                                        small
+                                    </ListGroup.Item>
+                                    <ListGroup.Item id={this.state.serverResponse.weather[0].id} name={'medium'} onClick={CloseEdit} action variant="info">
+                                        medium
+                                    </ListGroup.Item>
+                                    <ListGroup.Item id={this.state.serverResponse.weather[0].id} name={'tall'} onClick={CloseEdit} action variant="info">
+                                        tall
+                                    </ListGroup.Item>
+                                </ListGroup>
+                            </div>
+                                <ListGroup>
+                                    <ListGroup.Item action variant="secondary">
+                                        Application
+                                    </ListGroup.Item>
+                                    <ListGroup.Item onClick={OpenEdit} name={this.state.serverResponse.weather[0].id} action variant="secondary">
+                                        Edit
+                                    </ListGroup.Item>
+                                    <ListGroup.Item action variant="secondary">
+                                        Delete
+                                    </ListGroup.Item>
+                                </ListGroup>
+                            </div>
+                            <Card.Body>
+                                <div className="row">
+                                    <div className='col-8'>
+                                        <h1> {this.state.serverResponse.name} </h1>
+                                        <Card.Text>{this.state.serverResponse.weather[0].description} &nbsp; {this.state.serverResponse.main['temp']}º</Card.Text>   
+                                    </div>
+                                    <div className="col-2">
+                                        <button name={this.state.serverResponse.weather[0].id} onClick={OpenOption} className="btn btn-light">
+                                            <FontAwesomeIcon icon="arrow-up"/>
+                                        </button>
+                                    </div>
+                                    <div className="col-2">
+                                        <button name={this.state.serverResponse.weather[0].id} onClick={CloseOption} style={{display : 'block'}} className="btn btn-light">
+                                            <FontAwesomeIcon icon="arrow-down"/>
+                                        </button>
+                                    </div> 
+                                </div>
+                        </Card.Body>
+                    </Card>
+            )
+        }
+        return(
+            <div>
+                ...
+            </div>
+        )
+    }
+}
+
+export class WeatherWidgetTwo extends React.Component{
+
+    constructor(){
+        super();
+        this.state = {
+         serverResponse: undefined
+        }
+       }
+       componentDidMount(){
+          this.getData();
+       }
+       async getData(){
+        const res = await axios.get('http://localhost:8080/api/weather/weatherByCity/paris/fr');
+        const { data } = await res;
+        this.setState({serverResponse: data})
+      }
+    
+    render () {
+
+        if (this.state.serverResponse != undefined) {
+
+            var icon = "http://openweathermap.org/img/wn/"+this.state.serverResponse.weather[0].icon+"@2x.png"
+
+            var weather = this.state.serverResponse
+            console.log(weather)
+            return(
+                    <Card id={"Card"+ this.state.serverResponse.id}>
+                        <Card.Img id={'img' + this.state.serverResponse.id} className='img' variant="top" src={icon} />
+                        <div className={"options"} id={ 'options' + this.state.serverResponse.id}>
+                            <div className={edit + this.state.serverResponse.id} id="edit">
+                                <ListGroup>
+                                    <ListGroup.Item id={this.state.serverResponse.id} name={'small'} onClick={CloseEdit} action variant="info">
+                                        small
+                                    </ListGroup.Item>
+                                    <ListGroup.Item id={this.state.serverResponse.id} name={'medium'} onClick={CloseEdit} action variant="info">
+                                        medium
+                                    </ListGroup.Item>
+                                    <ListGroup.Item id={this.state.serverResponse.id} name={'tall'} onClick={CloseEdit} action variant="info">
+                                        tall
+                                    </ListGroup.Item>
+                                </ListGroup>
+                            </div>
+                                <ListGroup>
+                                    <ListGroup.Item action variant="secondary">
+                                        Application
+                                    </ListGroup.Item>
+                                    <ListGroup.Item onClick={OpenEdit} name={this.state.serverResponse.id} action variant="secondary">
+                                        Edit
+                                    </ListGroup.Item>
+                                    <ListGroup.Item action variant="secondary">
+                                        Delete
+                                    </ListGroup.Item>
+                                </ListGroup>
+                            </div>
+                            <Card.Body>
+                                <div className="row">
+                                    <div className='col-10'>
+                                        <Card.Text> Longitude : {this.state.serverResponse.coord.lon} • Latitude : {this.state.serverResponse.coord.lat}.</Card.Text>
+                                        <Card.Text>Wind Speed :{this.state.serverResponse.wind.speed} • Degres : {this.state.serverResponse.wind.deg}</Card.Text>   
+                                    </div>
+                                    <div className="col-2">
+                                        <button name={this.state.serverResponse.id} onClick={OpenOption} className="btn btn-light">
+                                            <FontAwesomeIcon icon="arrow-up"/>
+                                        </button>
+                                        <button name={this.state.serverResponse.id} onClick={CloseOption} style={{display : 'block'}} className="btn btn-light">
+                                            <FontAwesomeIcon icon="arrow-down"/>
+                                        </button>
+                                    </div>
+                                </div>
+                        </Card.Body>
+                    </Card>
+            )
+        }
+        return(
+            <div>
+                Waiting...
+            </div>
+        )
+    }
+}
 
 export const DashBoard = () => {
-
-    const [data, setData]= useState([]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const result = await axios.get('http://localhost:8080/api/weather/weatherByCity/paris/fr', {withCredentials: true})
-            setData(result.data)
-            console.log(result.data)
-        }
-        fetchData()
-    }, [])
-
 
     return(
         <section className="container">
             <div className="row">
                 <div className="container md-4">
                     <div id="containCard">
-                        {card.map(item => (
-                            <Card id={"Card"+item.id}>
-                                <Card.Img id={'img' + item.id} className='img' variant="top" src={item.img} />
-                                <div className={"options"} id={item.id}>
-                                    <div className={edit + item.id} id="edit">
-                                        <ListGroup>
-                                            <ListGroup.Item id={closer + item.id} name={'small'} onClick={CloseEdit} action variant="info">
-                                                small
-                                            </ListGroup.Item>
-                                            <ListGroup.Item id={closer + item.id} name={'medium'} onClick={CloseEdit} action variant="info">
-                                                medium
-                                            </ListGroup.Item>
-                                            <ListGroup.Item id={closer + item.id} name={'tall'} onClick={CloseEdit} action variant="info">
-                                                tall
-                                            </ListGroup.Item>
-                                        </ListGroup>
-                                    </div>
-                                    <ListGroup>
-                                            <ListGroup.Item action variant="secondary">
-                                                Application
-                                            </ListGroup.Item>
-                                            <ListGroup.Item onClick={OpenEdit} name={item.id} action variant="secondary">
-                                                Edit
-                                            </ListGroup.Item>
-                                            <ListGroup.Item action variant="secondary">
-                                                Delete
-                                            </ListGroup.Item>
-                                    </ListGroup>
-                                </div>
-                                <Card.Body>
-                                <Card.Text>
-                                <div className="row">
-                                    <div className='col-8'>
-                                        {item.name}
-                                    </div>
-                                    <div className="col-2">
-                                        <button name={item.id} onClick={OpenOption} className="btn btn-light">
-                                            <FontAwesomeIcon icon="arrow-up"/>
-                                        </button>
-                                    </div>
-                                  <div className="col-2">
-                                        <button name={item.id} onClick={CloseOption} style={{display : 'block'}} className="btn btn-light">
-                                            <FontAwesomeIcon icon="arrow-down"/>
-                                        </button>
-                                    </div> 
-                                </div>
-                                </Card.Text>
-                                </Card.Body>
-                            </Card>
-                        ))}
+                        <WeatherWidgetOne/>
+                        <WeatherWidgetTwo/>
                     </div>
                 </div>
             </div>

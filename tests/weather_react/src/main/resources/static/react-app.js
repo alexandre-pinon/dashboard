@@ -86,39 +86,22 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/@babel/runtime/helpers/arrayLikeToArray.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/arrayLikeToArray.js ***!
-  \*****************************************************************/
+/***/ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/assertThisInitialized.js ***!
+  \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
 
-  return arr2;
+  return self;
 }
 
-module.exports = _arrayLikeToArray;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/arrayWithHoles.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/arrayWithHoles.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-
-module.exports = _arrayWithHoles;
+module.exports = _assertThisInitialized;
 
 /***/ }),
 
@@ -166,6 +149,50 @@ function _asyncToGenerator(fn) {
 }
 
 module.exports = _asyncToGenerator;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/classCallCheck.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/classCallCheck.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+module.exports = _classCallCheck;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/createClass.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/createClass.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+module.exports = _createClass;
 
 /***/ }),
 
@@ -244,101 +271,119 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 
 /***/ }),
 
-/***/ "./node_modules/@babel/runtime/helpers/iterableToArrayLimit.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/iterableToArrayLimit.js ***!
-  \*********************************************************************/
+/***/ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/getPrototypeOf.js ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-function _iterableToArrayLimit(arr, i) {
-  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _e = undefined;
+function _getPrototypeOf(o) {
+  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
 
-  try {
-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
+module.exports = _getPrototypeOf;
 
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/inherits.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/inherits.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var setPrototypeOf = __webpack_require__(/*! ./setPrototypeOf */ "./node_modules/@babel/runtime/helpers/setPrototypeOf.js");
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
   }
 
-  return _arr;
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) setPrototypeOf(subClass, superClass);
 }
 
-module.exports = _iterableToArrayLimit;
+module.exports = _inherits;
 
 /***/ }),
 
-/***/ "./node_modules/@babel/runtime/helpers/nonIterableRest.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/nonIterableRest.js ***!
-  \****************************************************************/
+/***/ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ "./node_modules/@babel/runtime/helpers/typeof.js");
+
+var assertThisInitialized = __webpack_require__(/*! ./assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return assertThisInitialized(self);
+}
+
+module.exports = _possibleConstructorReturn;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/setPrototypeOf.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/setPrototypeOf.js ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+function _setPrototypeOf(o, p) {
+  module.exports = _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
 }
 
-module.exports = _nonIterableRest;
+module.exports = _setPrototypeOf;
 
 /***/ }),
 
-/***/ "./node_modules/@babel/runtime/helpers/slicedToArray.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/slicedToArray.js ***!
-  \**************************************************************/
+/***/ "./node_modules/@babel/runtime/helpers/typeof.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/typeof.js ***!
+  \*******************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-var arrayWithHoles = __webpack_require__(/*! ./arrayWithHoles */ "./node_modules/@babel/runtime/helpers/arrayWithHoles.js");
+function _typeof(obj) {
+  "@babel/helpers - typeof";
 
-var iterableToArrayLimit = __webpack_require__(/*! ./iterableToArrayLimit */ "./node_modules/@babel/runtime/helpers/iterableToArrayLimit.js");
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    module.exports = _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    module.exports = _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
 
-var unsupportedIterableToArray = __webpack_require__(/*! ./unsupportedIterableToArray */ "./node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js");
-
-var nonIterableRest = __webpack_require__(/*! ./nonIterableRest */ "./node_modules/@babel/runtime/helpers/nonIterableRest.js");
-
-function _slicedToArray(arr, i) {
-  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || unsupportedIterableToArray(arr, i) || nonIterableRest();
+  return _typeof(obj);
 }
 
-module.exports = _slicedToArray;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js":
-/*!***************************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js ***!
-  \***************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayLikeToArray = __webpack_require__(/*! ./arrayLikeToArray */ "./node_modules/@babel/runtime/helpers/arrayLikeToArray.js");
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return arrayLikeToArray(o, minLen);
-}
-
-module.exports = _unsupportedIterableToArray;
+module.exports = _typeof;
 
 /***/ }),
 
@@ -18510,7 +18555,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, ".App {\r\n    text-align: center;\r\n  }\r\n  \r\n  .App-logo {\r\n    height: 40vmin;\r\n    pointer-events: none;\r\n  }\r\n  \r\n  @keyframes App-logo-spin {\r\n    from {\r\n      transform: rotate(0deg);\r\n    }\r\n    to {\r\n      transform: rotate(360deg);\r\n    }\r\n  }\r\n  \r\n  #contain {\r\n    width: 100%;\r\n    height: 100vh;\r\n    position: absolute;\r\n    background-color: rgba(0, 0, 0, 0.275);\r\n    z-index: 99;\r\n    display: none;\r\n  }\r\n  \r\n  .card {\r\n    width: 32%;\r\n    height: 30%;\r\n    margin : 0.6%;\r\n    position: relative;\r\n  }\r\n  \r\n  /* #Card3{\r\n    height: 80vh;\r\n  }\r\n  \r\n  #Card3 .img {\r\n    height: 80%;\r\n  } */\r\n   \r\n  #containNavbar {\r\n    position: relative;\r\n  }\r\n  \r\n  #containCard{\r\n    width: 100%;\r\n    height: auto;\r\n    display: flex;\r\n    flex-flow: row wrap ;\r\n    justify-content: center;\r\n  }\r\n  \r\n  #sidebar {\r\n    width: 33%;\r\n    height: 100vh;\r\n    background-color: rgb(201, 201, 201);\r\n    position: absolute;\r\n    z-index: 100;\r\n    margin-left: -100%;\r\n  }\r\n  \r\n  @keyframes slideoff {\r\n    from { margin-left: 0; }\r\n    to   { margin-top: -100px; }\r\n  }\r\n  \r\n  .btn-primary {\r\n    background-color: rgba(255, 255, 255, 0);\r\n  }\r\n  \r\n  .options {\r\n    position: absolute;\r\n    margin-top: 15%;\r\n    margin-left: 65%;\r\n    width: auto;\r\n    height: auto;\r\n    display: none;\r\n  }\r\n  \r\n  #edit {\r\n    position: absolute;\r\n    margin-top: 40%;\r\n    margin-left: -81%;\r\n    width: auto;\r\n    height: auto;\r\n    display: none;\r\n  }", ""]);
+exports.push([module.i, ".App {\n    text-align: center;\n  }\n  \n  .App-logo {\n    height: 40vmin;\n    pointer-events: none;\n  }\n  \n  @keyframes App-logo-spin {\n    from {\n      transform: rotate(0deg);\n    }\n    to {\n      transform: rotate(360deg);\n    }\n  }\n  \n  #contain {\n    width: 100%;\n    height: 100vh;\n    position: absolute;\n    background-color: rgba(0, 0, 0, 0.275);\n    z-index: 99;\n    display: none;\n  }\n  \n  .card {\n    width: 32%;\n    height: 30%;\n    margin : 0.6%;\n    position: relative;\n  }\n  \n  #containNavbar {\n    position: relative;\n  }\n  \n  #containCard{\n    width: 100%;\n    height: auto;\n    display: flex;\n    flex-flow: row wrap ;\n    justify-content: center;\n  }\n  \n  #sidebar {\n    width: 33%;\n    height: 100vh;\n    background-color: rgb(201, 201, 201);\n    position: absolute;\n    z-index: 100;\n    margin-left: -100%;\n  }\n  \n  @keyframes slideoff {\n    from { margin-left: 0; }\n    to   { margin-top: -100px; }\n  }\n  \n  .btn-primary {\n    background-color: rgba(255, 255, 255, 0);\n  }\n  \n  .options {\n    position: absolute;\n    margin-top: 15%;\n    margin-left: 65%;\n    width: auto;\n    height: auto;\n    display: none;\n  }\n  \n  #edit {\n    position: absolute;\n    margin-top: 40%;\n    margin-left: -81%;\n    width: auto;\n    height: auto;\n    display: none;\n  }", ""]);
 // Exports
 module.exports = exports;
 
@@ -57889,27 +57934,46 @@ function App() {
 /*!*************************************************************!*\
   !*** ./src/main/webapp/javascript/Component/Home/index.jsx ***!
   \*************************************************************/
-/*! exports provided: DashBoard */
+/*! exports provided: WeatherWidgetOne, WeatherWidgetTwo, DashBoard */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WeatherWidgetOne", function() { return WeatherWidgetOne; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WeatherWidgetTwo", function() { return WeatherWidgetTwo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashBoard", function() { return DashBoard; });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/asyncToGenerator.js");
 /* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/slicedToArray.js");
-/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/Card */ "./node_modules/react-bootstrap/esm/Card.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap/ListGroup */ "./node_modules/react-bootstrap/esm/ListGroup.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap/Card */ "./node_modules/react-bootstrap/esm/Card.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-bootstrap/ListGroup */ "./node_modules/react-bootstrap/esm/ListGroup.js");
 
 
+
+
+
+
+
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6___default()(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6___default()(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5___default()(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 
 
@@ -57959,13 +58023,13 @@ var card = [{
 
 function OpenOption(event) {
   var id = event.currentTarget.name;
-  var elmt = document.getElementById(id);
+  var elmt = document.getElementById('options' + id);
   elmt.style.display = 'block';
 }
 
 function CloseOption(event) {
   var id = event.currentTarget.name;
-  var elmt = document.getElementById(id);
+  var elmt = document.getElementById('options' + id);
   var edit = document.getElementById('edit');
   elmt.style.display = 'none';
   edit.style.display = 'none';
@@ -57983,28 +58047,24 @@ function CloseEdit(event) {
   var elmt = document.getElementById(id);
   var panel = elmt.parentNode;
   panel.parentNode.style.display = 'none';
-  var lastC = id.charAt(id.length - 1);
   var key = event.currentTarget.name;
 
   switch (key) {
     case 'small':
-      var item = document.getElementById(cards + lastC);
-      console.log('enter in small', item);
+      var item = document.getElementById(cards + id);
       item.style.width = '32%';
       item.style.height = '30%';
       break;
 
     case 'medium':
-      var item = document.getElementById(cards + lastC);
-      var itemImg = document.getElementById("img" + lastC);
-      console.log('enter in medium', item);
+      var item = document.getElementById(cards + id);
+      var itemImg = document.getElementById("img" + id);
       item.style.height = '62.5vh';
       itemImg.style.height = '80%';
       break;
 
     case 'tall':
-      var item = document.getElementById(cards + lastC);
-      console.log('enter in tall', item, itemImg);
+      var item = document.getElementById(cards + id);
       item.style.width = '65%';
       break;
 
@@ -58013,122 +58073,296 @@ function CloseEdit(event) {
   }
 }
 
-console.log(document.getElementsByClassName('options').parentNode);
-var DashBoard = function DashBoard() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])([]),
-      _useState2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2___default()(_useState, 2),
-      data = _useState2[0],
-      setData = _useState2[1];
+var WeatherWidgetOne = /*#__PURE__*/function (_React$Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(WeatherWidgetOne, _React$Component);
 
-  Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {
-    var fetchData = /*#__PURE__*/function () {
-      var _ref = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var result;
+  var _super = _createSuper(WeatherWidgetOne);
+
+  function WeatherWidgetOne() {
+    var _this;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2___default()(this, WeatherWidgetOne);
+
+    _this = _super.call(this);
+    _this.state = {
+      serverResponse: undefined
+    };
+    return _this;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3___default()(WeatherWidgetOne, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.getData();
+    }
+  }, {
+    key: "getData",
+    value: function () {
+      var _getData = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var res, _yield$res, data;
+
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_5___default.a.get('http://localhost:8080/api/weather/weatherByCity/paris/fr', {
-                  withCredentials: true
-                });
+                return axios__WEBPACK_IMPORTED_MODULE_9___default.a.get('http://localhost:8080/api/weather/weatherByCity/paris/fr');
 
               case 2:
-                result = _context.sent;
-                setData(result.data);
-                console.log(result.data);
+                res = _context.sent;
+                _context.next = 5;
+                return res;
 
               case 5:
+                _yield$res = _context.sent;
+                data = _yield$res.data;
+                this.setState({
+                  serverResponse: data
+                });
+
+              case 8:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee);
+        }, _callee, this);
       }));
 
-      return function fetchData() {
-        return _ref.apply(this, arguments);
-      };
-    }();
+      function getData() {
+        return _getData.apply(this, arguments);
+      }
 
-    fetchData();
-  }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("section", {
+      return getData;
+    }()
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.state.serverResponse != undefined) {
+        var icon = "http://openweathermap.org/img/wn/" + this.state.serverResponse.weather[0].icon + "@2x.png";
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"], {
+          id: "Card" + this.state.serverResponse.weather[0].id
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Img, {
+          id: 'img' + this.state.serverResponse.weather[0].id,
+          className: "img",
+          variant: "top",
+          src: icon
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "options",
+          id: 'options' + this.state.serverResponse.weather[0].id
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: edit + this.state.serverResponse.weather[0].id,
+          id: "edit"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_11__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_11__["default"].Item, {
+          id: this.state.serverResponse.weather[0].id,
+          name: 'small',
+          onClick: CloseEdit,
+          action: true,
+          variant: "info"
+        }, "small"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_11__["default"].Item, {
+          id: this.state.serverResponse.weather[0].id,
+          name: 'medium',
+          onClick: CloseEdit,
+          action: true,
+          variant: "info"
+        }, "medium"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_11__["default"].Item, {
+          id: this.state.serverResponse.weather[0].id,
+          name: 'tall',
+          onClick: CloseEdit,
+          action: true,
+          variant: "info"
+        }, "tall"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_11__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_11__["default"].Item, {
+          action: true,
+          variant: "secondary"
+        }, "Application"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_11__["default"].Item, {
+          onClick: OpenEdit,
+          name: this.state.serverResponse.weather[0].id,
+          action: true,
+          variant: "secondary"
+        }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_11__["default"].Item, {
+          action: true,
+          variant: "secondary"
+        }, "Delete"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "row"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "col-8"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h1", null, " ", this.state.serverResponse.name, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Text, null, this.state.serverResponse.weather[0].description, " \xA0 ", this.state.serverResponse.main['temp'], "\xBA")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "col-2"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
+          name: this.state.serverResponse.weather[0].id,
+          onClick: OpenOption,
+          className: "btn btn-light"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
+          icon: "arrow-up"
+        }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "col-2"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
+          name: this.state.serverResponse.weather[0].id,
+          onClick: CloseOption,
+          style: {
+            display: 'block'
+          },
+          className: "btn btn-light"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
+          icon: "arrow-down"
+        }))))));
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null, "Waiting...");
+    }
+  }]);
+
+  return WeatherWidgetOne;
+}(react__WEBPACK_IMPORTED_MODULE_7___default.a.Component);
+var WeatherWidgetTwo = /*#__PURE__*/function (_React$Component2) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(WeatherWidgetTwo, _React$Component2);
+
+  var _super2 = _createSuper(WeatherWidgetTwo);
+
+  function WeatherWidgetTwo() {
+    var _this2;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2___default()(this, WeatherWidgetTwo);
+
+    _this2 = _super2.call(this);
+    _this2.state = {
+      serverResponse: undefined
+    };
+    return _this2;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3___default()(WeatherWidgetTwo, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.getData();
+    }
+  }, {
+    key: "getData",
+    value: function () {
+      var _getData2 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var res, _yield$res2, data;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_9___default.a.get('http://localhost:8080/api/weather/weatherByCity/paris/fr');
+
+              case 2:
+                res = _context2.sent;
+                _context2.next = 5;
+                return res;
+
+              case 5:
+                _yield$res2 = _context2.sent;
+                data = _yield$res2.data;
+                this.setState({
+                  serverResponse: data
+                });
+
+              case 8:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function getData() {
+        return _getData2.apply(this, arguments);
+      }
+
+      return getData;
+    }()
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.state.serverResponse != undefined) {
+        var icon = "http://openweathermap.org/img/wn/" + this.state.serverResponse.weather[0].icon + "@2x.png";
+        var weather = this.state.serverResponse;
+        console.log(weather);
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"], {
+          id: "Card" + this.state.serverResponse.id
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Img, {
+          id: 'img' + this.state.serverResponse.id,
+          className: "img",
+          variant: "top",
+          src: icon
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "options",
+          id: 'options' + this.state.serverResponse.id
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: edit + this.state.serverResponse.id,
+          id: "edit"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_11__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_11__["default"].Item, {
+          id: this.state.serverResponse.id,
+          name: 'small',
+          onClick: CloseEdit,
+          action: true,
+          variant: "info"
+        }, "small"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_11__["default"].Item, {
+          id: this.state.serverResponse.id,
+          name: 'medium',
+          onClick: CloseEdit,
+          action: true,
+          variant: "info"
+        }, "medium"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_11__["default"].Item, {
+          id: this.state.serverResponse.id,
+          name: 'tall',
+          onClick: CloseEdit,
+          action: true,
+          variant: "info"
+        }, "tall"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_11__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_11__["default"].Item, {
+          action: true,
+          variant: "secondary"
+        }, "Application"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_11__["default"].Item, {
+          onClick: OpenEdit,
+          name: this.state.serverResponse.id,
+          action: true,
+          variant: "secondary"
+        }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_11__["default"].Item, {
+          action: true,
+          variant: "secondary"
+        }, "Delete"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "row"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "col-10"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Text, null, " Longitude : ", this.state.serverResponse.coord.lon, " \u2022 Latitude : ", this.state.serverResponse.coord.lat, "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Text, null, "Wind Speed :", this.state.serverResponse.wind.speed, " \u2022 Degres : ", this.state.serverResponse.wind.deg)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "col-2"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
+          name: this.state.serverResponse.id,
+          onClick: OpenOption,
+          className: "btn btn-light"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
+          icon: "arrow-up"
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
+          name: this.state.serverResponse.id,
+          onClick: CloseOption,
+          style: {
+            display: 'block'
+          },
+          className: "btn btn-light"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
+          icon: "arrow-down"
+        }))))));
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null, "Waiting...");
+    }
+  }]);
+
+  return WeatherWidgetTwo;
+}(react__WEBPACK_IMPORTED_MODULE_7___default.a.Component);
+var DashBoard = function DashBoard() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("section", {
     className: "container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
     className: "row"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
     className: "container md-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
     id: "containCard"
-  }, card.map(function (item) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      id: "Card" + item.id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_4__["default"].Img, {
-      id: 'img' + item.id,
-      className: "img",
-      variant: "top",
-      src: item.img
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
-      className: "options",
-      id: item.id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
-      className: edit + item.id,
-      id: "edit"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_7__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_7__["default"].Item, {
-      id: closer + item.id,
-      name: 'small',
-      onClick: CloseEdit,
-      action: true,
-      variant: "info"
-    }, "small"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_7__["default"].Item, {
-      id: closer + item.id,
-      name: 'medium',
-      onClick: CloseEdit,
-      action: true,
-      variant: "info"
-    }, "medium"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_7__["default"].Item, {
-      id: closer + item.id,
-      name: 'tall',
-      onClick: CloseEdit,
-      action: true,
-      variant: "info"
-    }, "tall"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_7__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_7__["default"].Item, {
-      action: true,
-      variant: "secondary"
-    }, "Application"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_7__["default"].Item, {
-      onClick: OpenEdit,
-      name: item.id,
-      action: true,
-      variant: "secondary"
-    }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_7__["default"].Item, {
-      action: true,
-      variant: "secondary"
-    }, "Delete"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_4__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_4__["default"].Text, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
-      className: "row"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
-      className: "col-8"
-    }, item.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
-      className: "col-2"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("button", {
-      name: item.id,
-      onClick: OpenOption,
-      className: "btn btn-light"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_6__["FontAwesomeIcon"], {
-      icon: "arrow-up"
-    }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
-      className: "col-2"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("button", {
-      name: item.id,
-      onClick: CloseOption,
-      style: {
-        display: 'block'
-      },
-      className: "btn btn-light"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_6__["FontAwesomeIcon"], {
-      icon: "arrow-down"
-    })))))));
-  })))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(WeatherWidgetOne, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(WeatherWidgetTwo, null)))));
 };
 
 /***/ }),

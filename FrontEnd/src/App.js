@@ -8,24 +8,29 @@ import {
   Link
 } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Inscription } from './Component/Forms/authentification'
 import { DashBoard } from './Component/Home'
 import { Menu } from './Component/Navbar'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faArrowDown, faArrowUp, faEllipsisH, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { fab, faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faArrowDown, faArrowUp, faCloud, faEllipsisH, faTimes } from '@fortawesome/free-solid-svg-icons'
 
-library.add(fab, faEllipsisH, faTimes, faArrowUp, faArrowDown)
+library.add(fab, faEllipsisH, faTimes, faArrowUp, faArrowDown, faCloud, faGithub)
 
 function App() {
   return (
     <div>
-      <div className="App">
-        <Menu/>
-      </div>
+
       <Router>
         <Switch>
           <Route path ="/home">
+            <div className="App">
+              <Menu/>
+            </div>
             <DashBoard/>
+          </Route>
+              <Route exact path ="/">
+            <Inscription/>
           </Route>
         </Switch>
       </Router>

@@ -12,22 +12,18 @@ import dashboardApp.db.UserRepository;
 @Component
 public class DataLoader implements ApplicationRunner {
     
-    private final UserRepository userRepository;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
-
     @Autowired
-    public DataLoader(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.userRepository = userRepository;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-    }
+    private UserRepository userRepository;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public void run(ApplicationArguments args) {
-        if ((this.userRepository.findByEmail("apinon0205@gmail.com")) == null) {
+        if ((userRepository.findByEmail("apinon0205@gmail.com")) == null) {
             User alex = new User("Alexandre", "Pinon", "apinon0205@gmail.com", "123456");
             alex.setEnabled(true);
 		    alex.setPassword(bCryptPasswordEncoder.encode(alex.getPassword()));
-            this.userRepository.save(alex);
+            userRepository.save(alex);
         }
     }
 }

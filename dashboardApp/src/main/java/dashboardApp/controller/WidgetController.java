@@ -9,7 +9,7 @@ import dashboardApp.service.WeatherService;
 
 @RestController
 @RequestMapping("/api")
-public class MainController {
+public class WidgetController {
 
     @GetMapping("/weather")
     public ResponseEntity<String> getWeather(String city) {

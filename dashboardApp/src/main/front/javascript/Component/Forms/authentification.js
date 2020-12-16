@@ -66,7 +66,7 @@ export class FormsInscription extends React.Component {
     render() {
         const {lastName, firstName, Email, password, confirm_password} = this.state
         return (
-            <div id="formOne">
+            <div id="formTwo">
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group>
                         <Form.Label htmlFor='firstName'>Firstname</Form.Label>
@@ -105,7 +105,7 @@ export class FormsLogin extends React.Component {
     constructor (props) {
         super(props)
         this.state = {
-            Email:'',
+            username:'',
             password: '',
         }
         this.handleChange = this.handleChange.bind(this)
@@ -120,43 +120,46 @@ export class FormsLogin extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();   
-        const {Email} = this.state
+        const {username} = this.state
         const {password} = this.state
 
-        const data = {email : Email, password: password}
-        axios.post('https://jsonplaceholder.typicode.com/posts', data, {withCredentials: true})
+        // const data = {username : username, password: password}
+        const data = `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
+        console.log(data)
+
+        axios.post('http://localhost:8080/auth', data)
         .then(response => {
             this.setState({
-                Email: '',
+                username: '',
                 password:'',
             })
-            console.log(response)
+            window.location = "/home"
         })
         .catch(error => {
-            console.log(error)
+            console.log("ERROR : " + error)
         })    
     }
 
     render() {
-        const {Email, password} = this.state
+        const {username, password} = this.state
         return (
             <div id="formOne">
-                <Form onSubmit={this.handleSubmit}>
-                    <Form.Group>
-                        <Form.Label htmlFor='Email'>Email address</Form.Label>
-                        <Form.Control type="email" id='Email' name='Email'  value={Email} onChange={this.handleChange} placeholder="Enter email" />
-                        <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                        </Form.Text>
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label htmlFor='password'>Password</Form.Label>
-                        <Form.Control type="password" id='password' name='password'  value={password} onChange={this.handleChange} placeholder="Password" />
-                    </Form.Group>
-                    <Button variant="light" type="submit">
-                        Submit
-                    </Button>
-                </Form>
+                 <Form onSubmit={this.handleSubmit}>
+                     <Form.Group>
+                         <Form.Label htmlFor='username'>Email address</Form.Label>
+                         <Form.Control type="email" id='username' name='username'  value={username} onChange={this.handleChange} placeholder="Enter email" />
+                         <Form.Text className="text-muted">
+                         We'll never share your email with anyone else.
+                         </Form.Text>
+                     </Form.Group>
+                     <Form.Group>
+                         <Form.Label htmlFor='password'>Password</Form.Label>
+                         <Form.Control type="password" id='password' name='password'  value={password} onChange={this.handleChange} placeholder="Password" />
+                     </Form.Group>
+                     <Button variant="light" type="submit">
+                         Submit
+                     </Button>
+                 </Form>
             </div>
         )
     }
@@ -167,9 +170,9 @@ export const Inscription = () => {
     document.documentElement.style.overflow = 'hidden'
 
     return(
-        <section id="inscription" >
+        <section id="authent">
             <div className='container'>
-                <div className='row'>
+                {/* <div id="inscription" className='row'>
                     <div className='col-6'>
                         <FormsInscription/>
                     </div>
@@ -184,7 +187,7 @@ export const Inscription = () => {
                         </ul>
                     </div>
                     <Button id='SignIn' href="#login" variant="outline-light">Sign In </Button>
-                </div>
+                </div> */}
                 <div id='login' className='row'>
                     <div className='col-6'>
                         <ul>

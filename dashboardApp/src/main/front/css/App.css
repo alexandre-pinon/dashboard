@@ -80,7 +80,7 @@
     display: none;
   }
 
-  #inscription {
+  #authent {
     background-image: url('LegalCraftyFinch-small.gif');
     background-attachment: fixed;
     background-position: center;
@@ -90,7 +90,7 @@
     min-height: 100vh;
   }
   
-  #formOne{
+  #formOne, #formTwo {
     margin-top: 20%;
   }
   

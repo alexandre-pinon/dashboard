@@ -79,3 +79,42 @@
     height: auto;
     display: none;
   }
+
+  #inscription {
+    background-image: url('LegalCraftyFinch-small.gif');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  #formOne{
+    margin-top: 20%;
+  }
+  
+  .col-6 ul li {
+    list-style: none;
+    text-align: center;
+    margin-top: 10%;
+  }
+  
+  .col-6 ul {
+    margin-top: 30%;
+  }
+  
+  #icon {
+    color: rgb(165, 141, 6);
+  }
+  
+  #SignIn {
+    margin-top: 10%;
+    width: 100%;
+    height: 10%;
+    color: darkgray;
+  }
+  
+  #login {
+    min-height: 100vh;
+  }

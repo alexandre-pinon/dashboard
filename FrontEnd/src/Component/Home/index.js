@@ -183,7 +183,7 @@ export const DashBoard = () => {
                                         ref={provided.innerRef}
                                         style={{margin : 8}}
                                     >
-                                        {card.map((item, index) => {
+                                        {column.items.map((item, index) => {
                                             return (
                                                 <Draggable
                                                     key={item.uid}

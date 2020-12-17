@@ -1,4 +1,4 @@
-import { React } from 'react';
+import { React , useState } from 'react';
 import Card from 'react-bootstrap/Card'
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -149,6 +149,17 @@ const ParamsWidget = () => {
 
 
 export const DashBoard = () => {
+    const [characters, updateCharacters] = useState(card)
+
+    function handleOnDragEnd(result) {
+        if (!result.destination) return;
+    
+        const items = Array.from(characters);
+        const [reorderedItem] = items.splice(result.source.index, 1);
+        items.splice(result.destination.index, 0, reorderedItem);
+    
+        updateCharacters(items);
+      }
     return(
         <section className="container">
             <div id="addwidget" className="row">
@@ -162,7 +173,7 @@ export const DashBoard = () => {
                     <Button id='buttonClose' onClick={CloseAddWidget} style={{width : '100%'}} variant="light" type="submit">
                         close
                     </Button>
-                    <DragDropContext> 
+                    <DragDropContext onDragEnd={handleOnDragEnd}> 
                         <Droppable droppableId= "containCard">
                         { (provided) => (
                             <div id="containCard" {...provided.droppableProps} ref={provided.innerRef}>
@@ -204,12 +215,12 @@ export const DashBoard = () => {
                                                     {item.name}
                                                 </div>
                                                 <div className="col-2">
-                                                    <button name={item.id} onClick={OpenOption} className="btn btn-light">
+                                                    <button name={item.id} onClick={CloseOption} className="btn btn-light">
                                                         <FontAwesomeIcon icon="arrow-up"/>
                                                     </button>
                                                 </div>
                                             <div className="col-2">
-                                                    <button name={item.id} onClick={CloseOption} style={{display : 'block'}} className="btn btn-light">
+                                                    <button name={item.id} onClick={OpenOption} style={{display : 'block'}} className="btn btn-light">
                                                         <FontAwesomeIcon icon="arrow-down"/>
                                                     </button>
                                                 </div> 

@@ -72,11 +72,12 @@
 
 .options {
   position: absolute;
-  margin-top: 15%;
-  margin-left: 65%;
+  margin-top: 72.5%;
+  margin-left: 65.5%;
+  display: none;
   width: auto;
   height: auto;
-  display: none;
+  z-index: 4;
 }
 
 #edit {

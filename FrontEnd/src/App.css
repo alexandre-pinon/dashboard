@@ -126,3 +126,20 @@
 #login {
   min-height: 100vh;
 }
+
+#test {
+  width: 100%;
+  height: auto;
+  background-color: rgba(255, 235, 205, 0.712);
+  position: absolute;
+  z-index: 1000;
+  margin-top: 3%;
+}
+
+#addwidget{
+  display: none;
+}
+
+#buttonClose{
+  display: none;
+}

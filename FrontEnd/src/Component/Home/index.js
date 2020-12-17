@@ -3,6 +3,8 @@ import Card from 'react-bootstrap/Card'
 import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ListGroup from 'react-bootstrap/ListGroup'
+import Button from 'react-bootstrap/Button'
+
 
 var edit = 'edit';
 var closer = 'closer';
@@ -28,8 +30,6 @@ function OpenOption(event) {
 
     elmt.style.display = 'block'
 }
-
-
 
 function CloseOption(event) {
 
@@ -85,13 +85,83 @@ function CloseEdit(event) {
     }
 }
 
-console.log(document.getElementsByClassName('options').parentNode)
+function DeleteCard(event) {
+    var id = event.target.name
+    var elmt = document.getElementById(cards+id)
+    elmt.style.display = "none";
+}
+
+function AddCard(event) {
+    var id = event.target.name
+    var elmt = document.getElementById(cards+id)
+
+    console.log(cards+id)
+    
+    CloseAddWidget()
+    elmt.style.display = "block";
+  
+}
+
+function OpenAddWidget() {
+    var div = document.getElementById('addwidget');
+    var open = document.getElementById('buttonOpen');
+    var close = document.getElementById('buttonClose');
+
+    div.style.display = 'block'
+    close.style.display = 'block'
+    open.style.display = 'none'
+
+}
+
+function CloseAddWidget() {
+    var div = document.getElementById('addwidget');
+    var open = document.getElementById('buttonOpen');
+    var close = document.getElementById('buttonClose');
+
+    div.style.display = 'none'
+    close.style.display = 'none'
+    open.style.display = 'block'
+
+}
+
+const ParamsWidget = () => {
+    
+    return (
+        <div id='test' className="container md-4">
+            <div id="containCard">
+            {card.map(item =>(
+                <Card style={{ width: '18rem' }}>
+                    <Card.Img variant="top" src={item.img} />
+                    <Card.Body>
+                        <Card.Title>{item.name}</Card.Title>
+                        <div className='row'>
+                            <div className='col-sm'>
+                                <Button onClick={AddCard} name={item.id} variant="light">+</Button>
+                            </div>
+                        </div>
+                    </Card.Body>
+                </Card>
+            ))}
+        </div>
+    </div>
+    )
+}
+
 
 export const DashBoard = () => {
     return(
         <section className="container">
+            <div id="addwidget" className="row">
+                <ParamsWidget/>
+            </div>
             <div className="row">
                 <div className="container md-4">
+                    <Button id='buttonOpen' onClick={OpenAddWidget} style={{width : '100%'}} variant="light" type="submit">
+                        +
+                    </Button>
+                    <Button id='buttonClose' onClick={CloseAddWidget} style={{width : '100%'}} variant="light" type="submit">
+                        close
+                    </Button>
                     <DragDropContext> 
                         <Droppable droppableId= "containCard">
                         { (provided) => (
@@ -122,7 +192,7 @@ export const DashBoard = () => {
                                                         <ListGroup.Item onClick={OpenEdit} name={item.id} action variant="secondary">
                                                             Edit
                                                         </ListGroup.Item>
-                                                        <ListGroup.Item action variant="secondary">
+                                                        <ListGroup.Item onClick={DeleteCard} name={item.id} action variant="secondary">
                                                             Delete
                                                         </ListGroup.Item>
                                                 </ListGroup>

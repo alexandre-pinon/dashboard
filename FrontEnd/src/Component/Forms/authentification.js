@@ -37,7 +37,7 @@ export class FormsInscription extends React.Component {
 
         const data = {lastName : lastName, firstName : firstName, email : Email, password: password}
 
-        if (firstName != '') {
+        if (firstName !== '') {
             if (password === confirm_password) {
                 axios.post('https://jsonplaceholder.typicode.com/posts', data, {withCredentials: true}) // add true route
                 .then(response => {

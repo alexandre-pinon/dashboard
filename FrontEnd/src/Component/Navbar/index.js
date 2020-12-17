@@ -6,11 +6,11 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import Logo from "./logo.png"
 
 const links = [
-    {name : "Identifiant" , img : "http://via.placeholder.com/640x360" },
-    {name : "Home" , img : "http://via.placeholder.com/640x360" },
-    {name : "Paramètres" , img : "http://via.placeholder.com/640x360" },
-    {name : "About" , img : "http://via.placeholder.com/640x360" },
-    {name : "Contact Us" , img : "http://via.placeholder.com/640x360" },
+    {name : "Identifiant", href : "#"},
+    {name : "Home", href : "#"},
+    {name : "Paramètres", href : "#"},
+    {name : "About", href : "#"},
+    {name : "Contact Us", href : "#"},
 ]
 
 function anime(params) {

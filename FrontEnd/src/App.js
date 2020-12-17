@@ -10,6 +10,7 @@ import {
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Inscription } from './Component/Forms/authentification'
 import { DashBoard } from './Component/Home'
+import { Service } from './Component/Forms/services'
 import { Menu } from './Component/Navbar'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab, faGithub } from '@fortawesome/free-brands-svg-icons'
@@ -29,8 +30,11 @@ function App() {
             </div>
             <DashBoard/>
           </Route>
-              <Route exact path ="/">
+          <Route exact path ="/">
             <Inscription/>
+          </Route>
+          <Route exact path ="/services">
+            <Service/>
           </Route>
         </Switch>
       </Router>

@@ -8,9 +8,12 @@ import { WeatherWidgetTwo } from '../Widget/WeatherTwo'
 
 var cards = 'Card';
 
+var WeatherOne = <WeatherWidgetOne/>;
+var WeatherTwo = <WeatherWidgetTwo/>;
+
 const card = [
-    {id: 1, uid: 'Weather1' , div: <WeatherWidgetOne/> },
-    {id: 2, uid: 'Weather2' , div: <WeatherWidgetTwo/> },
+    {id: 1, uid: 'Weather1' , div: WeatherOne },
+    {id: 2, uid: 'Weather2' , div: WeatherTwo },
 /*     {id: 3, uid: 'Twitter1' , name : "Twitter" , img : "http://via.placeholder.com/640x360" },
     {id: 4, uid: 'Google1' , name : "Google" , img : "http://via.placeholder.com/640x360" },
     {id: 5, uid: 'GitHub1' , name : "GitHub" , img : "http://via.placeholder.com/640x360" },

@@ -69529,17 +69529,17 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var edit = 'edit';
-var closer = 'closer';
 var cards = 'Card';
+var WeatherOne = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_Widget_WeatherOne__WEBPACK_IMPORTED_MODULE_8__["WeatherWidgetOne"], null);
+var WeatherTwo = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_Widget_WeatherTwo__WEBPACK_IMPORTED_MODULE_9__["WeatherWidgetTwo"], null);
 var card = [{
   id: 1,
   uid: 'Weather1',
-  div: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_Widget_WeatherOne__WEBPACK_IMPORTED_MODULE_8__["WeatherWidgetOne"], null)
+  div: WeatherOne
 }, {
   id: 2,
   uid: 'Weather2',
-  div: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(_Widget_WeatherTwo__WEBPACK_IMPORTED_MODULE_9__["WeatherWidgetTwo"], null)
+  div: WeatherTwo
 }
 /*     {id: 3, uid: 'Twitter1' , name : "Twitter" , img : "http://via.placeholder.com/640x360" },
     {id: 4, uid: 'Google1' , name : "Google" , img : "http://via.placeholder.com/640x360" },

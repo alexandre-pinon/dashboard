@@ -17,6 +17,7 @@ import dashboardApp.security.CustomUserDetails;
 import dashboardApp.service.UserService;
 import dashboardApp.service.WeatherService;
 import dashboardApp.service.WidgetInstanceService;
+import dashboardApp.service.YoutubeService;
 
 @RestController
 @RequestMapping("/api")
@@ -26,6 +27,8 @@ public class WidgetController {
     WidgetInstanceService widgetInstanceService;
     @Autowired
     UserService userService;
+    @Autowired
+    YoutubeService youtubeService;
 
     @GetMapping("/weather")
     public ResponseEntity<String> getWeather(Principal principal) {
@@ -46,6 +49,19 @@ public class WidgetController {
         }
 
         return WeatherService.getWeather(city);
+    }
+
+    @GetMapping("/youtube/{widgetInstanceId}")
+    public String getSubscribers(@PathVariable Long widgetInstanceId, Principal principal) {
+        Optional<WidgetInstance> instance = widgetInstanceService.getWidgetInstanceById(widgetInstanceId);
+        String channelName = "";
+        if (!instance.isEmpty()) {
+            channelName = instance.get().getStringParams().get("channel_name");
+        } else {
+            System.out.println("INCORRECT WIDGET INSTANCE ID!");
+        }
+
+        return youtubeService.getSubscribers(channelName);
     }
 
     @GetMapping("/widgetInstances")

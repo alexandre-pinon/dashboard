@@ -59743,6 +59743,7 @@ var WeatherWidgetTwo = /*#__PURE__*/function (_React$Component2) {
 }(react__WEBPACK_IMPORTED_MODULE_7___default.a.Component);
 var DashBoard = function DashBoard() {
   var widgetInstanceId = 1;
+  var youtubeInstanceId = 4;
 
   function getData() {
     return _getData3.apply(this, arguments);
@@ -59765,11 +59766,10 @@ var DashBoard = function DashBoard() {
 
             case 5:
               data = _context3.sent;
-              console.log("Inside function");
               console.log(data);
               return _context3.abrupt("return", data);
 
-            case 9:
+            case 8:
             case "end":
               return _context3.stop();
           }
@@ -59779,9 +59779,42 @@ var DashBoard = function DashBoard() {
     return _getData3.apply(this, arguments);
   }
 
-  var data = getData();
-  console.log("Outside function");
-  console.log(data);
+  function getSubscribers() {
+    return _getSubscribers.apply(this, arguments);
+  }
+
+  function _getSubscribers() {
+    _getSubscribers = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+      var res, data;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_9___default.a.get('http://localhost:8080/api/youtube/' + youtubeInstanceId);
+
+            case 2:
+              res = _context4.sent;
+              _context4.next = 5;
+              return res.data;
+
+            case 5:
+              data = _context4.sent;
+              console.log(data);
+              return _context4.abrupt("return", data);
+
+            case 8:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }));
+    return _getSubscribers.apply(this, arguments);
+  }
+
+  getData();
+  getSubscribers();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("section", {
     className: "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {

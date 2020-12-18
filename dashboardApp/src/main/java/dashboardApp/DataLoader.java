@@ -38,7 +38,7 @@ public class DataLoader implements ApplicationRunner {
             WidgetInstance meteo11 = new WidgetInstance(
                 "weather_1",
                 "weather",
-                "Display temperature for a city",
+                "Display temperature for a given city",
                 1,
                 stringParams,
                 null,
@@ -51,7 +51,7 @@ public class DataLoader implements ApplicationRunner {
             WidgetInstance meteo12 = new WidgetInstance(
                 "weather_1",
                 "weather",
-                "Display temperature for a city",
+                "Display temperature for a given city",
                 2,
                 stringParams,
                 null,
@@ -64,13 +64,26 @@ public class DataLoader implements ApplicationRunner {
             WidgetInstance meteo21 = new WidgetInstance(
                 "weather_2",
                 "weather",
-                "Display position and wind for a city",
+                "Display position and wind for a given city",
                 3,
                 stringParams,
                 null,
                 admin
             );
             widgetInstanceRepository.save(meteo21);
+
+            stringParams = new HashMap<>();
+            stringParams.put("channel_name", "Oliech");
+            WidgetInstance youtube11 = new WidgetInstance(
+                "youtube_1",
+                "youtube",
+                "Display the number of subscribers for a given channel",
+                4,
+                stringParams,
+                null,
+                admin
+            );
+            widgetInstanceRepository.save(youtube11);
         }
     }
 }

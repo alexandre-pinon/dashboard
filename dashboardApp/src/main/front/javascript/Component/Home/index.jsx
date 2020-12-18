@@ -87,7 +87,7 @@ export class WeatherWidgetOne extends React.Component{
           this.getData();
        }
        async getData(){
-        const res = await axios.get('http://localhost:8080/api/weather');
+        const res = await axios.get('http://localhost:8080/api/weather/' + this.props.widgetInstanceId);
         const { data } = await res;
         this.setState({serverResponse: data})
       }
@@ -239,12 +239,14 @@ export class WeatherWidgetTwo extends React.Component{
 
 export const DashBoard = () => {
 
+    const widgetInstanceId = 1;
+
     return(
         <section className="container">
             <div className="row">
                 <div className="container md-4">
                     <div id="containCard">
-                        <WeatherWidgetOne/>
+                        <WeatherWidgetOne widgetInstanceId={widgetInstanceId}/>
                         <WeatherWidgetTwo/>
                     </div>
                 </div>

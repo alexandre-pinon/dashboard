@@ -63,7 +63,7 @@ public class UserService implements UserDetailsService {
         mailMessage.setFrom("epitruc.sutoremote@gmail.com");
         mailMessage.setText(
             "Thank you for registering. Please click on the below link to activate your account."
-            + "http://localhost:8080/sign-up/confirm?token="
+            + "http://localhost:8080/register/confirm?token="
             + token
         );
         emailSenderService.sendEmail(mailMessage);

@@ -35,11 +35,12 @@ export class FormsInscription extends React.Component {
         const {password} = this.state
         const {confirm_password} = this.state
 
-        const data = {lastName : lastName, firstName : firstName, email : Email, password: password}
+        // const data = {firstName : firstName, lastName : lastName, email : Email, password: password}
+        const data = `firstName=${firstName}&lastName=${lastName}&email=${Email}&password=${password}`
 
         if (firstName != '') {
             if (password === confirm_password) {
-                axios.post('https://jsonplaceholder.typicode.com/posts', data, {withCredentials: true}) // add true route
+                axios.post('http://localhost:8080/register', data) // add true route
                 .then(response => {
                     this.setState({
                         lastName: '',
@@ -48,10 +49,11 @@ export class FormsInscription extends React.Component {
                         password:'',
                         confirm_password:'',
                     })
-                    console.log(response.data)
+                    alert("Account created successfully! Please confirm by email before logging in!")
+                    window.location = "/home"
                 })
                 .catch(error => {
-                    console.log(error)
+                    alert("Error creating account : " + error)
                 })    
             }
             if (password !== confirm_password) {
@@ -125,9 +127,8 @@ export class FormsLogin extends React.Component {
 
         // const data = {username : username, password: password}
         const data = `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
-        console.log(data)
 
-        axios.post('http://localhost:8080/auth', data)
+        axios.post('http://localhost:8080/login', data)
         .then(response => {
             this.setState({
                 username: '',
@@ -136,6 +137,7 @@ export class FormsLogin extends React.Component {
             window.location = "/home"
         })
         .catch(error => {
+            alert("Authentication failed.")
             console.log("ERROR : " + error)
         })    
     }
@@ -172,7 +174,7 @@ export const Inscription = () => {
     return(
         <section id="authent">
             <div className='container'>
-                {/* <div id="inscription" className='row'>
+                <div id="inscription" className='row'>
                     <div className='col-6'>
                         <FormsInscription/>
                     </div>
@@ -187,7 +189,7 @@ export const Inscription = () => {
                         </ul>
                     </div>
                     <Button id='SignIn' href="#login" variant="outline-light">Sign In </Button>
-                </div> */}
+                </div>
                 <div id='login' className='row'>
                     <div className='col-6'>
                         <ul>

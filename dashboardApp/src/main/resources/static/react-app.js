@@ -59088,19 +59088,13 @@ var FormsInscription = /*#__PURE__*/function (_React$Component) {
       var firstName = this.state.firstName;
       var Email = this.state.Email;
       var password = this.state.password;
-      var confirm_password = this.state.confirm_password;
-      var data = {
-        lastName: lastName,
-        firstName: firstName,
-        email: Email,
-        password: password
-      };
+      var confirm_password = this.state.confirm_password; // const data = {firstName : firstName, lastName : lastName, email : Email, password: password}
+
+      var data = "firstName=".concat(firstName, "&lastName=").concat(lastName, "&email=").concat(Email, "&password=").concat(password);
 
       if (firstName != '') {
         if (password === confirm_password) {
-          axios__WEBPACK_IMPORTED_MODULE_10___default.a.post('https://jsonplaceholder.typicode.com/posts', data, {
-            withCredentials: true
-          }) // add true route
+          axios__WEBPACK_IMPORTED_MODULE_10___default.a.post('http://localhost:8080/register', data) // add true route
           .then(function (response) {
             _this2.setState({
               lastName: '',
@@ -59110,9 +59104,10 @@ var FormsInscription = /*#__PURE__*/function (_React$Component) {
               confirm_password: ''
             });
 
-            console.log(response.data);
+            alert("Account created successfully! Please confirm by email before logging in!");
+            window.location = "/home";
           }).catch(function (error) {
-            console.log(error);
+            alert("Error creating account : " + error);
           });
         }
 
@@ -59227,8 +59222,7 @@ var FormsLogin = /*#__PURE__*/function (_React$Component2) {
       var password = this.state.password; // const data = {username : username, password: password}
 
       var data = "username=".concat(encodeURIComponent(username), "&password=").concat(encodeURIComponent(password));
-      console.log(data);
-      axios__WEBPACK_IMPORTED_MODULE_10___default.a.post('http://localhost:8080/auth', data).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_10___default.a.post('http://localhost:8080/login', data).then(function (response) {
         _this4.setState({
           username: '',
           password: ''
@@ -59236,6 +59230,7 @@ var FormsLogin = /*#__PURE__*/function (_React$Component2) {
 
         window.location = "/home";
       }).catch(function (error) {
+        alert("Authentication failed.");
         console.log("ERROR : " + error);
       });
     }
@@ -59285,6 +59280,23 @@ var Inscription = function Inscription() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
     className: "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+    id: "inscription",
+    className: "row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+    className: "col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(FormsInscription, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+    className: "col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_11__["FontAwesomeIcon"], {
+    id: "icon",
+    icon: "cloud"
+  }), " \xA0 Weather Service"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_11__["FontAwesomeIcon"], {
+    id: "icon",
+    icon: ["fab", "github"]
+  }), " \xA0 Github Service"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    id: "SignIn",
+    href: "#login",
+    variant: "outline-light"
+  }, "Sign In ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
     id: "login",
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {

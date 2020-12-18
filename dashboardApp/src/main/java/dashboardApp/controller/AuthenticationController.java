@@ -19,22 +19,22 @@ public class AuthenticationController {
     @Autowired
     private ConfirmationTokenRepository confirmationTokenRepository;
 
-    @GetMapping("/sign-in")
-	public String signInPage() {
-		return "sign-in";
-    }
-    @GetMapping("/sign-up")
-	String signUpPage(User user) {
-		return "sign-up";
-	}
+    // @GetMapping("/sign-in")
+	// public String signInPage() {
+	// 	return "sign-in";
+    // }
+    // @GetMapping("/sign-up")
+	// String signUpPage(User user) {
+	// 	return "sign-up";
+	// }
     
-    @PostMapping("/sign-up")
-    public String signUp(User user) {
-        userService.signUpUser(user);
-        return "redirect:/sign-in";
-    }
+    // @PostMapping("/sign-up")
+    // public String signUp(User user) {
+    //     userService.signUpUser(user);
+    //     return "redirect:/sign-in";
+    // }
 
-    @GetMapping("/sign-up/confirm")
+    @GetMapping("/register/confirm")
 	public String confirmMail(@RequestParam("token") String token) {
         ConfirmationToken confirmationToken = confirmationTokenRepository.findByToken(token);
         if (confirmationToken != null) {
@@ -42,6 +42,17 @@ public class AuthenticationController {
         } else {
             System.out.println("Invalid token");
         }
-		return "redirect:/sign-in";
+		return "redirect:/auth#login";
+    }
+
+    @PostMapping("/register")
+    public String signUpUser(
+        @RequestParam("firstName") String firstName,
+        @RequestParam("lastName") String lastName,
+        @RequestParam("email") String email,
+        @RequestParam("password") String password
+    ) {
+        userService.signUpUser(new User(firstName, lastName, email, password));
+        return "redirect:/auth#login";
     }
 }

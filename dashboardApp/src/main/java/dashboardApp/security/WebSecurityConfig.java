@@ -27,15 +27,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
-            .antMatchers("/auth*", "/*.js", "/images/**", "/tasoeur*").permitAll()
+            .antMatchers("/auth*", "/*.js", "/images/**", "/register", "/register/**").permitAll()
             .anyRequest().authenticated()
             .and()
-            .formLogin()
-                .loginPage("/auth")
-                // .loginProcessingUrl("/tasoeur")
-                .defaultSuccessUrl("/home")
-                .failureUrl("/err")
-                .permitAll()
+                .formLogin()
+                    .loginPage("/auth#login")
+                    .loginProcessingUrl("/login")
+                        .permitAll()
             .and()
                 .addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class)
                 .csrf().csrfTokenRepository(csrfTokenRepository());

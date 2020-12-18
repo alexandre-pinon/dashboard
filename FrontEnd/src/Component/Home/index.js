@@ -21,6 +21,16 @@ const card = [
     {id: 9, uid: 'Linkedin1' , name : "Linkedin" , img : "http://via.placeholder.com/640x360" },
 ]
 
+const list = [
+    { id: 1, div : <Card/> },
+    { id: 2, div : <ListGroup/> },
+    { id: 3, div : <Button/> },
+] 
+
+
+
+console.log(list)
+
 
 function OpenOption(event) {
 
@@ -149,10 +159,8 @@ var col = {
           items: copiedItems
         }
       });
-    }
+    }  
   };
-
-  console.log(document.getElementsByClassName('card'))
 
 export const DashBoard = () => {
 
@@ -172,7 +180,7 @@ export const DashBoard = () => {
                         close
                     </Button>
                 </div>
-                <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumns)}>
+               <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumns)}>
                     {Object.entries(columns).map(([columnId, column], index) => (
                         <Droppable droppableId={columnId} key={columnId}>
                             {(provided, snapshot) => {

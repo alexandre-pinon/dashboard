@@ -59494,7 +59494,7 @@ var WeatherWidgetOne = /*#__PURE__*/function (_React$Component) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_9___default.a.get('http://localhost:8080/api/weather');
+                return axios__WEBPACK_IMPORTED_MODULE_9___default.a.get('http://localhost:8080/api/weather/' + this.props.widgetInstanceId);
 
               case 2:
                 res = _context.sent;
@@ -59742,6 +59742,46 @@ var WeatherWidgetTwo = /*#__PURE__*/function (_React$Component2) {
   return WeatherWidgetTwo;
 }(react__WEBPACK_IMPORTED_MODULE_7___default.a.Component);
 var DashBoard = function DashBoard() {
+  var widgetInstanceId = 1;
+
+  function getData() {
+    return _getData3.apply(this, arguments);
+  }
+
+  function _getData3() {
+    _getData3 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+      var res, data;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_9___default.a.get('http://localhost:8080/api/widgetInstances');
+
+            case 2:
+              res = _context3.sent;
+              _context3.next = 5;
+              return res.data;
+
+            case 5:
+              data = _context3.sent;
+              console.log("Inside function");
+              console.log(data);
+              return _context3.abrupt("return", data);
+
+            case 9:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+    return _getData3.apply(this, arguments);
+  }
+
+  var data = getData();
+  console.log("Outside function");
+  console.log(data);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("section", {
     className: "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
@@ -59750,7 +59790,9 @@ var DashBoard = function DashBoard() {
     className: "container md-4"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
     id: "containCard"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(WeatherWidgetOne, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(WeatherWidgetTwo, null)))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(WeatherWidgetOne, {
+    widgetInstanceId: widgetInstanceId
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(WeatherWidgetTwo, null)))));
 };
 
 /***/ }),

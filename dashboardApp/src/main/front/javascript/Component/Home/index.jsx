@@ -239,7 +239,20 @@ export class WeatherWidgetTwo extends React.Component{
 
 export const DashBoard = () => {
 
-    const widgetInstanceId = 1;
+    const widgetInstanceId = 1
+
+    async function getData() {
+        const res = await axios.get('http://localhost:8080/api/widgetInstances')
+        const data = await res.data
+        console.log("Inside function")
+        console.log(data)
+        return data
+    }
+
+    const data = getData()
+    console.log("Outside function")
+    console.log(data)
+    
 
     return(
         <section className="container">

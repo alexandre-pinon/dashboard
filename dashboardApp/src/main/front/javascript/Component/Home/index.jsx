@@ -137,16 +137,16 @@ export const DashBoard = () => {
     }, [])
 
     useEffect(() => {
-        data.map(item => {
+        data.map((item, index) => {
             switch (item.widgetName) {
                 case 'weather_1':
-                    var instance = {id: 1, uid: 'Weather1' , div: WeatherOne }
+                    var instance = {id: item.id, uid: 'Weather1.' + index , div: <WeatherWidgetOne widgetInstanceId= {item.id} keyUnique={index} /> }
                     card.push(instance)
                     console.log(card, 'in switch 1')
                     console.log(item.widgetName)
                     break;
                 case 'weather_2':
-                    var instance = {id: 2, uid: 'Weather2' , div: WeatherTwo }
+                    var instance = {id: item.id, uid: 'Weather2.' + index , div: <WeatherWidgetTwo widgetInstanceId= {item.id} keyUnique={index}/> }
                     card.push(instance)
                     console.log(card, 'in switch 2')
                     console.log(item.widgetName)

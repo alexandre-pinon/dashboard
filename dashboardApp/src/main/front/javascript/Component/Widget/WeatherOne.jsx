@@ -42,9 +42,10 @@ export class WeatherWidgetOne extends React.Component{
           this.getData();
        }
        async getData(){
-        const res = await axios.get('http://localhost:8080/api/weather');
+        const res = await axios.get('http://localhost:8080/api/weather/' + this.props.widgetInstanceId);
         const { data } = await res;
         this.setState({serverResponse: data})
+        console.log(data, 'widget one data')
       }
     
     render () {
@@ -54,9 +55,9 @@ export class WeatherWidgetOne extends React.Component{
             var icon = "http://openweathermap.org/img/wn/"+this.state.serverResponse.weather[0].icon+"@2x.png"
 
             return(
-                    <Card id={"Card"+ this.state.serverResponse.weather[0].id}>
-                        <Card.Img id={'img' + this.state.serverResponse.weather[0].id} className='img' variant="top" src={icon} />
-                        <div className={"options"} id={ 'options' + this.state.serverResponse.weather[0].id}>
+                    <Card id={"Card"+ this.props.keyUnique}>
+                        <Card.Img id={'img' + this.props.keyUnique} className='img' variant="top" src={icon} />
+                        <div className={"options"} id={ 'options' + this.props.keyUnique}>
                                 <ListGroup>
                                     <ListGroup.Item action variant="secondary">
                                         Application
@@ -73,12 +74,12 @@ export class WeatherWidgetOne extends React.Component{
                                         <Card.Text>{this.state.serverResponse.weather[0].description} &nbsp; {this.state.serverResponse.main['temp']}º</Card.Text>   
                                     </div>
                                     <div className="col-2">
-                                        <button name={this.state.serverResponse.weather[0].id} onClick={OpenOption} className="btn btn-light">
+                                        <button name={this.props.keyUnique} onClick={OpenOption} className="btn btn-light">
                                             <FontAwesomeIcon icon="arrow-up"/>
                                         </button>
                                     </div>
                                     <div className="col-2">
-                                        <button name={this.state.serverResponse.weather[0].id} onClick={CloseOption} style={{display : 'block'}} className="btn btn-light">
+                                        <button name={this.props.keyUnique} onClick={CloseOption} style={{display : 'block'}} className="btn btn-light">
                                             <FontAwesomeIcon icon="arrow-down"/>
                                         </button>
                                     </div> 

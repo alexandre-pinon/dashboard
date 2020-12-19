@@ -1,282 +1,228 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react'
+import { useState , useEffect } from 'react';
 import Card from 'react-bootstrap/Card'
+import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
+import Button from 'react-bootstrap/Button'
+import { WeatherWidgetOne } from '../Widget/WeatherOne'
+import { WeatherWidgetTwo } from '../Widget/WeatherTwo'
 import axios from 'axios'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import ListGroup from 'react-bootstrap/ListGroup'
+import { Component } from 'react';
 
-var edit = 'edit';
-var closer = 'closer';
 var cards = 'Card';
 
-const card = [
-    {id: 1,name : "Youtube" , img : "http://via.placeholder.com/640x360" },
-    {id: 2,name : "Twitch" , img : "http://via.placeholder.com/640x360" },
-    {id: 3,name : "Twitter" , img : "http://via.placeholder.com/640x360" },
-    {id: 4,name : "Google" , img : "http://via.placeholder.com/640x360" },
-    {id: 5,name : "Youtube" , img : "http://via.placeholder.com/640x360" },
-    {id: 6,name : "Facebook" , img : "http://via.placeholder.com/640x360" },
-    {id: 7,name : "Deezer" , img : "http://via.placeholder.com/640x360" },
-    {id: 8,name : "AppleMusic" , img : "http://via.placeholder.com/640x360" },
-    {id: 9,name : "Linkedin" , img : "http://via.placeholder.com/640x360" },
-]
+var WeatherOne = <WeatherWidgetOne/>;
+var WeatherTwo = <WeatherWidgetTwo/>;
 
-function OpenOption(event) {
+const card = []
 
-    var id = event.currentTarget.name
-    var elmt = document.getElementById('options'+id)
+function AddCard(event) {
+    var id = event.target.name
+    var elmt = document.getElementById(cards+id)
 
-    elmt.style.display = 'block'
-}
-
-function CloseOption(event) {
-
-    var id = event.currentTarget.name
-    var elmt = document.getElementById('options'+id)
-    var edit = document.getElementById('edit')
-
-    elmt.style.display = 'none'
-    edit.style.display = 'none'
-}
-
-function OpenEdit(event) {
-    var id = event.currentTarget.name
-    var div = edit+id
-    var elmt = document.getElementsByClassName(div)
-    elmt[0].style.display = 'block'
-}
-
-function CloseEdit(event) {
-    var id = event.currentTarget.id
-    var elmt = document.getElementById(id)
-    var panel = elmt.parentNode;
-    panel.parentNode.style.display = 'none'
-    var key = event.currentTarget.name
-
-    switch (key) {
-        case 'small':
-            var item = document.getElementById(cards+id)
-            item.style.width = '32%'
-            item.style.height = '30%'
-            break;
-        case 'medium':
-            var item = document.getElementById(cards+id)
-            var itemImg = document.getElementById("img"+id)
-            item.style.height = '62.5vh'
-            itemImg.style.height = '80%'
-
-            break;
-        case 'tall':
-            var item = document.getElementById(cards+id)
-            item.style.width = '65%'
-            break;
+    console.log(cards+id)
     
-        default:
-            break;
-    }
+    CloseAddWidget()
+    elmt.style.display = "block";
+  
 }
 
-export class WeatherWidgetOne extends React.Component{
+function OpenAddWidget() {
+    var div = document.getElementById('addwidget');
+    var open = document.getElementById('buttonOpen');
+    var close = document.getElementById('buttonClose');
 
-    constructor(){
-        super();
-        this.state = {
-         serverResponse: undefined
-        }
-       }
-       componentDidMount(){
-          this.getData();
-       }
-       async getData(){
-        const res = await axios.get('http://localhost:8080/api/weather/' + this.props.widgetInstanceId);
-        const { data } = await res;
-        this.setState({serverResponse: data})
-      }
+    div.style.display = 'block'
+    close.style.display = 'block'
+    open.style.display = 'none'
+
+}
+
+function CloseAddWidget() {
+    var div = document.getElementById('addwidget');
+    var open = document.getElementById('buttonOpen');
+    var close = document.getElementById('buttonClose');
+
+    div.style.display = 'none'
+    close.style.display = 'none'
+    open.style.display = 'block'
+
+}
+
+const ParamsWidget = () => {
     
-    render () {
-
-        if (this.state.serverResponse != undefined) {
-
-            var icon = "http://openweathermap.org/img/wn/"+this.state.serverResponse.weather[0].icon+"@2x.png"
-
-            return(
-                    <Card id={"Card"+ this.state.serverResponse.weather[0].id}>
-                        <Card.Img id={'img' + this.state.serverResponse.weather[0].id} className='img' variant="top" src={icon} />
-                        <div className={"options"} id={ 'options' + this.state.serverResponse.weather[0].id}>
-                            <div className={edit + this.state.serverResponse.weather[0].id} id="edit">
-                                <ListGroup>
-                                    <ListGroup.Item id={this.state.serverResponse.weather[0].id} name={'small'} onClick={CloseEdit} action variant="info">
-                                        small
-                                    </ListGroup.Item>
-                                    <ListGroup.Item id={this.state.serverResponse.weather[0].id} name={'medium'} onClick={CloseEdit} action variant="info">
-                                        medium
-                                    </ListGroup.Item>
-                                    <ListGroup.Item id={this.state.serverResponse.weather[0].id} name={'tall'} onClick={CloseEdit} action variant="info">
-                                        tall
-                                    </ListGroup.Item>
-                                </ListGroup>
+    return (
+        <div id='test' className="container md-4">
+            <div id="containCard">
+            {card.map(item =>(
+                <Card style={{ width: '18rem' }}>
+                    <Card.Img variant="top" src={item.img} />
+                    <Card.Body>
+                        <Card.Title>{item.name}</Card.Title>
+                        <div className='row'>
+                            <div className='col-sm'>
+                                <Button onClick={AddCard} name={item.id} variant="light">+</Button>
                             </div>
-                                <ListGroup>
-                                    <ListGroup.Item action variant="secondary">
-                                        Application
-                                    </ListGroup.Item>
-                                    <ListGroup.Item onClick={OpenEdit} name={this.state.serverResponse.weather[0].id} action variant="secondary">
-                                        Edit
-                                    </ListGroup.Item>
-                                    <ListGroup.Item action variant="secondary">
-                                        Delete
-                                    </ListGroup.Item>
-                                </ListGroup>
-                            </div>
-                            <Card.Body>
-                                <div className="row">
-                                    <div className='col-8'>
-                                        <h1> {this.state.serverResponse.name} </h1>
-                                        <Card.Text>{this.state.serverResponse.weather[0].description} &nbsp; {this.state.serverResponse.main['temp']}º</Card.Text>   
-                                    </div>
-                                    <div className="col-2">
-                                        <button name={this.state.serverResponse.weather[0].id} onClick={OpenOption} className="btn btn-light">
-                                            <FontAwesomeIcon icon="arrow-up"/>
-                                        </button>
-                                    </div>
-                                    <div className="col-2">
-                                        <button name={this.state.serverResponse.weather[0].id} onClick={CloseOption} style={{display : 'block'}} className="btn btn-light">
-                                            <FontAwesomeIcon icon="arrow-down"/>
-                                        </button>
-                                    </div> 
-                                </div>
-                        </Card.Body>
-                    </Card>
-            )
-        }
-        return(
-            <div>
-                ...
-            </div>
-        )
-    }
+                        </div>
+                    </Card.Body>
+                </Card>
+            ))}
+        </div>
+    </div>
+    )
 }
 
-export class WeatherWidgetTwo extends React.Component{
+var col = {
+    [1]: {
+      items: card
+    },
+    [2]: {
+      items: []
+    },
+    [3]: {
+      items: []
+    },
+  };
 
-    constructor(){
-        super();
-        this.state = {
-         serverResponse: undefined
+
+  const onDragEnd = (result, columns, setColumns) => {
+    if (!result.destination) return;
+    const { source, destination } = result;
+  
+    if (source.droppableId !== destination.droppableId) {
+      const sourceColumn = columns[source.droppableId];
+      const destColumn = columns[destination.droppableId];
+      const sourceItems = [...sourceColumn.items];
+      const destItems = [...destColumn.items];
+      const [removed] = sourceItems.splice(source.index, 1);
+      destItems.splice(destination.index, 0, removed);
+      setColumns({
+        ...columns,
+        [source.droppableId]: {
+          ...sourceColumn,
+          items: sourceItems
+        },
+        [destination.droppableId]: {
+          ...destColumn,
+          items: destItems
         }
-       }
-       componentDidMount(){
-          this.getData();
-       }
-       async getData(){
-        const res = await axios.get('http://localhost:8080/api/weather');
-        const { data } = await res;
-        this.setState({serverResponse: data})
-      }
-    
-    render () {
-
-        if (this.state.serverResponse != undefined) {
-
-            var icon = "http://openweathermap.org/img/wn/"+this.state.serverResponse.weather[0].icon+"@2x.png"
-
-            var weather = this.state.serverResponse
-            console.log(weather)
-            return(
-                    <Card id={"Card"+ this.state.serverResponse.id}>
-                        <Card.Img id={'img' + this.state.serverResponse.id} className='img' variant="top" src={icon} />
-                        <div className={"options"} id={ 'options' + this.state.serverResponse.id}>
-                            <div className={edit + this.state.serverResponse.id} id="edit">
-                                <ListGroup>
-                                    <ListGroup.Item id={this.state.serverResponse.id} name={'small'} onClick={CloseEdit} action variant="info">
-                                        small
-                                    </ListGroup.Item>
-                                    <ListGroup.Item id={this.state.serverResponse.id} name={'medium'} onClick={CloseEdit} action variant="info">
-                                        medium
-                                    </ListGroup.Item>
-                                    <ListGroup.Item id={this.state.serverResponse.id} name={'tall'} onClick={CloseEdit} action variant="info">
-                                        tall
-                                    </ListGroup.Item>
-                                </ListGroup>
-                            </div>
-                                <ListGroup>
-                                    <ListGroup.Item action variant="secondary">
-                                        Application
-                                    </ListGroup.Item>
-                                    <ListGroup.Item onClick={OpenEdit} name={this.state.serverResponse.id} action variant="secondary">
-                                        Edit
-                                    </ListGroup.Item>
-                                    <ListGroup.Item action variant="secondary">
-                                        Delete
-                                    </ListGroup.Item>
-                                </ListGroup>
-                            </div>
-                            <Card.Body>
-                                <div className="row">
-                                    <div className='col-10'>
-                                        <Card.Text> Longitude : {this.state.serverResponse.coord.lon} • Latitude : {this.state.serverResponse.coord.lat}.</Card.Text>
-                                        <Card.Text>Wind Speed :{this.state.serverResponse.wind.speed} • Degres : {this.state.serverResponse.wind.deg}</Card.Text>   
-                                    </div>
-                                    <div className="col-2">
-                                        <button name={this.state.serverResponse.id} onClick={OpenOption} className="btn btn-light">
-                                            <FontAwesomeIcon icon="arrow-up"/>
-                                        </button>
-                                        <button name={this.state.serverResponse.id} onClick={CloseOption} style={{display : 'block'}} className="btn btn-light">
-                                            <FontAwesomeIcon icon="arrow-down"/>
-                                        </button>
-                                    </div>
-                                </div>
-                        </Card.Body>
-                    </Card>
-            )
+      });
+    } else {
+      const column = columns[source.droppableId];
+      const copiedItems = [...column.items];
+      const [removed] = copiedItems.splice(source.index, 1);
+      copiedItems.splice(destination.index, 0, removed);
+      setColumns({
+        ...columns,
+        [source.droppableId]: {
+          ...column,
+          items: copiedItems
         }
-        return(
-            <div>
-                Waiting...
-            </div>
-        )
-    }
-}
+      });
+    }  
+  };
 
 export const DashBoard = () => {
 
-    const widgetInstanceId = 1
-    const youtubeInstanceId = 4
+    const [columns, setColumns] = useState(col);
+    const [data, setData]= useState([]);
+    const [stateCard, setStateCard] = useState(card);
 
-    async function getData() {
-        const res = await axios.get('http://localhost:8080/api/widgetInstances')
-        const data = await res.data
-        console.log(data)
-        return data
+    const fetchData = async () => {
+        const result = await axios.get('http://localhost:8080/api/widgetInstances', {withCredentials: true})
+        setData(result.data)
+        console.log(result.data)
     }
 
-    async function getSubscribers() {
-        const res = await axios.get('http://localhost:8080/api/youtube/' + youtubeInstanceId)
-        const data = await res.data
-        console.log(data)
-        return data
-    }
+    useEffect(() => {
+        fetchData()
+    }, [])
 
-    // let instances = null
-    // getData().then((data) => {
-    //     instances = data
-    // })
-    // if (instances != null) {
-    //     instances.forEach((instance) => {
-    //         console.log("Widget Name : " + instance.widgetName)
-    //     })
-    // }
+    useEffect(() => {
+        data.map(item => {
+            switch (item.widgetName) {
+                case 'weather_1':
+                    var instance = {id: 1, uid: 'Weather1' , div: WeatherOne }
+                    card.push(instance)
+                    console.log(card, 'in switch 1')
+                    console.log(item.widgetName)
+                    break;
+                case 'weather_2':
+                    var instance = {id: 2, uid: 'Weather2' , div: WeatherTwo }
+                    card.push(instance)
+                    console.log(card, 'in switch 2')
+                    console.log(item.widgetName)
+                    break;
+                default:
+                    break;
+            }
+        })
+        setColumns({
+            [1]: {
+              items: card
+            },
+            [2]: {
+              items: []
+            },
+            [3]: {
+              items: []
+            },
+        })
+    }, [data])
 
-    
+   
 
     return(
         <section className="container">
-            <div className="row">
+            <div id="addwidget" className="row">
+                <ParamsWidget/>
+            </div>
+            <div className="row" style={{ display: "flex", justifyContent: "center", height: "100%" }}>
                 <div className="container md-4">
-                    <div id="containCard">
-                        <WeatherWidgetOne widgetInstanceId={widgetInstanceId}/>
-                        <WeatherWidgetTwo/>
-                    </div>
+                    <Button id='buttonOpen' onClick={OpenAddWidget} style={{width : '100%'}} variant="light" type="submit">
+                        +
+                    </Button>
+                    <Button id='buttonClose' onClick={CloseAddWidget} style={{width : '100%'}} variant="light" type="submit">
+                        close
+                    </Button>
                 </div>
+               <DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumns)}>
+                    {Object.entries(columns).map(([columnId, column], index) => (
+                        <Droppable droppableId={columnId} key={columnId}>
+                            {(provided, snapshot) => {
+                                return (
+                                    <div
+                                        className="col-sm" key={columnId}
+                                        {...provided.droppableProps}
+                                        ref={provided.innerRef}
+                                        style={{margin : 8}}
+                                    >
+                                        {column.items.map((item, index) => {
+                                            return (
+                                                <Draggable
+                                                    key={item.uid}
+                                                    draggableId={item.uid}
+                                                    index={index}
+                                                    column={columnId}
+                                                >
+                                                    {(provided, snapshot) => {
+                                                        return (
+                                                            <div
+                                                                ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}
+                                                            >
+                                                                {item.div}
+                                                            </div>
+                                                        );
+                                                    }}
+                                                </Draggable>
+                                            );
+                                            })}
+                                        {provided.placeholder}
+                                    </div>
+                                );
+                            }}
+                        </Droppable>                  
+                    ))}
+                </DragDropContext>
             </div>
         </section>
     )

@@ -125,7 +125,6 @@ export const DashBoard = () => {
 
     const [columns, setColumns] = useState(col);
     const [data, setData]= useState([]);
-    const [stateCard, setStateCard] = useState(card);
 
     const fetchData = async () => {
         const result = await axios.get('http://localhost:8080/api/widgetInstances', {withCredentials: true})

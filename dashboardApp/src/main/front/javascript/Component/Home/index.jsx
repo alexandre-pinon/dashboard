@@ -256,8 +256,17 @@ export const DashBoard = () => {
         return data
     }
 
-    getData()
-    getSubscribers()
+    // let instances = null
+    // getData().then((data) => {
+    //     instances = data
+    // })
+    // if (instances != null) {
+    //     instances.forEach((instance) => {
+    //         console.log("Widget Name : " + instance.widgetName)
+    //     })
+    // }
+
+    
 
     return(
         <section className="container">

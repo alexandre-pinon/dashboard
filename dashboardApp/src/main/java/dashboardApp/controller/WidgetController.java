@@ -51,8 +51,8 @@ public class WidgetController {
         return WeatherService.getWeather(city);
     }
 
-    @GetMapping("/youtube/{widgetInstanceId}")
-    public String getSubscribers(@PathVariable Long widgetInstanceId, Principal principal) {
+    @GetMapping("/youtube/youtube_1/{widgetInstanceId}")
+    public ResponseEntity<String> getSubscribers(@PathVariable Long widgetInstanceId, Principal principal) {
         Optional<WidgetInstance> instance = widgetInstanceService.getWidgetInstanceById(widgetInstanceId);
         String channelName = "";
         if (!instance.isEmpty()) {
@@ -62,6 +62,19 @@ public class WidgetController {
         }
 
         return youtubeService.getSubscribers(channelName);
+    }
+
+    @GetMapping("/youtube/youtube_2/{widgetInstanceId}")
+    public ResponseEntity<String> getNumberOfViews(@PathVariable Long widgetInstanceId, Principal principal) {
+        Optional<WidgetInstance> instance = widgetInstanceService.getWidgetInstanceById(widgetInstanceId);
+        String videoName = "";
+        if (!instance.isEmpty()) {
+            videoName = instance.get().getStringParams().get("video_name");
+        } else {
+            System.out.println("INCORRECT WIDGET INSTANCE ID!");
+        }
+
+        return youtubeService.getNumberOfViews(videoName);
     }
 
     @GetMapping("/widgetInstances")

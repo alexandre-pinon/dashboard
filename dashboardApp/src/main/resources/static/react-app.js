@@ -59813,8 +59813,17 @@ var DashBoard = function DashBoard() {
     return _getSubscribers.apply(this, arguments);
   }
 
-  getData();
-  getSubscribers();
+  var instances = null;
+  getData().then(function (data) {
+    instances = data;
+  });
+
+  if (instances != null) {
+    instances.forEach(function (instance) {
+      console.log("Widget Name : " + instance.widgetName);
+    });
+  }
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("section", {
     className: "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {

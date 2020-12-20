@@ -112,6 +112,21 @@ public class DataLoader implements ApplicationRunner {
                 admin
             );
             widgetInstanceRepository.save(youtube31);
+
+            stringParams = new HashMap<>();
+            stringParams.put("subreddit_name", "TellMeAFact");
+            intParams = new HashMap<>();
+            intParams.put("number_of_posts", 5);
+            WidgetInstance reddit11 = new WidgetInstance(
+                "reddit_1",
+                "reddit",
+                "Display the last n posts for a given subreddit",
+                7,
+                stringParams,
+                intParams,
+                admin
+            );
+            widgetInstanceRepository.save(reddit11);
         }
     }
 }

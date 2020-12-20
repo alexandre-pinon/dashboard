@@ -2,8 +2,6 @@ package dashboardApp.service;
 
 import java.net.URI;
 
-import javax.annotation.PostConstruct;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

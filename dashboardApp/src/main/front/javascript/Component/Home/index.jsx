@@ -180,24 +180,30 @@ export const DashBoard = () => {
 
     const testYoutube1 = async () => {
         const result = await axios.get('http://localhost:8080/api/youtube/youtube_1/4', {withCredentials: true})
-        console.log(result.data)
+        console.log("YOUTUBE 1", result.data)
     }
 
     const testYoutube2 = async () => {
         const result = await axios.get('http://localhost:8080/api/youtube/youtube_2/5', {withCredentials: true})
-        console.log(result.data)
+        console.log("YOUTUBE 2", result.data)
     }
 
     const testYoutube3 = async () => {
         const result = await axios.get('http://localhost:8080/api/youtube/youtube_3/6', {withCredentials: true})
-        console.log(result.data)
+        console.log("YOUTUBE 3", result.data)
+    }
+
+    const testReddit1 = async () => {
+        const result = await axios.get('http://localhost:8080/api/reddit/reddit_1/7', {withCredentials: true})
+        console.log("REDDIT 1", result.data)
     }
 
     useEffect(() => {
         fetchData()
-        testYoutube1()
-        testYoutube2()
-        testYoutube3()
+        // testYoutube1()
+        // testYoutube2()
+        // testYoutube3()
+        testReddit1()
     }, [])
 
     useEffect(() => {

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import dashboardApp.db.User;
 import dashboardApp.db.WidgetInstance;
 import dashboardApp.security.CustomUserDetails;
+import dashboardApp.service.RedditService;
 import dashboardApp.service.UserService;
 import dashboardApp.service.WeatherService;
 import dashboardApp.service.WidgetInstanceService;
@@ -33,6 +34,8 @@ public class WidgetController {
     UserService userService;
     @Autowired
     YoutubeService youtubeService;
+    @Autowired
+    RedditService redditService;
 
     // @GetMapping("/weather")
     // public ResponseEntity<String> getWeather(Principal principal) {
@@ -94,6 +97,21 @@ public class WidgetController {
         }
 
         return youtubeService.getLastNComments(numberOfComments, videoName);
+    }
+
+    @GetMapping("/reddit/reddit_1/{widgetInstanceId}")
+    public ResponseEntity<String> getLastNPosts(@PathVariable Long widgetInstanceId, Principal principal) {
+        Optional<WidgetInstance> instance = widgetInstanceService.getWidgetInstanceById(widgetInstanceId);
+        int numberOfPosts = 1;
+        String subredditName = "";
+        if (!instance.isEmpty()) {
+            numberOfPosts = instance.get().getIntParams().get("number_of_posts");
+            subredditName = instance.get().getStringParams().get("subreddit_name");
+        } else {
+            System.out.println("INCORRECT WIDGET INSTANCE ID!");
+        }
+
+        return redditService.getLastNPosts(numberOfPosts, subredditName);
     }
 
     @PostMapping("/create")

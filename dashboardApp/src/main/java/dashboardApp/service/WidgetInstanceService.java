@@ -1,5 +1,6 @@
 package dashboardApp.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,4 +25,23 @@ public class WidgetInstanceService {
         return widgetInstanceRepository.findByUser(user);
     }
 
+    public void createNewInstance(WidgetInstance widgetInstance) {
+        widgetInstanceRepository.save(widgetInstance);
+    }
+
+    public void updateInstanceById(Long id, HashMap<String, String> stringParams, HashMap<String, Integer> intParams) {
+        Optional<WidgetInstance> widgetInstance = widgetInstanceRepository.findById(id);
+        if (!widgetInstance.isEmpty()) {
+            WidgetInstance updatedInstance = widgetInstance.get();
+            updatedInstance.setStringParams(stringParams);
+            updatedInstance.setIntParams(intParams);
+            widgetInstanceRepository.save(updatedInstance);
+        } else {
+            System.out.println("INCORRECT WIDGET ID!");
+        }
+    }
+
+    public void deleteInstanceById(Long id) {
+        widgetInstanceRepository.deleteById(id);
+    }
 }

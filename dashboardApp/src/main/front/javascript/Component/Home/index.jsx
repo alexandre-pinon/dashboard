@@ -56,39 +56,40 @@ const ParamsWidget = () => {
 
         switch (key) {
             case "youtube_1":
-                paramsData = {description : paramsCard[0].description, serviceName : paramsCard[0].service, stringParams : "", widgetName : paramsCard[0].widgetName, intParams : null, position : null, user: null}
+                paramsData = {description : paramsCard[0].description, serviceName : paramsCard[0].service, stringParams : "", widgetName : paramsCard[0].widgetName, intParams : null}
                 break;
             case "youtube_2":
-                paramsData = {description : paramsCard[1].description, serviceName : paramsCard[1].service, stringParams : "", widgetName : paramsCard[1].widgetName, intParams : null, position : null, user: null}
+                paramsData = {description : paramsCard[1].description, serviceName : paramsCard[1].service, stringParams : "", widgetName : paramsCard[1].widgetName, intParams : null}
                 break;
             case "google_1":
-                paramsData = {description : paramsCard[2].description, serviceName : paramsCard[2].service, stringParams : "", widgetName : paramsCard[2].widgetName, intParams : null, position : null, user: null}
+                paramsData = {description : paramsCard[2].description, serviceName : paramsCard[2].service, stringParams : "", widgetName : paramsCard[2].widgetName, intParams : null}
                 break;
             case "google_2":
-                paramsData = {description : paramsCard[3].description, serviceName : paramsCard[3].service, stringParams : "", widgetName : paramsCard[3].widgetName, intParams : null, position : null, user: null}
+                paramsData = {description : paramsCard[3].description, serviceName : paramsCard[3].service, stringParams : "", widgetName : paramsCard[3].widgetName, intParams : null}
                 break;
             case "weather_1":
                 var stringParams = window.prompt('Which city do you want the weather forecast for ?')
                 stringParams = stringParams.charAt(0).toUpperCase() + stringParams.substring(1).toLowerCase()
-                paramsData = {description : paramsCard[4].description , serviceName : paramsCard[4].service, stringParams : {city : stringParams}, widgetName : paramsCard[4].widgetName, intParams : null, position : null, user: null}
+                paramsData = {widgetName : paramsCard[4].widgetName, serviceName : paramsCard[4].service, description : paramsCard[4].description, stringParams : {city : stringParams}, intParams : null}
                 break;
             case "weather_2":
                 var stringParams = window.prompt('Which city would you like more information from?')
                 stringParams = stringParams.charAt(0).toUpperCase() + stringParams.substring(1).toLowerCase()
-                paramsData = {description : paramsCard[5].description, serviceName : paramsCard[5].service, stringParams : {city : stringParams}, widgetName : paramsCard[5].widgetName, intParams : null, position : null, user: null}
+                paramsData = {description : paramsCard[5].description, serviceName : paramsCard[5].service, stringParams : {city : stringParams}, widgetName : paramsCard[5].widgetName, intParams : null}
                 break;
             case "facebook_1":
-                paramsData = {description : paramsCard[6].description, serviceName : paramsCard[6].service, stringParams : "", widgetName : paramsCard[6].widgetName, intParams : null, position : null, user: null}
+                paramsData = {description : paramsCard[6].description, serviceName : paramsCard[6].service, stringParams : "", widgetName : paramsCard[6].widgetName, intParams : null}
                 break;
             case "facebook_2":
-                paramsData = {description : paramsCard[7].description, serviceName : paramsCard[7].service, stringParams : "", widgetName : paramsCard[7].widgetName, intParams : null, position : null, user: null}
+                paramsData = {description : paramsCard[7].description, serviceName : paramsCard[7].service, stringParams : "", widgetName : paramsCard[7].widgetName, intParams : null}
                 break;
             default:
                 break;
         }
-        axios.post('https://jsonplaceholder.typicode.com/posts' /* add true route */ , paramsData, {withCredentials: true}) 
+        axios.post('http://localhost:8080/api/create', paramsData, {withCredentials: true}) 
         .then(response => {
             console.log(response.data)
+            window.location = "/home"
         })
         .catch(error => {
             console.log(error)
@@ -177,8 +178,32 @@ export const DashBoard = () => {
         console.log(result.data)
     }
 
+    const testYoutube1 = async () => {
+        const result = await axios.get('http://localhost:8080/api/youtube/youtube_1/4', {withCredentials: true})
+        console.log("YOUTUBE 1", result.data)
+    }
+
+    const testYoutube2 = async () => {
+        const result = await axios.get('http://localhost:8080/api/youtube/youtube_2/5', {withCredentials: true})
+        console.log("YOUTUBE 2", result.data)
+    }
+
+    const testYoutube3 = async () => {
+        const result = await axios.get('http://localhost:8080/api/youtube/youtube_3/6', {withCredentials: true})
+        console.log("YOUTUBE 3", result.data)
+    }
+
+    const testReddit1 = async () => {
+        const result = await axios.get('http://localhost:8080/api/reddit/reddit_1/7', {withCredentials: true})
+        console.log("REDDIT 1", result.data)
+    }
+
     useEffect(() => {
         fetchData()
+        // testYoutube1()
+        // testYoutube2()
+        // testYoutube3()
+        testReddit1()
     }, [])
 
     useEffect(() => {

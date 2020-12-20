@@ -27,10 +27,11 @@ function CloseOption(event) {
 function Delete(event) {
     var id = event.target.id
 
-    axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`)
+    axios.delete(`http://localhost:8080/api/delete/${id}`)
     .then(res => {
       console.log(res);
       console.log(res.data);
+      window.location = "/home"
     })
 }
 
@@ -41,10 +42,11 @@ function Edit(event) {
     stringParams = stringParams.charAt(0).toUpperCase() + stringParams.substring(1).toLowerCase()
     var paramsData = {stringParams : {city : stringParams}}
 
-    axios.put(`https://jsonplaceholder.typicode.com/users/${id}`, paramsData)
+    axios.put(`http://localhost:8080/api/update/${id}`, paramsData)
     .then(res => {
       console.log(res);
       console.log(res.data);
+      window.location = "/home"
     })
 }
 

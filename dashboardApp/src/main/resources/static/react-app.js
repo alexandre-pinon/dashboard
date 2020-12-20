@@ -19000,7 +19000,7 @@ var ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(/*! ./LegalCraftyFinch-s
 exports = ___CSS_LOADER_API_IMPORT___(false);
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-exports.push([module.i, ".App {\n  text-align: center;\n}\n\n.App-logo {\n  height: 40vmin;\n  pointer-events: none;\n}\n\n@keyframes App-logo-spin {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n}\n\n#contain {\n  width: 100%;\n  height: 100vh;\n  position: absolute;\n  background-color: rgba(0, 0, 0, 0.275);\n  z-index: 99;\n  display: none;\n}\n\n.card {\n  width: 100%;\n  height: 50%;\n  margin : 0.6%;\n  position: relative;\n}\n \n#containNavbar {\n  position: relative;\n}\n\n#containCard{\n  width: 100%;\n  height: auto;\n  display: flex;\n  flex-flow: row wrap ;\n  justify-content: center;\n}\n\n#sidebar {\n  width: 33%;\n  height: 100vh;\n  background-color: rgb(201, 201, 201);\n  position: absolute;\n  z-index: 100;\n  margin-left: -100%;\n}\n\n@keyframes slideoff {\n  from { margin-left: 0; }\n  to   { margin-top: -100px; }\n}\n\n.btn-primary {\n  background-color: rgba(255, 255, 255, 0);\n}\n\n.options {\n  position: absolute;\n  margin-top: 15%;\n  margin-left: 65%;\n  width: auto;\n  height: auto;\n  display: none;\n  z-index: 4;\n}\n\n#edit {\n  position: absolute;\n  margin-top: 40%;\n  margin-left: -81%;\n  width: auto;\n  height: auto;\n  display: none;\n}\n\n#authent {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-attachment: fixed;\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  height: auto;\n  min-height: 100vh;\n}\n\n#formOne, #formTwo{\n  margin-top: 20%;\n}\n\n.col-6 ul li {\n  list-style: none;\n  text-align: center;\n  margin-top: 10%;\n}\n\n.col-6 ul {\n  margin-top: 30%;\n}\n\n#icon {\n  color: rgb(165, 141, 6);\n}\n\n#SignIn {\n  margin-top: 10%;\n  width: 100%;\n  height: 10%;\n  color: darkgray;\n}\n\n#login {\n  min-height: 100vh;\n}\n\n#test {\n  width: 100%;\n  height: auto;\n  background-color: rgba(255, 235, 205, 0.712);\n  position: absolute;\n  z-index: 1000;\n  margin-top: 3%;\n}\n\n#addwidget{\n  display: none;\n}\n\n#buttonClose{\n  display: none;\n}", ""]);
+exports.push([module.i, ".App {\r\n  text-align: center;\r\n}\r\n\r\n.App-logo {\r\n  height: 40vmin;\r\n  pointer-events: none;\r\n}\r\n\r\n@keyframes App-logo-spin {\r\n  from {\r\n    transform: rotate(0deg);\r\n  }\r\n  to {\r\n    transform: rotate(360deg);\r\n  }\r\n}\r\n\r\n#contain {\r\n  width: 100%;\r\n  height: 100vh;\r\n  position: absolute;\r\n  background-color: rgba(0, 0, 0, 0.275);\r\n  z-index: 99;\r\n  display: none;\r\n}\r\n\r\n.card {\r\n  width: 100%;\r\n  height: 50%;\r\n  margin : 0.6%;\r\n  position: relative;\r\n}\r\n \r\n#containNavbar {\r\n  position: relative;\r\n}\r\n\r\n#containCard{\r\n  width: 100%;\r\n  height: auto;\r\n  display: flex;\r\n  flex-flow: row wrap ;\r\n  justify-content: center;\r\n}\r\n\r\n#sidebar {\r\n  width: 33%;\r\n  height: 100vh;\r\n  background-color: rgb(201, 201, 201);\r\n  position: absolute;\r\n  z-index: 100;\r\n  margin-left: -100%;\r\n}\r\n\r\n@keyframes slideoff {\r\n  from { margin-left: 0; }\r\n  to   { margin-top: -100px; }\r\n}\r\n\r\n.btn-primary {\r\n  background-color: rgba(255, 255, 255, 0);\r\n}\r\n\r\n.options {\r\n  position: absolute;\r\n  margin-top: 15%;\r\n  margin-left: 65%;\r\n  width: auto;\r\n  height: auto;\r\n  display: none;\r\n  z-index: 4;\r\n}\r\n\r\n#edit {\r\n  position: absolute;\r\n  margin-top: 40%;\r\n  margin-left: -81%;\r\n  width: auto;\r\n  height: auto;\r\n  display: none;\r\n}\r\n\r\n#authent {\r\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\r\n  background-attachment: fixed;\r\n  background-position: center;\r\n  background-repeat: no-repeat;\r\n  background-size: cover;\r\n  height: auto;\r\n  min-height: 100vh;\r\n}\r\n\r\n#formOne, #formTwo{\r\n  margin-top: 20%;\r\n}\r\n\r\n.col-6 ul li {\r\n  list-style: none;\r\n  text-align: center;\r\n  margin-top: 10%;\r\n}\r\n\r\n.col-6 ul {\r\n  margin-top: 30%;\r\n}\r\n\r\n#icon {\r\n  color: rgb(165, 141, 6);\r\n}\r\n\r\n#SignIn {\r\n  margin-top: 10%;\r\n  width: 100%;\r\n  height: 10%;\r\n  color: darkgray;\r\n}\r\n\r\n#login {\r\n  min-height: 100vh;\r\n}\r\n\r\n#test {\r\n  width: 100%;\r\n  height: auto;\r\n  background-color: rgba(255, 235, 205, 0.712);\r\n  position: absolute;\r\n  z-index: 1000;\r\n  margin-top: 3%;\r\n}\r\n\r\n#addwidget{\r\n  display: none;\r\n}\r\n\r\n#buttonClose{\r\n  display: none;\r\n}", ""]);
 // Exports
 module.exports = exports;
 
@@ -71012,9 +71012,7 @@ var ParamsWidget = function ParamsWidget() {
           serviceName: paramsCard[0].service,
           stringParams: "",
           widgetName: paramsCard[0].widgetName,
-          intParams: null,
-          position: null,
-          user: null
+          intParams: null
         };
         break;
 
@@ -71024,9 +71022,7 @@ var ParamsWidget = function ParamsWidget() {
           serviceName: paramsCard[1].service,
           stringParams: "",
           widgetName: paramsCard[1].widgetName,
-          intParams: null,
-          position: null,
-          user: null
+          intParams: null
         };
         break;
 
@@ -71036,9 +71032,7 @@ var ParamsWidget = function ParamsWidget() {
           serviceName: paramsCard[2].service,
           stringParams: "",
           widgetName: paramsCard[2].widgetName,
-          intParams: null,
-          position: null,
-          user: null
+          intParams: null
         };
         break;
 
@@ -71048,9 +71042,7 @@ var ParamsWidget = function ParamsWidget() {
           serviceName: paramsCard[3].service,
           stringParams: "",
           widgetName: paramsCard[3].widgetName,
-          intParams: null,
-          position: null,
-          user: null
+          intParams: null
         };
         break;
 
@@ -71058,15 +71050,13 @@ var ParamsWidget = function ParamsWidget() {
         var stringParams = window.prompt('Which city do you want the weather forecast for ?');
         stringParams = stringParams.charAt(0).toUpperCase() + stringParams.substring(1).toLowerCase();
         paramsData = {
-          description: paramsCard[4].description,
+          widgetName: paramsCard[4].widgetName,
           serviceName: paramsCard[4].service,
+          description: paramsCard[4].description,
           stringParams: {
             city: stringParams
           },
-          widgetName: paramsCard[4].widgetName,
-          intParams: null,
-          position: null,
-          user: null
+          intParams: null
         };
         break;
 
@@ -71080,9 +71070,7 @@ var ParamsWidget = function ParamsWidget() {
             city: stringParams
           },
           widgetName: paramsCard[5].widgetName,
-          intParams: null,
-          position: null,
-          user: null
+          intParams: null
         };
         break;
 
@@ -71092,9 +71080,7 @@ var ParamsWidget = function ParamsWidget() {
           serviceName: paramsCard[6].service,
           stringParams: "",
           widgetName: paramsCard[6].widgetName,
-          intParams: null,
-          position: null,
-          user: null
+          intParams: null
         };
         break;
 
@@ -71104,9 +71090,7 @@ var ParamsWidget = function ParamsWidget() {
           serviceName: paramsCard[7].service,
           stringParams: "",
           widgetName: paramsCard[7].widgetName,
-          intParams: null,
-          position: null,
-          user: null
+          intParams: null
         };
         break;
 
@@ -71114,12 +71098,11 @@ var ParamsWidget = function ParamsWidget() {
         break;
     }
 
-    axios__WEBPACK_IMPORTED_MODULE_12___default.a.post('https://jsonplaceholder.typicode.com/posts'
-    /* add true route */
-    , paramsData, {
+    axios__WEBPACK_IMPORTED_MODULE_12___default.a.post('http://localhost:8080/api/create', paramsData, {
       withCredentials: true
     }).then(function (response) {
       console.log(response.data);
+      window.location = "/home";
     }).catch(function (error) {
       console.log(error);
     });
@@ -71240,8 +71223,128 @@ var DashBoard = function DashBoard() {
     };
   }();
 
+  var testYoutube1 = /*#__PURE__*/function () {
+    var _ref2 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee2() {
+      var result;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_12___default.a.get('http://localhost:8080/api/youtube/youtube_1/4', {
+                withCredentials: true
+              });
+
+            case 2:
+              result = _context2.sent;
+              console.log("YOUTUBE 1", result.data);
+
+            case 4:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function testYoutube1() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  var testYoutube2 = /*#__PURE__*/function () {
+    var _ref3 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee3() {
+      var result;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_12___default.a.get('http://localhost:8080/api/youtube/youtube_2/5', {
+                withCredentials: true
+              });
+
+            case 2:
+              result = _context3.sent;
+              console.log("YOUTUBE 2", result.data);
+
+            case 4:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function testYoutube2() {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
+  var testYoutube3 = /*#__PURE__*/function () {
+    var _ref4 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee4() {
+      var result;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_12___default.a.get('http://localhost:8080/api/youtube/youtube_3/6', {
+                withCredentials: true
+              });
+
+            case 2:
+              result = _context4.sent;
+              console.log("YOUTUBE 3", result.data);
+
+            case 4:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }));
+
+    return function testYoutube3() {
+      return _ref4.apply(this, arguments);
+    };
+  }();
+
+  var testReddit1 = /*#__PURE__*/function () {
+    var _ref5 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee5() {
+      var result;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              _context5.next = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_12___default.a.get('http://localhost:8080/api/reddit/reddit_1/7', {
+                withCredentials: true
+              });
+
+            case 2:
+              result = _context5.sent;
+              console.log("REDDIT 1", result.data);
+
+            case 4:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5);
+    }));
+
+    return function testReddit1() {
+      return _ref5.apply(this, arguments);
+    };
+  }();
+
   Object(react__WEBPACK_IMPORTED_MODULE_6__["useEffect"])(function () {
-    fetchData();
+    fetchData(); // testYoutube1()
+    // testYoutube2()
+    // testYoutube3()
+
+    testReddit1();
   }, []);
   Object(react__WEBPACK_IMPORTED_MODULE_6__["useEffect"])(function () {
     var _setColumns;
@@ -71318,10 +71421,10 @@ var DashBoard = function DashBoard() {
     onDragEnd: function onDragEnd(result) {
       return _onDragEnd(result, columns, setColumns);
     }
-  }, Object.entries(columns).map(function (_ref2, index) {
-    var _ref3 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_3___default()(_ref2, 2),
-        columnId = _ref3[0],
-        column = _ref3[1];
+  }, Object.entries(columns).map(function (_ref6, index) {
+    var _ref7 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_3___default()(_ref6, 2),
+        columnId = _ref7[0],
+        column = _ref7[1];
 
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_8__["Droppable"], {
       droppableId: columnId,
@@ -71556,9 +71659,10 @@ function CloseOption(event) {
 
 function Delete(event) {
   var id = event.target.id;
-  axios__WEBPACK_IMPORTED_MODULE_11___default.a.delete("https://jsonplaceholder.typicode.com/users/".concat(id)).then(function (res) {
+  axios__WEBPACK_IMPORTED_MODULE_11___default.a.delete("http://localhost:8080/api/delete/".concat(id)).then(function (res) {
     console.log(res);
     console.log(res.data);
+    window.location = "/home";
   });
 }
 
@@ -71571,9 +71675,10 @@ function Edit(event) {
       city: stringParams
     }
   };
-  axios__WEBPACK_IMPORTED_MODULE_11___default.a.put("https://jsonplaceholder.typicode.com/users/".concat(id), paramsData).then(function (res) {
+  axios__WEBPACK_IMPORTED_MODULE_11___default.a.put("http://localhost:8080/api/update/".concat(id), paramsData).then(function (res) {
     console.log(res);
     console.log(res.data);
+    window.location = "/home";
   });
 }
 
@@ -71765,9 +71870,10 @@ function CloseOption(event) {
 function Delete(event) {
   var id = event.target.id;
   console.log('in delete');
-  axios__WEBPACK_IMPORTED_MODULE_11___default.a.delete("https://jsonplaceholder.typicode.com/users/".concat(id)).then(function (res) {
+  axios__WEBPACK_IMPORTED_MODULE_11___default.a.delete("http://localhost:8080/api/delete/".concat(id)).then(function (res) {
     console.log(res);
     console.log(res.data);
+    window.location = "/home";
   });
 }
 
@@ -71780,9 +71886,10 @@ function Edit(event) {
       city: stringParams
     }
   };
-  axios__WEBPACK_IMPORTED_MODULE_11___default.a.put("https://jsonplaceholder.typicode.com/users/".concat(id), paramsData).then(function (res) {
+  axios__WEBPACK_IMPORTED_MODULE_11___default.a.put("http://localhost:8080/api/update/".concat(id), paramsData).then(function (res) {
     console.log(res);
     console.log(res.data);
+    window.location = "/home";
   });
 }
 

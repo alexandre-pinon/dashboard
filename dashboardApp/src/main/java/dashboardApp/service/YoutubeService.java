@@ -2,8 +2,6 @@ package dashboardApp.service;
 
 import java.net.URI;
 
-import javax.annotation.PostConstruct;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -21,31 +19,31 @@ public class YoutubeService {
 
     private final String baseUrl = "https://youtube.googleapis.com/youtube/v3";
 
-    public String getChannelId(String channelName) {
-        String completeUrl = baseUrl + "/search?part=snippet&maxResults=1&q={channelName}&key={key}";
-        String channelId = null;
+    public String getIdByName(String name, String type) {
+        String completeUrl = baseUrl + "/search?part=snippet&maxResults=1&q={name}&key={key}";
+        String id = null;
 
         UriTemplate uriTemplate = new UriTemplate(completeUrl);
         RestTemplate restTemplate = new RestTemplate();
 
-        URI url = uriTemplate.expand(channelName, apiKey);
+        URI url = uriTemplate.expand(name, apiKey);
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 
         ObjectMapper mapper = new ObjectMapper();
         try {
             JsonNode root = mapper.readTree(response.getBody());
-            channelId = root.path("items").get(0).at("/id/channelId").asText();
+            id = root.path("items").get(0).at("/id/" + type + "Id").asText();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("ERROR CHANNEL NOT FOUND");
+            System.out.println("ERROR : ID NOT FOUND!");
         }
 
-        return channelId;
+        return id;
     }    
 
     public ResponseEntity<String> getSubscribers(String channelName) {
         String completeUrl = baseUrl + "/channels?part=statistics&id={channelId}&key={key}";
-        String channelId = getChannelId(channelName);
+        String channelId = getIdByName(channelName, "channel");
 
         UriTemplate uriTemplate = new UriTemplate(completeUrl);
         RestTemplate restTemplate = new RestTemplate();
@@ -57,13 +55,26 @@ public class YoutubeService {
     }
 
     public ResponseEntity<String> getNumberOfViews(String videoName) {
-        String completeUrl = baseUrl + "/channels?part=statistics&id={channelId}&key={key}";
-        String channelId = getChannelId(videoName);
+        String completeUrl = baseUrl + "/videos?part=statistics&id={videoId}&key={key}";
+        String videoId = getIdByName(videoName, "video");
 
         UriTemplate uriTemplate = new UriTemplate(completeUrl);
         RestTemplate restTemplate = new RestTemplate();
 
-        URI url = uriTemplate.expand(channelId, apiKey);
+        URI url = uriTemplate.expand(videoId, apiKey);
+        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+
+        return response;
+    }
+
+    public ResponseEntity<String> getLastNComments(int numberOfComments, String videoName) {
+        String completeUrl = baseUrl + "/commentThreads?part=snippet&videoId={videoId}&maxResults={numberOfComments}&key={key}";
+        String videoId = getIdByName(videoName, "video");
+
+        UriTemplate uriTemplate = new UriTemplate(completeUrl);
+        RestTemplate restTemplate = new RestTemplate();
+
+        URI url = uriTemplate.expand(videoId, numberOfComments, apiKey);
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
 
         return response;

@@ -70898,8 +70898,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Widget_YoutubeOne__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../Widget/YoutubeOne */ "./src/main/front/javascript/Component/Widget/YoutubeOne.jsx");
 /* harmony import */ var _Widget_YoutubeTwo__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../Widget/YoutubeTwo */ "./src/main/front/javascript/Component/Widget/YoutubeTwo.jsx");
 /* harmony import */ var _Widget_YoutubeThree__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../Widget/YoutubeThree */ "./src/main/front/javascript/Component/Widget/YoutubeThree.jsx");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _Widget_RedditOne__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../Widget/RedditOne */ "./src/main/front/javascript/Component/Widget/RedditOne.jsx");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_16__);
 
 
 
@@ -70925,9 +70926,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var cards = 'Card';
-var WeatherOne = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_Widget_WeatherOne__WEBPACK_IMPORTED_MODULE_10__["WeatherWidgetOne"], null);
-var WeatherTwo = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_Widget_WeatherTwo__WEBPACK_IMPORTED_MODULE_11__["WeatherWidgetTwo"], null);
+
 var card = [];
 var paramsCard = [{
   id: 1,
@@ -71104,7 +71103,7 @@ var ParamsWidget = function ParamsWidget() {
         break;
     }
 
-    axios__WEBPACK_IMPORTED_MODULE_15___default.a.post('http://localhost:8080/api/create', paramsData, {
+    axios__WEBPACK_IMPORTED_MODULE_16___default.a.post('http://localhost:8080/api/create', paramsData, {
       withCredentials: true
     }).then(function (response) {
       console.log(response.data);
@@ -71207,7 +71206,7 @@ var DashBoard = function DashBoard() {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_15___default.a.get('http://localhost:8080/api/widgetInstances', {
+              return axios__WEBPACK_IMPORTED_MODULE_16___default.a.get('http://localhost:8080/api/widgetInstances', {
                 withCredentials: true
               });
 
@@ -71254,7 +71253,7 @@ var DashBoard = function DashBoard() {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_15___default.a.get('http://localhost:8080/api/reddit/reddit_1/7', {
+              return axios__WEBPACK_IMPORTED_MODULE_16___default.a.get('http://localhost:8080/api/reddit/reddit_1/7', {
                 withCredentials: true
               });
 
@@ -71314,7 +71313,7 @@ var DashBoard = function DashBoard() {
         case 'youtube_1':
           var instance = {
             id: item.id,
-            uid: 'Youtube2.' + index,
+            uid: 'Youtube1.' + index,
             div: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_Widget_YoutubeOne__WEBPACK_IMPORTED_MODULE_12__["YoutubeWidgetOne"], {
               widgetInstanceId: item.id,
               keyUnique: index
@@ -71338,8 +71337,20 @@ var DashBoard = function DashBoard() {
         case 'youtube_3':
           var instance = {
             id: item.id,
-            uid: 'Youtube2.' + index,
+            uid: 'Youtube3.' + index,
             div: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_Widget_YoutubeThree__WEBPACK_IMPORTED_MODULE_14__["YoutubeWidgetThree"], {
+              widgetInstanceId: item.id,
+              keyUnique: index
+            })
+          };
+          card.push(instance);
+          break;
+
+        case 'reddit_1':
+          var instance = {
+            id: item.id,
+            uid: 'Reddit1.' + index,
+            div: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_Widget_RedditOne__WEBPACK_IMPORTED_MODULE_15__["RedditWidgetOne"], {
               widgetInstanceId: item.id,
               keyUnique: index
             })
@@ -71562,6 +71573,227 @@ var Menu = function Menu() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "images/logo.png");
+
+/***/ }),
+
+/***/ "./src/main/front/javascript/Component/Widget/RedditOne.jsx":
+/*!******************************************************************!*\
+  !*** ./src/main/front/javascript/Component/Widget/RedditOne.jsx ***!
+  \******************************************************************/
+/*! exports provided: RedditWidgetOne */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RedditWidgetOne", function() { return RedditWidgetOne; });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/asyncToGenerator.js");
+/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap/Card */ "./node_modules/react-bootstrap/esm/Card.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap/ListGroup */ "./node_modules/react-bootstrap/esm/ListGroup.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_11__);
+
+
+
+
+
+
+
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6___default()(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6___default()(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5___default()(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+
+
+
+
+
+var edit = 'edit';
+var closer = 'closer';
+var cards = 'Card';
+
+function OpenOption(event) {
+  var id = event.currentTarget.name;
+  var elmt = document.getElementById('options' + id);
+  elmt.style.display = 'block';
+}
+
+function CloseOption(event) {
+  var id = event.currentTarget.name;
+  var elmt = document.getElementById('options' + id);
+  elmt.style.display = 'none';
+}
+
+function Delete(event) {
+  var id = event.target.id;
+  axios__WEBPACK_IMPORTED_MODULE_11___default.a.delete("https://jsonplaceholder.typicode.com/users/".concat(id)).then(function (res) {
+    console.log(res);
+    console.log(res.data);
+  });
+}
+
+function Edit(event) {
+  var id = event.target.id;
+  var stringParams = window.prompt('Which city do you want the weather forecast for ?');
+  stringParams = stringParams.charAt(0).toUpperCase() + stringParams.substring(1).toLowerCase();
+  var paramsData = {
+    stringParams: {
+      city: stringParams
+    }
+  };
+  axios__WEBPACK_IMPORTED_MODULE_11___default.a.put("https://jsonplaceholder.typicode.com/users/".concat(id), paramsData).then(function (res) {
+    console.log(res);
+    console.log(res.data);
+  });
+}
+
+var RedditWidgetOne = /*#__PURE__*/function (_React$Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(RedditWidgetOne, _React$Component);
+
+  var _super = _createSuper(RedditWidgetOne);
+
+  function RedditWidgetOne() {
+    var _this;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2___default()(this, RedditWidgetOne);
+
+    _this = _super.call(this);
+    _this.state = {
+      serverResponse: undefined
+    };
+    return _this;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3___default()(RedditWidgetOne, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.getData();
+    }
+  }, {
+    key: "getData",
+    value: function () {
+      var _getData = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var res, _yield$res, data;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return axios__WEBPACK_IMPORTED_MODULE_11___default.a.get('http://localhost:8080/api/reddit/reddit_1/' + this.props.widgetInstanceId);
+
+              case 2:
+                res = _context.sent;
+                _context.next = 5;
+                return res;
+
+              case 5:
+                _yield$res = _context.sent;
+                data = _yield$res.data;
+                this.setState({
+                  serverResponse: data
+                });
+                console.log(data);
+
+              case 9:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function getData() {
+        return _getData.apply(this, arguments);
+      }
+
+      return getData;
+    }()
+  }, {
+    key: "render",
+    value: function render() {
+      if (this.state.serverResponse != undefined) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"], {
+          id: "Card" + this.props.keyUnique
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Img, {
+          id: 'img' + this.props.keyUnique,
+          className: "img",
+          variant: "top",
+          style: {
+            display: 'none'
+          }
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "options",
+          id: 'options' + this.props.keyUnique
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_10__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_10__["default"].Item, {
+          action: true,
+          variant: "secondary"
+        }, "Application"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_10__["default"].Item, {
+          onClick: Edit,
+          id: this.props.widgetInstanceId,
+          action: true,
+          variant: "secondary"
+        }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_10__["default"].Item, {
+          onClick: Delete,
+          id: this.props.widgetInstanceId,
+          action: true,
+          variant: "secondary"
+        }, "Delete"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "row"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "col-6"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
+          name: this.props.keyUnique,
+          onClick: OpenOption,
+          className: "btn btn-light"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FontAwesomeIcon"], {
+          icon: "arrow-up"
+        }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "col-6"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
+          name: this.props.keyUnique,
+          onClick: CloseOption,
+          style: {
+            display: 'block'
+          },
+          className: "btn btn-light"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FontAwesomeIcon"], {
+          icon: "arrow-down"
+        })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "row"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "col-12"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_10__["default"], null, this.state.serverResponse.data.children.map(function (item) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_10__["default"].Item, {
+            href: item.data.url,
+            action: true,
+            variant: "secondary"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h4", null, item.data.author), item.data.title);
+        }))))));
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null);
+    }
+  }]);
+
+  return RedditWidgetOne;
+}(react__WEBPACK_IMPORTED_MODULE_7___default.a.Component);
 
 /***/ }),
 

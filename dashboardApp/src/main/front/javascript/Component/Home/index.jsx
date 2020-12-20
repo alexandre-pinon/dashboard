@@ -188,10 +188,16 @@ export const DashBoard = () => {
         console.log(result.data)
     }
 
+    const testYoutube3 = async () => {
+        const result = await axios.get('http://localhost:8080/api/youtube/youtube_3/6', {withCredentials: true})
+        console.log(result.data)
+    }
+
     useEffect(() => {
         fetchData()
         testYoutube1()
         testYoutube2()
+        testYoutube3()
     }, [])
 
     useEffect(() => {

@@ -90,13 +90,28 @@ public class DataLoader implements ApplicationRunner {
             WidgetInstance youtube21 = new WidgetInstance(
                 "youtube_2",
                 "youtube",
-                "Display the number of views for a give video",
+                "Display the number of views for a given video",
                 5,
                 stringParams,
                 null,
                 admin
             );
             widgetInstanceRepository.save(youtube21);
+
+            stringParams = new HashMap<>();
+            stringParams.put("video_name", "Demon Slayer EN 17 MINUTES | RE: TAKE");
+            HashMap<String, Integer> intParams = new HashMap<>();
+            intParams.put("number_of_comments", 10);
+            WidgetInstance youtube31 = new WidgetInstance(
+                "youtube_3",
+                "youtube",
+                "Display the last n comments for a given video",
+                6,
+                stringParams,
+                intParams,
+                admin
+            );
+            widgetInstanceRepository.save(youtube31);
         }
     }
 }

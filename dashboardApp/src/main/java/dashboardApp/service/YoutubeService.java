@@ -68,4 +68,17 @@ public class YoutubeService {
 
         return response;
     }
+
+    public ResponseEntity<String> getLastNComments(int numberOfComments, String videoName) {
+        String completeUrl = baseUrl + "/commentThreads?part=snippet&videoId={videoId}&maxResults={numberOfComments}&key={key}";
+        String videoId = getIdByName(videoName, "video");
+
+        UriTemplate uriTemplate = new UriTemplate(completeUrl);
+        RestTemplate restTemplate = new RestTemplate();
+
+        URI url = uriTemplate.expand(videoId, numberOfComments, apiKey);
+        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+
+        return response;
+    }
 }

@@ -81,6 +81,21 @@ public class WidgetController {
         return youtubeService.getNumberOfViews(videoName);
     }
 
+    @GetMapping("/youtube/youtube_3/{widgetInstanceId}")
+    public ResponseEntity<String> getLastNComments(@PathVariable Long widgetInstanceId, Principal principal) {
+        Optional<WidgetInstance> instance = widgetInstanceService.getWidgetInstanceById(widgetInstanceId);
+        int numberOfComments = 1;
+        String videoName = "";
+        if (!instance.isEmpty()) {
+            numberOfComments = instance.get().getIntParams().get("number_of_comments");
+            videoName = instance.get().getStringParams().get("video_name");
+        } else {
+            System.out.println("INCORRECT WIDGET INSTANCE ID!");
+        }
+
+        return youtubeService.getLastNComments(numberOfComments, videoName);
+    }
+
     @PostMapping("/create")
     public String postWeather(@RequestBody WidgetInstance widgetInstance, Principal principal) {
         CustomUserDetails userDetails = (CustomUserDetails) userService.loadUserByUsername(principal.getName());

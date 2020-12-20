@@ -84,6 +84,19 @@ public class DataLoader implements ApplicationRunner {
                 admin
             );
             widgetInstanceRepository.save(youtube11);
+
+            stringParams = new HashMap<>();
+            stringParams.put("video_name", "11ANS de JDG - Partie 1");
+            WidgetInstance youtube21 = new WidgetInstance(
+                "youtube_2",
+                "youtube",
+                "Display the number of views for a give video",
+                5,
+                stringParams,
+                null,
+                admin
+            );
+            widgetInstanceRepository.save(youtube21);
         }
     }
 }

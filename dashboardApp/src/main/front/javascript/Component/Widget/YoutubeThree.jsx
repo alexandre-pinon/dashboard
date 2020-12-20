@@ -4,6 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ListGroup from 'react-bootstrap/ListGroup'
 import axios from 'axios';
 
+var edit = 'edit';
+var closer = 'closer';
+var cards = 'Card';
+
 function OpenOption(event) {
 
     var id = event.currentTarget.name
@@ -22,12 +26,12 @@ function CloseOption(event) {
 
 function Delete(event) {
     var id = event.target.id
-    console.log('in delete')
+
     axios.delete(`http://localhost:8080/api/delete/${id}`)
     .then(res => {
-      console.log(res);
-      console.log(res.data);
-      window.location = "/home"
+        console.log(res);
+        console.log(res.data);
+        window.location = "/home"
     })
 }
 
@@ -40,13 +44,13 @@ function Edit(event) {
 
     axios.put(`http://localhost:8080/api/update/${id}`, paramsData)
     .then(res => {
-      console.log(res);
-      console.log(res.data);
-      window.location = "/home"
+        console.log(res);
+        console.log(res.data);
+        window.location = "/home"
     })
 }
 
-export class WeatherWidgetTwo extends React.Component{
+export class YoutubeWidgetThree extends React.Component{
 
     constructor(){
         super();
@@ -58,27 +62,25 @@ export class WeatherWidgetTwo extends React.Component{
           this.getData();
        }
        async getData(){
-        const res = await axios.get('http://localhost:8080/api/weather/' + this.props.widgetInstanceId);
+        const res = await axios.get('http://localhost:8080/api/youtube/youtube_3/' + this.props.widgetInstanceId);
         const { data } = await res;
         this.setState({serverResponse: data})
-        console.log(data, 'widget two data')
+        console.log(data)
       }
     
     render () {
 
         if (this.state.serverResponse != undefined) {
 
-            var icon = "http://openweathermap.org/img/wn/"+this.state.serverResponse.weather[0].icon+"@2x.png"
-
             return(
-                    <Card id={"Card"+ this.props.keyUnique} style={{backgroundImage: 'http://openweathermap.org/img/wn/"+'+this.state.serverResponse.weather[0].icon+'+"@2x.png' }}>
-                       <Card.Img id={'img' + this.props.keyUnique} className='img' variant="top" style={{display: 'none'}} />
+                    <Card id={"Card"+ this.props.keyUnique}>
+                        <Card.Img id={'img' + this.props.keyUnique} className='img' variant="top" style={{display : 'none'}} />
                         <div className={"options"} id={ 'options' + this.props.keyUnique}>
                                 <ListGroup>
                                     <ListGroup.Item action variant="secondary">
                                         Application
                                     </ListGroup.Item>
-                                    <ListGroup.Item onClick={Delete} id={this.props.widgetInstanceId} action variant="secondary">
+                                    <ListGroup.Item onClick={Edit} id={this.props.widgetInstanceId} action variant="secondary">
                                         Edit
                                     </ListGroup.Item>
                                     <ListGroup.Item onClick={Delete} id={this.props.widgetInstanceId} action variant="secondary">
@@ -88,14 +90,16 @@ export class WeatherWidgetTwo extends React.Component{
                             </div>
                             <Card.Body>
                                 <div className="row">
-                                    <div className='col-12'>
-                                    <Card.Text> <h1> {this.state.serverResponse.name}</h1></Card.Text>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className='col-10'>
-                                        <Card.Text> Longitude : {this.state.serverResponse.coord.lon} <br/> Latitude : {this.state.serverResponse.coord.lat}.</Card.Text>
-                                        <Card.Text>Wind Speed :{this.state.serverResponse.wind.speed} • Degres : {this.state.serverResponse.wind.deg}</Card.Text>   
+                                    <div className='col-8'>
+                                    <ListGroup>
+                                    {this.state.serverResponse.items.map(item => (
+                                        <ListGroup.Item action variant="secondary">
+                                            <h4>{item.snippet.topLevelComment.snippet.authorDisplayName}</h4>
+                                            <cite>{item.snippet.topLevelComment.snippet.publishedAt}</cite>
+                                            {item.snippet.topLevelComment.snippet.textDisplay}
+                                        </ListGroup.Item>
+                                    ))}
+                                    </ListGroup>
                                     </div>
                                     <div className="col-2">
                                         <button name={this.props.keyUnique} onClick={OpenOption} className="btn btn-light">
@@ -117,3 +121,4 @@ export class WeatherWidgetTwo extends React.Component{
         )
     }
 }
+

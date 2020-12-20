@@ -25,6 +25,12 @@ public class DataLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
+        if ((userRepository.findByEmail("test@test.com")) == null) {
+            User test = new User("test", "test", "test@test.com", "test");
+            test.setEnabled(true);
+		    test.setPassword(bCryptPasswordEncoder.encode(test.getPassword()));
+            userRepository.save(test);
+        }
         if ((userRepository.findByEmail("admin@admin.com")) == null) {
             User admin = new User("admin", "admin", "admin@admin.com", "admin");
             admin.setEnabled(true);

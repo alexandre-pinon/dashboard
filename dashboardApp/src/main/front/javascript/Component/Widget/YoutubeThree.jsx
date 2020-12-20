@@ -38,9 +38,10 @@ function Delete(event) {
 function Edit(event) {
     var id = event.target.id
 
-    var stringParams = window.prompt('Which city do you want the weather forecast for ?')
-    stringParams = stringParams.charAt(0).toUpperCase() + stringParams.substring(1).toLowerCase()
-    var paramsData = {stringParams : {city : stringParams}}
+    var stringParams = window.prompt('What video do you want ?')
+    var intParams = window.prompt('How many comments do you want to display?')
+    intParams = Number(intParams)
+    var paramsData = {stringParams : {video_name : stringParams}, intParams : {number_of_comments : intParams}}
 
     axios.put(`http://localhost:8080/api/update/${id}`, paramsData)
     .then(res => {
@@ -90,25 +91,32 @@ export class YoutubeWidgetThree extends React.Component{
                             </div>
                             <Card.Body>
                                 <div className="row">
-                                    <div className='col-8'>
+                                    <div className='col-12'>
+                                    <h4>{this.props.videoName}</h4>
                                     <ListGroup>
                                     {this.state.serverResponse.items.map(item => (
+                                        
                                         <ListGroup.Item action variant="secondary">
                                             <h4>{item.snippet.topLevelComment.snippet.authorDisplayName}</h4>
                                             <cite>{item.snippet.topLevelComment.snippet.publishedAt}</cite>
+                                            <br/>
                                             {item.snippet.topLevelComment.snippet.textDisplay}
                                         </ListGroup.Item>
                                     ))}
                                     </ListGroup>
                                     </div>
-                                    <div className="col-2">
+                                </div>
+                                <div className='row'>
+                                    <div className="col-6">
                                         <button name={this.props.keyUnique} onClick={OpenOption} className="btn btn-light">
                                             <FontAwesomeIcon icon="arrow-up"/>
                                         </button>
+                                    </div>
+                                    <div className="col-6">
                                         <button name={this.props.keyUnique} onClick={CloseOption} style={{display : 'block'}} className="btn btn-light">
                                             <FontAwesomeIcon icon="arrow-down"/>
                                         </button>
-                                    </div>
+                                    </div> 
                                 </div>
                         </Card.Body>
                     </Card>

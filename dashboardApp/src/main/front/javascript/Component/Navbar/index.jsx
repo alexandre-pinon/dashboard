@@ -4,17 +4,28 @@ import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Logo from "./logo.png"
+import axios from "axios";
 
 
 
 const links = [
-    {name : "Identifiant" , img : "http://via.placeholder.com/640x360", route: "#", theme: "secondary" },
-    {name : "Home" , img : "http://via.placeholder.com/640x360", route: "#", theme: "secondary" },
-    {name : "Paramètres" , img : "http://via.placeholder.com/640x360", route: "#", theme: "secondary" },
-    {name : "About" , img : "http://via.placeholder.com/640x360", route: "#", theme: "secondary" },
-    {name : "Contact Us" , img : "http://via.placeholder.com/640x360", route: "#", theme: "secondary" },
-    {name : "Sign out" , img : "http://via.placeholder.com/640x360", route: "#", theme: "danger" },
+    {name : "Identifiant" , img : "http://via.placeholder.com/640x360", route: "#", theme: "secondary", action: null },
+    {name : "Home" , img : "http://via.placeholder.com/640x360", route: "#", theme: "secondary", action: null },
+    {name : "Paramètres" , img : "http://via.placeholder.com/640x360", route: "#", theme: "secondary", action: null },
+    {name : "About" , img : "http://via.placeholder.com/640x360", route: "#", theme: "secondary", action: null },
+    {name : "Contact Us" , img : "http://via.placeholder.com/640x360", route: "#", theme: "secondary", action: null },
+    {name : "Sign out" , img : "http://via.placeholder.com/640x360", route: "#", theme: "danger", action: Logout },
 ]
+
+function Logout(params) {
+    axios.post('/logout')
+    .then(response => {
+        window.location = "/home"
+    })
+    .catch(error => {
+        console.log(error)
+    })
+}
 
 function anime(params) {
     var sidebar = document.getElementById("sidebar")
@@ -71,7 +82,7 @@ export const Menu = () => {
                 <div id="sidebar">
                     <ListGroup>
                         {links.map(item => (
-                            <ListGroup.Item action variant={item.theme}>
+                            <ListGroup.Item action variant={item.theme} onClick={item.action}>
                                 {item.name}
                             </ListGroup.Item>
                         ))}

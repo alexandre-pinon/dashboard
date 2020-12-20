@@ -38,9 +38,8 @@ function Delete(event) {
 function Edit(event) {
     var id = event.target.id
 
-    var stringParams = window.prompt('Which city do you want the weather forecast for ?')
-    stringParams = stringParams.charAt(0).toUpperCase() + stringParams.substring(1).toLowerCase()
-    var paramsData = {stringParams : {city : stringParams}}
+    var stringParams = window.prompt('What video do you want ?')
+    var paramsData = {stringParams : {video_name : stringParams}}
 
     axios.put(`http://localhost:8080/api/update/${id}`, paramsData)
     .then(res => {
@@ -90,7 +89,7 @@ export class YoutubeWidgetTwo extends React.Component{
                             <Card.Body>
                                 <div className="row">
                                     <div className='col-8'>
-                                        <h1>Your Last Video</h1>
+                                        <h4>{this.props.videoName}</h4>
                                         <Card.Text>Comments : {this.state.serverResponse.items[0].statistics.commentCount}</Card.Text>
                                         <Card.Text>Dislikes : {this.state.serverResponse.items[0].statistics.dislikeCount}</Card.Text>   
                                         <Card.Text>Favorites : {this.state.serverResponse.items[0].statistics.favoriteCount}</Card.Text>

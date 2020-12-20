@@ -49,8 +49,8 @@ public class Oauth2Application extends WebSecurityConfigurerAdapter {
     	// @formatter:off
         http
             .authorizeRequests(a -> a
-                .antMatchers("/", "/error", "/webjars/**", "/github/login/**").permitAll()
-                .anyRequest().permitAll()
+                .antMatchers("/", "/error", "/webjars/**", "/oauth2/**").permitAll()
+                .anyRequest().authenticated()
             )
             .exceptionHandling(e -> e
                 .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))

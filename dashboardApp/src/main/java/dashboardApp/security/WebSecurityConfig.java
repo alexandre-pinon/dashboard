@@ -21,13 +21,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     @Autowired
     private UserService userService;
     @Autowired
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private CustomOAuth2UserService customOAuth2UserService;
+    @Autowired
+    private OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler;
     
     @Override
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
-            .antMatchers("/auth*", "/*.js", "/images/**", "/register", "/register/**").permitAll()
+            .antMatchers("/auth*", "/*.js", "/images/**", "/register", "/register/**", "/oauth2/**").permitAll()
             .anyRequest().authenticated()
             .and()
                 .formLogin()
@@ -36,11 +40,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                         .permitAll()
             .and()
                 .addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class)
-                .csrf().csrfTokenRepository(csrfTokenRepository());
-            // .and()
-            // .oauth2Login()
-            //     .loginPage("/auth#login")
-            //     .permitAll();
+                .csrf().csrfTokenRepository(csrfTokenRepository())
+            .and()
+                .oauth2Login()
+                    .loginPage("/auth#login")
+                    .userInfoEndpoint().userService(customOAuth2UserService)
+                    .and()
+                        .successHandler(oAuth2LoginSuccessHandler)
+                        // .defaultSuccessUrl("/home", true)
+                        .permitAll()
+            .and()
+                .logout(l -> l
+                    .logoutSuccessUrl("/auth#login").permitAll()
+                );
     }
     
     @Override

@@ -70563,6 +70563,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
 
@@ -70574,6 +70575,7 @@ __webpack_require__.r(__webpack_exports__);
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6___default()(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6___default()(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5___default()(this, result); }; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
 
 
 
@@ -70839,7 +70841,9 @@ var Inscription = function Inscription() {
     icon: ["fab", "github"]
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
     className: "col-6"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(FormsLogin, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_9__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(FormsLogin, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("a", {
+    href: "/oauth2/authorization/github"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_9__["default"], {
     style: {
       width: '100%',
       color: 'rgb(165, 141, 6)'
@@ -70848,7 +70852,9 @@ var Inscription = function Inscription() {
   }, "Sign Up with Github ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_11__["FontAwesomeIcon"], {
     id: "icon",
     icon: ["fab", "github"]
-  }), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_9__["default"], {
+  }), " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("a", {
+    href: "/oauth2/authorization/google"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_9__["default"], {
     style: {
       width: '100%',
       color: 'rgb(165, 141, 6)'
@@ -70857,7 +70863,7 @@ var Inscription = function Inscription() {
   }, "Sign Up with Google ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_11__["FontAwesomeIcon"], {
     id: "icon",
     icon: ["fab", "google"]
-  }), " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_9__["default"], {
+  }), " "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_9__["default"], {
     id: "SignIn",
     href: "#inscription",
     variant: "outline-light"
@@ -70933,29 +70939,29 @@ var paramsCard = [{
   service: "Youtube",
   img: "http://via.placeholder.com/640x360",
   widgetName: "youtube_1",
-  name: "Youtube Comments",
-  description: ""
+  name: "Youtube Channel Statistics",
+  description: "Display the number of subscribers for a given channel"
 }, {
   id: 2,
   service: "Youtube",
   img: "http://via.placeholder.com/640x360",
   widgetName: "youtube_2",
-  name: "Youtube Recently Videos",
-  description: ""
+  name: "Youtube Video Statistics",
+  description: "Display the number of views for a given video"
 }, {
   id: 3,
-  service: "Google",
+  service: "Youtube",
   img: "http://via.placeholder.com/640x360",
-  widgetName: "google_1",
-  name: "Google Maps",
-  description: ""
+  widgetName: "youtube_3",
+  name: "Youtube Video Comments",
+  description: "Display the last n comments for a given video"
 }, {
   id: 4,
-  service: "Google",
+  service: "Reddit",
   img: "http://via.placeholder.com/640x360",
-  widgetName: "google_2",
-  name: "Gmail",
-  description: ""
+  widgetName: "reddit_1",
+  name: "Reddit subreddit post",
+  description: "Display the last n posts for a given subreddit"
 }, {
   id: 5,
   service: "weather",
@@ -70970,20 +70976,6 @@ var paramsCard = [{
   widgetName: "weather_2",
   name: "Precision",
   description: "Display position and wind for a given city"
-}, {
-  id: 7,
-  service: "Facebook",
-  img: "http://via.placeholder.com/640x360",
-  widgetName: "facebook_1",
-  name: "Messenger",
-  description: ""
-}, {
-  id: 8,
-  service: "Facebook",
-  img: "http://via.placeholder.com/640x360",
-  widgetName: "facebook_2",
-  name: "Marketplace",
-  description: ""
 }];
 
 function OpenAddWidget() {
@@ -71012,42 +71004,62 @@ var ParamsWidget = function ParamsWidget() {
 
     switch (key) {
       case "youtube_1":
+        var stringParams = window.prompt('Which channel do you want ?');
         paramsData = {
           description: paramsCard[0].description,
           serviceName: paramsCard[0].service,
-          stringParams: "",
+          stringParams: {
+            channel_name: stringParams
+          },
           widgetName: paramsCard[0].widgetName,
           intParams: null
         };
         break;
 
       case "youtube_2":
+        var stringParams = window.prompt('What video do you want ?');
         paramsData = {
           description: paramsCard[1].description,
           serviceName: paramsCard[1].service,
-          stringParams: "",
+          stringParams: {
+            video_name: stringParams
+          },
           widgetName: paramsCard[1].widgetName,
           intParams: null
         };
         break;
 
-      case "google_1":
+      case "youtube_3":
+        var stringParams = window.prompt('What video do you want ?');
+        var intParams = window.prompt('How many comments do you want to display?');
+        intParams = Number(intParams);
         paramsData = {
           description: paramsCard[2].description,
           serviceName: paramsCard[2].service,
-          stringParams: "",
-          widgetName: paramsCard[2].widgetName,
-          intParams: null
+          stringParams: {
+            video_name: stringParams
+          },
+          intParams: {
+            number_of_comments: intParams
+          },
+          widgetName: paramsCard[2].widgetName
         };
         break;
 
-      case "google_2":
+      case "reddit_1":
+        var stringParams = window.prompt('What subreddit do you want to look at ? (NAME MUST BE EXACT)');
+        var intParams = window.prompt('How many posts max ?');
+        intParams = Number(intParams);
         paramsData = {
           description: paramsCard[3].description,
           serviceName: paramsCard[3].service,
-          stringParams: "",
-          widgetName: paramsCard[3].widgetName,
-          intParams: null
+          stringParams: {
+            subreddit_name: stringParams
+          },
+          intParams: {
+            number_of_posts: intParams
+          },
+          widgetName: paramsCard[3].widgetName
         };
         break;
 
@@ -71075,26 +71087,6 @@ var ParamsWidget = function ParamsWidget() {
             city: stringParams
           },
           widgetName: paramsCard[5].widgetName,
-          intParams: null
-        };
-        break;
-
-      case "facebook_1":
-        paramsData = {
-          description: paramsCard[6].description,
-          serviceName: paramsCard[6].service,
-          stringParams: "",
-          widgetName: paramsCard[6].widgetName,
-          intParams: null
-        };
-        break;
-
-      case "facebook_2":
-        paramsData = {
-          description: paramsCard[7].description,
-          serviceName: paramsCard[7].service,
-          stringParams: "",
-          widgetName: paramsCard[7].widgetName,
           intParams: null
         };
         break;
@@ -71213,7 +71205,7 @@ var DashBoard = function DashBoard() {
             case 2:
               result = _context.sent;
               setData(result.data);
-              console.log(result.data);
+              console.log("widget instances : ", result.data);
 
             case 5:
             case "end":
@@ -71316,7 +71308,8 @@ var DashBoard = function DashBoard() {
             uid: 'Youtube1.' + index,
             div: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_Widget_YoutubeOne__WEBPACK_IMPORTED_MODULE_12__["YoutubeWidgetOne"], {
               widgetInstanceId: item.id,
-              keyUnique: index
+              keyUnique: index,
+              channelName: item.stringParams.channel_name
             })
           };
           card.push(instance);
@@ -71328,7 +71321,8 @@ var DashBoard = function DashBoard() {
             uid: 'Youtube2.' + index,
             div: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_Widget_YoutubeTwo__WEBPACK_IMPORTED_MODULE_13__["YoutubeWidgetTwo"], {
               widgetInstanceId: item.id,
-              keyUnique: index
+              keyUnique: index,
+              videoName: item.stringParams.video_name
             })
           };
           card.push(instance);
@@ -71340,7 +71334,8 @@ var DashBoard = function DashBoard() {
             uid: 'Youtube3.' + index,
             div: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_Widget_YoutubeThree__WEBPACK_IMPORTED_MODULE_14__["YoutubeWidgetThree"], {
               widgetInstanceId: item.id,
-              keyUnique: index
+              keyUnique: index,
+              videoName: item.stringParams.video_name
             })
           };
           card.push(instance);
@@ -71352,7 +71347,8 @@ var DashBoard = function DashBoard() {
             uid: 'Reddit1.' + index,
             div: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_Widget_RedditOne__WEBPACK_IMPORTED_MODULE_15__["RedditWidgetOne"], {
               widgetInstanceId: item.id,
-              keyUnique: index
+              keyUnique: index,
+              subRedditName: item.stringParams.subreddit_name
             })
           };
           card.push(instance);
@@ -71362,12 +71358,24 @@ var DashBoard = function DashBoard() {
           break;
       }
     });
+    var col1 = [];
+    var col2 = [];
+    var col3 = [];
+    card.forEach(function (item, index) {
+      if (index % 3 == 0) {
+        col1.push(item);
+      } else if (index % 3 == 1) {
+        col2.push(item);
+      } else if (index % 3 == 2) {
+        col3.push(item);
+      }
+    });
     setColumns((_setColumns = {}, _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_5___default()(_setColumns, 1, {
-      items: card
+      items: col1
     }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_5___default()(_setColumns, 2, {
-      items: []
+      items: col2
     }), _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_5___default()(_setColumns, 3, {
-      items: []
+      items: col3
     }), _setColumns));
   }, [data]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("section", {
@@ -71456,6 +71464,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap_NavDropdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/NavDropdown */ "./node_modules/react-bootstrap/esm/NavDropdown.js");
 /* harmony import */ var react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/ListGroup */ "./node_modules/react-bootstrap/esm/ListGroup.js");
 /* harmony import */ var _logo_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./logo.png */ "./src/main/front/javascript/Component/Navbar/logo.png");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
+
 
 
 
@@ -71466,33 +71477,47 @@ var links = [{
   name: "Identifiant",
   img: "http://via.placeholder.com/640x360",
   route: "#",
-  theme: "secondary"
+  theme: "secondary",
+  action: null
 }, {
   name: "Home",
   img: "http://via.placeholder.com/640x360",
   route: "#",
-  theme: "secondary"
+  theme: "secondary",
+  action: null
 }, {
   name: "Paramètres",
   img: "http://via.placeholder.com/640x360",
   route: "#",
-  theme: "secondary"
+  theme: "secondary",
+  action: null
 }, {
   name: "About",
   img: "http://via.placeholder.com/640x360",
   route: "#",
-  theme: "secondary"
+  theme: "secondary",
+  action: null
 }, {
   name: "Contact Us",
   img: "http://via.placeholder.com/640x360",
   route: "#",
-  theme: "secondary"
+  theme: "secondary",
+  action: null
 }, {
   name: "Sign out",
   img: "http://via.placeholder.com/640x360",
   route: "#",
-  theme: "danger"
+  theme: "danger",
+  action: Logout
 }];
+
+function Logout(params) {
+  axios__WEBPACK_IMPORTED_MODULE_6___default.a.post('/logout').then(function (response) {
+    window.location = "/home";
+  }).catch(function (error) {
+    console.log(error);
+  });
+}
 
 function anime(params) {
   var sidebar = document.getElementById("sidebar");
@@ -71553,7 +71578,8 @@ var Menu = function Menu() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_4__["default"], null, links.map(function (item) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_4__["default"].Item, {
       action: true,
-      variant: item.theme
+      variant: item.theme,
+      onClick: item.action
     }, item.name);
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "contain",
@@ -71607,6 +71633,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap/ListGroup */ "./node_modules/react-bootstrap/esm/ListGroup.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
 
@@ -71618,6 +71645,7 @@ __webpack_require__.r(__webpack_exports__);
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6___default()(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6___default()(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5___default()(this, result); }; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
 
 
 
@@ -71642,25 +71670,37 @@ function CloseOption(event) {
 
 function Delete(event) {
   var id = event.target.id;
-  axios__WEBPACK_IMPORTED_MODULE_11___default.a.delete("https://jsonplaceholder.typicode.com/users/".concat(id)).then(function (res) {
+  axios__WEBPACK_IMPORTED_MODULE_11___default.a.delete("http://localhost:8080/api/delete/".concat(id)).then(function (res) {
     console.log(res);
     console.log(res.data);
+    window.location = "/home";
   });
 }
 
 function Edit(event) {
   var id = event.target.id;
-  var stringParams = window.prompt('Which city do you want the weather forecast for ?');
-  stringParams = stringParams.charAt(0).toUpperCase() + stringParams.substring(1).toLowerCase();
+  var stringParams = window.prompt('What subreddit do you want to look at ? (NAME MUST BE EXACT)');
+  var intParams = window.prompt('How many posts max ?');
+  intParams = Number(intParams);
   var paramsData = {
     stringParams: {
-      city: stringParams
+      subreddit_name: stringParams
+    },
+    intParams: {
+      number_of_posts: intParams
     }
   };
-  axios__WEBPACK_IMPORTED_MODULE_11___default.a.put("https://jsonplaceholder.typicode.com/users/".concat(id), paramsData).then(function (res) {
+  axios__WEBPACK_IMPORTED_MODULE_11___default.a.put("http://localhost:8080/api/update/".concat(id), paramsData).then(function (res) {
     console.log(res);
     console.log(res.data);
+    window.location = "/home";
   });
+}
+
+function View(event) {
+  var link = event.target.name;
+  console.log(link);
+  window.location.href = link;
 }
 
 var RedditWidgetOne = /*#__PURE__*/function (_React$Component) {
@@ -71757,6 +71797,17 @@ var RedditWidgetOne = /*#__PURE__*/function (_React$Component) {
         }, "Delete"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
           className: "row"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "col-12"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h4", null, this.props.subRedditName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_10__["default"], null, this.state.serverResponse.data.children.map(function (item) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_10__["default"].Item, {
+            onClick: View,
+            name: item.data.url,
+            action: true,
+            variant: "secondary"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h4", null, item.data.author), item.data.title);
+        })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "row"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
           className: "col-6"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
           name: this.props.keyUnique,
@@ -71775,16 +71826,6 @@ var RedditWidgetOne = /*#__PURE__*/function (_React$Component) {
           className: "btn btn-light"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FontAwesomeIcon"], {
           icon: "arrow-down"
-        })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-          className: "row"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-          className: "col-12"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_10__["default"], null, this.state.serverResponse.data.children.map(function (item) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_10__["default"].Item, {
-            href: item.data.url,
-            action: true,
-            variant: "secondary"
-          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h4", null, item.data.author), item.data.title);
         }))))));
       }
 
@@ -72304,11 +72345,10 @@ function Delete(event) {
 
 function Edit(event) {
   var id = event.target.id;
-  var stringParams = window.prompt('Which city do you want the weather forecast for ?');
-  stringParams = stringParams.charAt(0).toUpperCase() + stringParams.substring(1).toLowerCase();
+  var stringParams = window.prompt('Which channel do you want ?');
   var paramsData = {
     stringParams: {
-      city: stringParams
+      channel_name: stringParams
     }
   };
   axios__WEBPACK_IMPORTED_MODULE_11___default.a.put("http://localhost:8080/api/update/".concat(id), paramsData).then(function (res) {
@@ -72412,7 +72452,7 @@ var YoutubeWidgetOne = /*#__PURE__*/function (_React$Component) {
           className: "row"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
           className: "col-8"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h1", null, "Youtube Channel"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Text, null, "Views : ", this.state.serverResponse.items[0].statistics.viewCount), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Text, null, "Videos : ", this.state.serverResponse.items[0].statistics.videoCount), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Text, null, "Subscribers : ", this.state.serverResponse.items[0].statistics.subscriberCount)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h4", null, this.props.channelName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Text, null, "Views : ", this.state.serverResponse.items[0].statistics.viewCount), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Text, null, "Videos : ", this.state.serverResponse.items[0].statistics.videoCount), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Text, null, "Subscribers : ", this.state.serverResponse.items[0].statistics.subscriberCount)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
           className: "col-2"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
           name: this.props.keyUnique,
@@ -72518,11 +72558,15 @@ function Delete(event) {
 
 function Edit(event) {
   var id = event.target.id;
-  var stringParams = window.prompt('Which city do you want the weather forecast for ?');
-  stringParams = stringParams.charAt(0).toUpperCase() + stringParams.substring(1).toLowerCase();
+  var stringParams = window.prompt('What video do you want ?');
+  var intParams = window.prompt('How many comments do you want to display?');
+  intParams = Number(intParams);
   var paramsData = {
     stringParams: {
-      city: stringParams
+      video_name: stringParams
+    },
+    intParams: {
+      number_of_comments: intParams
     }
   };
   axios__WEBPACK_IMPORTED_MODULE_11___default.a.put("http://localhost:8080/api/update/".concat(id), paramsData).then(function (res) {
@@ -72626,21 +72670,25 @@ var YoutubeWidgetThree = /*#__PURE__*/function (_React$Component) {
         }, "Delete"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
           className: "row"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-          className: "col-8"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_10__["default"], null, this.state.serverResponse.items.map(function (item) {
+          className: "col-12"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h4", null, this.props.videoName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_10__["default"], null, this.state.serverResponse.items.map(function (item) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_10__["default"].Item, {
             action: true,
             variant: "secondary"
-          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h4", null, item.snippet.topLevelComment.snippet.authorDisplayName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("cite", null, item.snippet.topLevelComment.snippet.publishedAt), item.snippet.topLevelComment.snippet.textDisplay);
-        }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-          className: "col-2"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h4", null, item.snippet.topLevelComment.snippet.authorDisplayName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("cite", null, item.snippet.topLevelComment.snippet.publishedAt), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("br", null), item.snippet.topLevelComment.snippet.textDisplay);
+        })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "row"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "col-6"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
           name: this.props.keyUnique,
           onClick: OpenOption,
           className: "btn btn-light"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FontAwesomeIcon"], {
           icon: "arrow-up"
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
+        }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+          className: "col-6"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
           name: this.props.keyUnique,
           onClick: CloseOption,
           style: {
@@ -72736,11 +72784,10 @@ function Delete(event) {
 
 function Edit(event) {
   var id = event.target.id;
-  var stringParams = window.prompt('Which city do you want the weather forecast for ?');
-  stringParams = stringParams.charAt(0).toUpperCase() + stringParams.substring(1).toLowerCase();
+  var stringParams = window.prompt('What video do you want ?');
   var paramsData = {
     stringParams: {
-      city: stringParams
+      video_name: stringParams
     }
   };
   axios__WEBPACK_IMPORTED_MODULE_11___default.a.put("http://localhost:8080/api/update/".concat(id), paramsData).then(function (res) {
@@ -72844,7 +72891,7 @@ var YoutubeWidgetTwo = /*#__PURE__*/function (_React$Component) {
           className: "row"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
           className: "col-8"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h1", null, "Your Last Video"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Text, null, "Comments : ", this.state.serverResponse.items[0].statistics.commentCount), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Text, null, "Dislikes : ", this.state.serverResponse.items[0].statistics.dislikeCount), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Text, null, "Favorites : ", this.state.serverResponse.items[0].statistics.favoriteCount), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Text, null, "Likes : ", this.state.serverResponse.items[0].statistics.likeCount), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Text, null, "Views : ", this.state.serverResponse.items[0].statistics.viewCount)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h4", null, this.props.videoName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Text, null, "Comments : ", this.state.serverResponse.items[0].statistics.commentCount), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Text, null, "Dislikes : ", this.state.serverResponse.items[0].statistics.dislikeCount), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Text, null, "Favorites : ", this.state.serverResponse.items[0].statistics.favoriteCount), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Text, null, "Likes : ", this.state.serverResponse.items[0].statistics.likeCount), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Text, null, "Views : ", this.state.serverResponse.items[0].statistics.viewCount)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
           className: "col-2"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("button", {
           name: this.props.keyUnique,

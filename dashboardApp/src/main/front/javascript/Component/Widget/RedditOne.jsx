@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ListGroup from 'react-bootstrap/ListGroup'
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 var edit = 'edit';
 var closer = 'closer';
@@ -27,25 +28,34 @@ function CloseOption(event) {
 function Delete(event) {
     var id = event.target.id
 
-    axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`)
+    axios.delete(`http://localhost:8080/api/delete/${id}`)
     .then(res => {
       console.log(res);
       console.log(res.data);
+      window.location = "/home"
     })
 }
 
 function Edit(event) {
     var id = event.target.id
 
-    var stringParams = window.prompt('Which city do you want the weather forecast for ?')
-    stringParams = stringParams.charAt(0).toUpperCase() + stringParams.substring(1).toLowerCase()
-    var paramsData = {stringParams : {city : stringParams}}
+    var stringParams = window.prompt('What subreddit do you want to look at ? (NAME MUST BE EXACT)')
+    var intParams = window.prompt('How many posts max ?')
+    intParams = Number(intParams)
+    var paramsData = {stringParams : {subreddit_name : stringParams}, intParams : {number_of_posts : intParams}}
 
-    axios.put(`https://jsonplaceholder.typicode.com/users/${id}`, paramsData)
+    axios.put(`http://localhost:8080/api/update/${id}`, paramsData)
     .then(res => {
       console.log(res);
       console.log(res.data);
+      window.location = "/home"
     })
+}
+
+function View(event) {
+    var link = event.target.name 
+    console.log(link)
+    window.location.href = link
 }
 
 export class RedditWidgetOne extends React.Component{
@@ -87,29 +97,30 @@ export class RedditWidgetOne extends React.Component{
                         </ListGroup>
                     </div>
                     <Card.Body>
-                        <div className='row'>
-                        <div className="col-6">
-                            <button name={this.props.keyUnique} onClick={OpenOption} className="btn btn-light">
-                                <FontAwesomeIcon icon="arrow-up"/>
-                             </button>
-                        </div>
-                        <div className="col-6">
-                            <button name={this.props.keyUnique} onClick={CloseOption} style={{display : 'block'}} className="btn btn-light">
-                                <FontAwesomeIcon icon="arrow-down"/>
-                            </button>
-                        </div> 
-                        </div>
                         <div className="row">
                             <div className='col-12'>
+                            <h4>{this.props.subRedditName}</h4>
                             <ListGroup>
                             {this.state.serverResponse.data.children.map(item => (
-                                <ListGroup.Item href={item.data.url} action variant="secondary">
+                                <ListGroup.Item onClick={View} name={item.data.url} action variant="secondary">
                                     <h4>{item.data.author}</h4>
                                     {item.data.title}
                                 </ListGroup.Item>
                             ))}
                             </ListGroup>
                             </div>
+                        </div>
+                        <div className='row'>
+                            <div className="col-6">
+                                <button name={this.props.keyUnique} onClick={OpenOption} className="btn btn-light">
+                                    <FontAwesomeIcon icon="arrow-up"/>
+                                </button>
+                            </div>
+                            <div className="col-6">
+                                <button name={this.props.keyUnique} onClick={CloseOption} style={{display : 'block'}} className="btn btn-light">
+                                    <FontAwesomeIcon icon="arrow-down"/>
+                                </button>
+                            </div> 
                         </div>
                 </Card.Body>
             </Card>

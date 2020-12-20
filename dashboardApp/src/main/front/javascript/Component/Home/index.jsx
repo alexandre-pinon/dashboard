@@ -14,14 +14,12 @@ import { Component } from 'react';
 
 const card = []
 const paramsCard = [
-    {id: 1, service : "Youtube" , img : "http://via.placeholder.com/640x360", widgetName : "youtube_1", name : "Youtube Comments", description : ""},
-    {id: 2, service : "Youtube" , img : "http://via.placeholder.com/640x360", widgetName : "youtube_2", name : "Youtube Recently Videos", description : ""},
-    {id: 3 , service : "Google" , img : "http://via.placeholder.com/640x360", widgetName : "google_1", name : "Google Maps", description : ""},
-    {id: 4 , service : "Google" , img : "http://via.placeholder.com/640x360", widgetName : "google_2", name : "Gmail", description : ""},
+    {id: 1, service : "Youtube" , img : "http://via.placeholder.com/640x360", widgetName : "youtube_1", name : "Youtube Channel Statistics", description : "Display the number of subscribers for a given channel"},
+    {id: 2, service : "Youtube" , img : "http://via.placeholder.com/640x360", widgetName : "youtube_2", name : "Youtube Video Statistics", description : "Display the number of views for a given video"},
+    {id: 3 , service : "Youtube" , img : "http://via.placeholder.com/640x360", widgetName : "youtube_3", name : "Youtube Video Comments", description : "Display the last n comments for a given video"},
+    {id: 4 , service : "Reddit" , img : "http://via.placeholder.com/640x360", widgetName : "reddit_1", name : "Reddit subreddit post", description : "Display the last n posts for a given subreddit"},
     {id: 5, service : "weather" , img : "http://via.placeholder.com/640x360", widgetName : "weather_1", name : "Météo", description : "Display temperature for a given city"},
     {id: 6, service : "weather" , img : "http://via.placeholder.com/640x360", widgetName : "weather_2", name : "Precision", description : "Display position and wind for a given city"},
-    {id: 7, service : "Facebook" , img : "http://via.placeholder.com/640x360", widgetName : "facebook_1", name : "Messenger", description : ""},
-    {id: 8, service : "Facebook" , img : "http://via.placeholder.com/640x360", widgetName : "facebook_2", name : "Marketplace", description : ""},
 ]
 
 function OpenAddWidget() {
@@ -55,16 +53,24 @@ const ParamsWidget = () => {
 
         switch (key) {
             case "youtube_1":
-                paramsData = {description : paramsCard[0].description, serviceName : paramsCard[0].service, stringParams : "", widgetName : paramsCard[0].widgetName, intParams : null}
+                var stringParams = window.prompt('Which channel do you want ?')
+                paramsData = {description : paramsCard[0].description, serviceName : paramsCard[0].service, stringParams : {channel_name : stringParams}, widgetName : paramsCard[0].widgetName, intParams : null}
                 break;
             case "youtube_2":
-                paramsData = {description : paramsCard[1].description, serviceName : paramsCard[1].service, stringParams : "", widgetName : paramsCard[1].widgetName, intParams : null}
+                var stringParams = window.prompt('What video do you want ?')
+                paramsData = {description : paramsCard[1].description, serviceName : paramsCard[1].service, stringParams : {video_name : stringParams}, widgetName : paramsCard[1].widgetName, intParams : null}
                 break;
-            case "google_1":
-                paramsData = {description : paramsCard[2].description, serviceName : paramsCard[2].service, stringParams : "", widgetName : paramsCard[2].widgetName, intParams : null}
+            case "youtube_3":
+                var stringParams = window.prompt('What video do you want ?')
+                var intParams = window.prompt('How many comments do you want to display?')
+                intParams = Number(intParams)            
+                paramsData = {description : paramsCard[2].description, serviceName : paramsCard[2].service, stringParams : {video_name : stringParams}, intParams : {number_of_comments : intParams}, widgetName : paramsCard[2].widgetName}
                 break;
-            case "google_2":
-                paramsData = {description : paramsCard[3].description, serviceName : paramsCard[3].service, stringParams : "", widgetName : paramsCard[3].widgetName, intParams : null}
+            case "reddit_1":
+                var stringParams = window.prompt('What subreddit do you want to look at ? (NAME MUST BE EXACT)')
+                var intParams = window.prompt('How many posts max ?')
+                intParams = Number(intParams)
+                paramsData = {description : paramsCard[3].description, serviceName : paramsCard[3].service, stringParams : {subreddit_name : stringParams}, intParams : {number_of_posts : intParams}, widgetName : paramsCard[3].widgetName}
                 break;
             case "weather_1":
                 var stringParams = window.prompt('Which city do you want the weather forecast for ?')
@@ -75,12 +81,6 @@ const ParamsWidget = () => {
                 var stringParams = window.prompt('Which city would you like more information from?')
                 stringParams = stringParams.charAt(0).toUpperCase() + stringParams.substring(1).toLowerCase()
                 paramsData = {description : paramsCard[5].description, serviceName : paramsCard[5].service, stringParams : {city : stringParams}, widgetName : paramsCard[5].widgetName, intParams : null}
-                break;
-            case "facebook_1":
-                paramsData = {description : paramsCard[6].description, serviceName : paramsCard[6].service, stringParams : "", widgetName : paramsCard[6].widgetName, intParams : null}
-                break;
-            case "facebook_2":
-                paramsData = {description : paramsCard[7].description, serviceName : paramsCard[7].service, stringParams : "", widgetName : paramsCard[7].widgetName, intParams : null}
                 break;
             default:
                 break;
@@ -174,7 +174,7 @@ export const DashBoard = () => {
     const fetchData = async () => {
         const result = await axios.get('http://localhost:8080/api/widgetInstances', {withCredentials: true})
         setData(result.data)
-        console.log(result.data)
+        console.log("widget instances : ", result.data)
     }
 /* 
     const testYoutube1 = async () => {
@@ -217,34 +217,42 @@ export const DashBoard = () => {
                     card.push(instance)
                     break;
                 case 'youtube_1':
-                    var instance = {id: item.id, uid: 'Youtube1.' + index , div: <YoutubeWidgetOne widgetInstanceId= {item.id} keyUnique={index}/> }
+                    var instance = {id: item.id, uid: 'Youtube1.' + index , div: <YoutubeWidgetOne widgetInstanceId= {item.id} keyUnique={index} channelName={item.stringParams.channel_name}/> }
                     card.push(instance)
                     break;
                 case 'youtube_2':
-                    var instance = {id: item.id, uid: 'Youtube2.' + index , div: <YoutubeWidgetTwo widgetInstanceId= {item.id} keyUnique={index}/> }
+                    var instance = {id: item.id, uid: 'Youtube2.' + index , div: <YoutubeWidgetTwo widgetInstanceId= {item.id} keyUnique={index} videoName={item.stringParams.video_name}/> }
                     card.push(instance)
                     break;
                 case 'youtube_3':
-                    var instance = {id: item.id, uid: 'Youtube3.' + index , div: <YoutubeWidgetThree widgetInstanceId= {item.id} keyUnique={index}/> }
+                    var instance = {id: item.id, uid: 'Youtube3.' + index , div: <YoutubeWidgetThree widgetInstanceId= {item.id} keyUnique={index} videoName={item.stringParams.video_name}/> }
                     card.push(instance)
                     break;
                 case 'reddit_1':
-                    var instance = {id: item.id, uid: 'Reddit1.' + index , div: <RedditWidgetOne widgetInstanceId= {item.id} keyUnique={index}/> }
+                    var instance = {id: item.id, uid: 'Reddit1.' + index , div: <RedditWidgetOne widgetInstanceId= {item.id} keyUnique={index} subRedditName={item.stringParams.subreddit_name}/> }
                     card.push(instance)
                     break;
                 default:
                     break;
             }
         })
+        var col1 = []
+        var col2 = []
+        var col3 = []
+        card.forEach((item, index) => {
+            if (index % 3 == 0) {col1.push(item)}
+            else if (index % 3 == 1) {col2.push(item)}
+            else if (index % 3 == 2) {col3.push(item)}
+        })
         setColumns({
             [1]: {
-              items: card
+              items: col1
             },
             [2]: {
-              items: []
+              items: col2
             },
             [3]: {
-              items: []
+              items: col3
             },
         })
     }, [data])

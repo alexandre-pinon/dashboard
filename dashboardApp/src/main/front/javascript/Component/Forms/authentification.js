@@ -203,6 +203,10 @@ export const Inscription = () => {
                     </div>
                     <div className='col-6'>
                         <FormsLogin/>
+                        <hr/>
+                        <Button style={{width:'100%', color: 'rgb(165, 141, 6)'}} variant="outline-light">Sign Up with Github <FontAwesomeIcon id="icon" icon={["fab", "github"]}/> </Button>
+                        <br/><br/>
+                        <Button style={{width:'100%', color: 'rgb(165, 141, 6)'}} variant="outline-light">Sign Up with Google <FontAwesomeIcon id="icon" icon={["fab", "google"]}/> </Button>
                     </div>
                     <Button id='SignIn' href="#inscription" variant="outline-light">Sign Up</Button>
                 </div>

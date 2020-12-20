@@ -47,10 +47,10 @@ import { Inscription } from './Component/Forms/authentification'
 import { DashBoard } from './Component/Home'
 import { Menu } from './Component/Navbar'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab, faGithub } from '@fortawesome/free-brands-svg-icons'
+import { fab, faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons'
 import { faArrowDown, faArrowUp, faCloud, faEllipsisH, faTimes } from '@fortawesome/free-solid-svg-icons'
 
-library.add(fab, faEllipsisH, faTimes, faArrowUp, faArrowDown, faCloud, faGithub)
+library.add(fab, faEllipsisH, faTimes, faArrowUp, faArrowDown, faCloud, faGithub, faGoogle)
 
 function App() {
   return (

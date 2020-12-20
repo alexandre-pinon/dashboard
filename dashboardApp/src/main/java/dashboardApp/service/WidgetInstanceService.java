@@ -32,8 +32,10 @@ public class WidgetInstanceService {
     public void updateInstanceById(Long id, HashMap<String, String> stringParams, HashMap<String, Integer> intParams) {
         Optional<WidgetInstance> widgetInstance = widgetInstanceRepository.findById(id);
         if (!widgetInstance.isEmpty()) {
-            widgetInstance.get().setStringParams(stringParams);
-            widgetInstance.get().setIntParams(intParams);
+            WidgetInstance updatedInstance = widgetInstance.get();
+            updatedInstance.setStringParams(stringParams);
+            updatedInstance.setIntParams(intParams);
+            widgetInstanceRepository.save(updatedInstance);
         } else {
             System.out.println("INCORRECT WIDGET ID!");
         }

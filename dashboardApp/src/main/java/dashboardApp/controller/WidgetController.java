@@ -88,19 +88,19 @@ public class WidgetController {
         widgetInstance.setUser(user);
         widgetInstanceService.createNewInstance(widgetInstance);
 
-        return "redirect:/home";
+        return "Instance created successfully!";
     }
 
     @PutMapping("/update/{widgetInstanceId}")
     public String putWeather(@PathVariable Long widgetInstanceId, @RequestBody WidgetInstance widgetInstance) {
         widgetInstanceService.updateInstanceById(widgetInstanceId, widgetInstance.getStringParams(), widgetInstance.getIntParams());
-        return "redirect:/home";
+        return "Instance updated successfully!";
     }
 
     @DeleteMapping("/delete/{widgetInstanceId}")
     public String deleteWeather(@PathVariable Long widgetInstanceId) {
         widgetInstanceService.deleteInstanceById(widgetInstanceId);
-        return "redirect:/home";
+        return "Instance deleted successfully!";
     }
 
     @GetMapping("/widgetInstances")

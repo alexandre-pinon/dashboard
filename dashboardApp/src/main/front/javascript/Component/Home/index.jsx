@@ -222,7 +222,7 @@ export const DashBoard = () => {
                     card.push(instance)
                     break;
                 case 'youtube_1':
-                    var instance = {id: item.id, uid: 'Youtube2.' + index , div: <YoutubeWidgetOne widgetInstanceId= {item.id} keyUnique={index}/> }
+                    var instance = {id: item.id, uid: 'Youtube1.' + index , div: <YoutubeWidgetOne widgetInstanceId= {item.id} keyUnique={index}/> }
                     card.push(instance)
                     break;
                 case 'youtube_2':
@@ -230,7 +230,7 @@ export const DashBoard = () => {
                     card.push(instance)
                     break;
                 case 'youtube_3':
-                    var instance = {id: item.id, uid: 'Youtube2.' + index , div: <YoutubeWidgetThree widgetInstanceId= {item.id} keyUnique={index}/> }
+                    var instance = {id: item.id, uid: 'Youtube3.' + index , div: <YoutubeWidgetThree widgetInstanceId= {item.id} keyUnique={index}/> }
                     card.push(instance)
                     break;
                 default:

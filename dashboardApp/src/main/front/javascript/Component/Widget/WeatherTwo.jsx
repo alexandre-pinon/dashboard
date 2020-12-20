@@ -70,7 +70,7 @@ export class WeatherWidgetTwo extends React.Component{
 
             return(
                     <Card id={"Card"+ this.props.keyUnique}>
-                        <Card.Img id={'img' + this.props.keyUnique} className='img' variant="top" src={icon} />
+                       <Card.Img id={'img' + this.props.keyUnique} className='img' variant="top" src={icon} style={{display: 'none'}} />
                         <div className={"options"} id={ 'options' + this.props.keyUnique}>
                                 <ListGroup>
                                     <ListGroup.Item action variant="secondary">
@@ -86,8 +86,13 @@ export class WeatherWidgetTwo extends React.Component{
                             </div>
                             <Card.Body>
                                 <div className="row">
+                                    <div className='col-12'>
+                                    <Card.Text> <h1> {this.state.serverResponse.name}</h1></Card.Text>
+                                    </div>
+                                </div>
+                                <div className="row">
                                     <div className='col-10'>
-                                        <Card.Text> Longitude : {this.state.serverResponse.coord.lon} • Latitude : {this.state.serverResponse.coord.lat}.</Card.Text>
+                                        <Card.Text> Longitude : {this.state.serverResponse.coord.lon} <br/> Latitude : {this.state.serverResponse.coord.lat}.</Card.Text>
                                         <Card.Text>Wind Speed :{this.state.serverResponse.wind.speed} • Degres : {this.state.serverResponse.wind.deg}</Card.Text>   
                                     </div>
                                     <div className="col-2">

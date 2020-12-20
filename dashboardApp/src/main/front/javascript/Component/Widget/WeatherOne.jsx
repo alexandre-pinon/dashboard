@@ -90,7 +90,7 @@ export class WeatherWidgetOne extends React.Component{
                             <Card.Body>
                                 <div className="row">
                                     <div className='col-8'>
-                                        <h1> {this.state.serverResponse.name} </h1>
+                                        <h1> {this.state.serverResponse.name}</h1>
                                         <Card.Text>{this.state.serverResponse.weather[0].description} &nbsp; {this.state.serverResponse.main['temp']}º</Card.Text>   
                                     </div>
                                     <div className="col-2">

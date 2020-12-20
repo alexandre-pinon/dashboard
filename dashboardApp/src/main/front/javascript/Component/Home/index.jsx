@@ -8,14 +8,9 @@ import { WeatherWidgetTwo } from '../Widget/WeatherTwo'
 import { YoutubeWidgetOne } from '../Widget/YoutubeOne'
 import { YoutubeWidgetTwo } from '../Widget/YoutubeTwo'
 import { YoutubeWidgetThree } from '../Widget/YoutubeThree'
-
+import { RedditWidgetOne } from '../Widget/RedditOne'
 import axios from 'axios'
 import { Component } from 'react';
-
-var cards = 'Card';
-
-var WeatherOne = <WeatherWidgetOne/>;
-var WeatherTwo = <WeatherWidgetTwo/>;
 
 const card = []
 const paramsCard = [
@@ -231,6 +226,10 @@ export const DashBoard = () => {
                     break;
                 case 'youtube_3':
                     var instance = {id: item.id, uid: 'Youtube3.' + index , div: <YoutubeWidgetThree widgetInstanceId= {item.id} keyUnique={index}/> }
+                    card.push(instance)
+                    break;
+                case 'reddit_1':
+                    var instance = {id: item.id, uid: 'Reddit1.' + index , div: <RedditWidgetOne widgetInstanceId= {item.id} keyUnique={index}/> }
                     card.push(instance)
                     break;
                 default:

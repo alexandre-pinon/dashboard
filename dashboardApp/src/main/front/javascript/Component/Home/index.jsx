@@ -14,17 +14,16 @@ var WeatherOne = <WeatherWidgetOne/>;
 var WeatherTwo = <WeatherWidgetTwo/>;
 
 const card = []
-
-function AddCard(event) {
-    var id = event.target.name
-    var elmt = document.getElementById(cards+id)
-
-    console.log(cards+id)
-    
-    CloseAddWidget()
-    elmt.style.display = "block";
-  
-}
+const paramsCard = [
+    {id: 1, service : "Youtube" , img : "http://via.placeholder.com/640x360", widgetName : "youtube_1", name : "Youtube Comments", description : ""},
+    {id: 2, service : "Youtube" , img : "http://via.placeholder.com/640x360", widgetName : "youtube_2", name : "Youtube Recently Videos", description : ""},
+    {id: 3 , service : "Google" , img : "http://via.placeholder.com/640x360", widgetName : "google_1", name : "Google Maps", description : ""},
+    {id: 4 , service : "Google" , img : "http://via.placeholder.com/640x360", widgetName : "google_2", name : "Gmail", description : ""},
+    {id: 5, service : "weather" , img : "http://via.placeholder.com/640x360", widgetName : "weather_1", name : "Météo", description : "Display temperature for a given city"},
+    {id: 6, service : "weather" , img : "http://via.placeholder.com/640x360", widgetName : "weather_2", name : "Precision", description : "Display position and wind for a given city"},
+    {id: 7, service : "Facebook" , img : "http://via.placeholder.com/640x360", widgetName : "facebook_1", name : "Messenger", description : ""},
+    {id: 8, service : "Facebook" , img : "http://via.placeholder.com/640x360", widgetName : "facebook_2", name : "Marketplace", description : ""},
+]
 
 function OpenAddWidget() {
     var div = document.getElementById('addwidget');
@@ -50,17 +49,63 @@ function CloseAddWidget() {
 
 const ParamsWidget = () => {
     
+    function AddCard(event) {
+        var key = event.target.name
+        var paramsData = {};
+        console.log(key)
+
+        switch (key) {
+            case "youtube_1":
+                paramsData = {description : paramsCard[0].description, serviceName : paramsCard[0].service, stringParams : "", widgetName : paramsCard[0].widgetName, intParams : null, position : null, user: null}
+                break;
+            case "youtube_2":
+                paramsData = {description : paramsCard[1].description, serviceName : paramsCard[1].service, stringParams : "", widgetName : paramsCard[1].widgetName, intParams : null, position : null, user: null}
+                break;
+            case "google_1":
+                paramsData = {description : paramsCard[2].description, serviceName : paramsCard[2].service, stringParams : "", widgetName : paramsCard[2].widgetName, intParams : null, position : null, user: null}
+                break;
+            case "google_2":
+                paramsData = {description : paramsCard[3].description, serviceName : paramsCard[3].service, stringParams : "", widgetName : paramsCard[3].widgetName, intParams : null, position : null, user: null}
+                break;
+            case "weather_1":
+                var stringParams = window.prompt('Which city do you want the weather forecast for ?')
+                stringParams = stringParams.charAt(0).toUpperCase() + stringParams.substring(1).toLowerCase()
+                paramsData = {description : paramsCard[4].description , serviceName : paramsCard[4].service, stringParams : {city : stringParams}, widgetName : paramsCard[4].widgetName, intParams : null, position : null, user: null}
+                break;
+            case "weather_2":
+                var stringParams = window.prompt('Which city would you like more information from?')
+                stringParams = stringParams.charAt(0).toUpperCase() + stringParams.substring(1).toLowerCase()
+                paramsData = {description : paramsCard[5].description, serviceName : paramsCard[5].service, stringParams : {city : stringParams}, widgetName : paramsCard[5].widgetName, intParams : null, position : null, user: null}
+                break;
+            case "facebook_1":
+                paramsData = {description : paramsCard[6].description, serviceName : paramsCard[6].service, stringParams : "", widgetName : paramsCard[6].widgetName, intParams : null, position : null, user: null}
+                break;
+            case "facebook_2":
+                paramsData = {description : paramsCard[7].description, serviceName : paramsCard[7].service, stringParams : "", widgetName : paramsCard[7].widgetName, intParams : null, position : null, user: null}
+                break;
+            default:
+                break;
+        }
+        axios.post('https://jsonplaceholder.typicode.com/posts' /* add true route */ , paramsData, {withCredentials: true}) 
+        .then(response => {
+            console.log(response.data)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
+
     return (
         <div id='test' className="container md-4">
             <div id="containCard">
-            {card.map(item =>(
+            {paramsCard.map(item =>(
                 <Card style={{ width: '18rem' }}>
                     <Card.Img variant="top" src={item.img} />
                     <Card.Body>
                         <Card.Title>{item.name}</Card.Title>
                         <div className='row'>
                             <div className='col-sm'>
-                                <Button onClick={AddCard} name={item.id} variant="light">+</Button>
+                                <Button onClick={AddCard} name={item.widgetName} variant="light">+</Button>
                             </div>
                         </div>
                     </Card.Body>
@@ -142,14 +187,10 @@ export const DashBoard = () => {
                 case 'weather_1':
                     var instance = {id: item.id, uid: 'Weather1.' + index , div: <WeatherWidgetOne widgetInstanceId= {item.id} keyUnique={index} /> }
                     card.push(instance)
-                    console.log(card, 'in switch 1')
-                    console.log(item.widgetName)
                     break;
                 case 'weather_2':
                     var instance = {id: item.id, uid: 'Weather2.' + index , div: <WeatherWidgetTwo widgetInstanceId= {item.id} keyUnique={index}/> }
                     card.push(instance)
-                    console.log(card, 'in switch 2')
-                    console.log(item.widgetName)
                     break;
                 default:
                     break;
@@ -167,8 +208,6 @@ export const DashBoard = () => {
             },
         })
     }, [data])
-
-   
 
     return(
         <section className="container">

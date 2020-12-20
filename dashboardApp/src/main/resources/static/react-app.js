@@ -70905,14 +70905,63 @@ var cards = 'Card';
 var WeatherOne = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_Widget_WeatherOne__WEBPACK_IMPORTED_MODULE_10__["WeatherWidgetOne"], null);
 var WeatherTwo = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_Widget_WeatherTwo__WEBPACK_IMPORTED_MODULE_11__["WeatherWidgetTwo"], null);
 var card = [];
-
-function AddCard(event) {
-  var id = event.target.name;
-  var elmt = document.getElementById(cards + id);
-  console.log(cards + id);
-  CloseAddWidget();
-  elmt.style.display = "block";
-}
+var paramsCard = [{
+  id: 1,
+  service: "Youtube",
+  img: "http://via.placeholder.com/640x360",
+  widgetName: "youtube_1",
+  name: "Youtube Comments",
+  description: ""
+}, {
+  id: 2,
+  service: "Youtube",
+  img: "http://via.placeholder.com/640x360",
+  widgetName: "youtube_2",
+  name: "Youtube Recently Videos",
+  description: ""
+}, {
+  id: 3,
+  service: "Google",
+  img: "http://via.placeholder.com/640x360",
+  widgetName: "google_1",
+  name: "Google Maps",
+  description: ""
+}, {
+  id: 4,
+  service: "Google",
+  img: "http://via.placeholder.com/640x360",
+  widgetName: "google_2",
+  name: "Gmail",
+  description: ""
+}, {
+  id: 5,
+  service: "weather",
+  img: "http://via.placeholder.com/640x360",
+  widgetName: "weather_1",
+  name: "Météo",
+  description: "Display temperature for a given city"
+}, {
+  id: 6,
+  service: "weather",
+  img: "http://via.placeholder.com/640x360",
+  widgetName: "weather_2",
+  name: "Precision",
+  description: "Display position and wind for a given city"
+}, {
+  id: 7,
+  service: "Facebook",
+  img: "http://via.placeholder.com/640x360",
+  widgetName: "facebook_1",
+  name: "Messenger",
+  description: ""
+}, {
+  id: 8,
+  service: "Facebook",
+  img: "http://via.placeholder.com/640x360",
+  widgetName: "facebook_2",
+  name: "Marketplace",
+  description: ""
+}];
 
 function OpenAddWidget() {
   var div = document.getElementById('addwidget');
@@ -70933,12 +70982,73 @@ function CloseAddWidget() {
 }
 
 var ParamsWidget = function ParamsWidget() {
+  function AddCard(event) {
+    var key = event.target.name;
+    var paramsData = {};
+    console.log(key);
+
+    switch (key) {
+      case "youtube_1":
+        paramsData = "description=".concat(paramsCard[0].description, "&serviceName=").concat(paramsCard[0].service, "&stringParams=\" \"&widgetName=").concat(paramsCard[0].widgetName, "& intParams=", null, "& position=", null);
+        break;
+
+      case "youtube_2":
+        paramsData = "description=".concat(paramsCard[1].description, "&serviceName=").concat(paramsCard[1].service, "&stringParams=\" \"&widgetName=").concat(paramsCard[1].widgetName, "& intParams=", null, "& position=", null);
+        break;
+
+      case "google_1":
+        paramsData = "description=".concat(paramsCard[2].description, "&serviceName=").concat(paramsCard[2].service, "&stringParams=\" \"&widgetName=").concat(paramsCard[2].widgetName, "& intParams=", null, "& position=", null);
+        break;
+
+      case "google_2":
+        paramsData = "description=".concat(paramsCard[3].description, "&serviceName=").concat(paramsCard[3].service, "&stringParams=\" \"&widgetName=").concat(paramsCard[3].widgetName, "& intParams=", null, "& position=", null);
+        break;
+
+      case "weather_1":
+        var city = window.prompt('Which city do you want the weather forecast for ?');
+        var stringParams = {
+          city: city.charAt(0).toUpperCase() + city.substring(1).toLowerCase()
+        };
+        paramsData = "description=".concat(paramsCard[4].description, "&serviceName=").concat(paramsCard[4].service, "&stringParams=").concat(stringParams, "&widgetName=").concat(paramsCard[4].widgetName, "&intParams=", null, "&position=", null);
+        break;
+
+      case "weather_2":
+        var city = window.prompt('Which city would you like more information from?');
+        var stringParams = {
+          city: city.charAt(0).toUpperCase() + city.substring(1).toLowerCase()
+        };
+        paramsData = "description=".concat(paramsCard[5].description, "&serviceName=").concat(paramsCard[5].service, "&stringParams=").concat(stringParams, "&widgetName=").concat(paramsCard[5].widgetName, "&intParams=", null, "&position=", null);
+        break;
+
+      case "facebook_1":
+        paramsData = "description=".concat(paramsCard[6].description, "&serviceName=").concat(paramsCard[6].service, "&stringParams=\" \"&widgetName=").concat(paramsCard[6].widgetName, "& intParams=", null, "& position=", null);
+        break;
+
+      case "facebook_2":
+        paramsData = "description=".concat(paramsCard[7].description, "&serviceName=").concat(paramsCard[7].service, "&stringParams=\" \"&widgetName=").concat(paramsCard[7].widgetName, "& intParams=", null, "& position=", null);
+        break;
+
+      default:
+        break;
+    }
+
+    axios__WEBPACK_IMPORTED_MODULE_12___default.a.post('https://jsonplaceholder.typicode.com/posts'
+    /* add true route */
+    , paramsData, {
+      withCredentials: true
+    }).then(function (response) {
+      console.log(response.data);
+    }).catch(function (error) {
+      console.log(error);
+    });
+  }
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
     id: "test",
     className: "container md-4"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
     id: "containCard"
-  }, card.map(function (item) {
+  }, paramsCard.map(function (item) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_7__["default"], {
       style: {
         width: '18rem'
@@ -70952,7 +71062,7 @@ var ParamsWidget = function ParamsWidget() {
       className: "col-sm"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_9__["default"], {
       onClick: AddCard,
-      name: item.id,
+      name: item.widgetName,
       variant: "light"
     }, "+")))));
   })));
@@ -71033,9 +71143,8 @@ var DashBoard = function DashBoard() {
             case 2:
               result = _context.sent;
               setData(result.data);
-              console.log(result.data);
 
-            case 5:
+            case 4:
             case "end":
               return _context.stop();
           }
@@ -71066,8 +71175,6 @@ var DashBoard = function DashBoard() {
             })
           };
           card.push(instance);
-          console.log(card, 'in switch 1');
-          console.log(item.widgetName);
           break;
 
         case 'weather_2':
@@ -71080,8 +71187,6 @@ var DashBoard = function DashBoard() {
             })
           };
           card.push(instance);
-          console.log(card, 'in switch 2');
-          console.log(item.widgetName);
           break;
 
         default:
@@ -71485,7 +71590,7 @@ var WeatherWidgetOne = /*#__PURE__*/function (_React$Component) {
         }))))));
       }
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null, "...");
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null);
     }
   }]);
 
@@ -71668,7 +71773,7 @@ var WeatherWidgetTwo = /*#__PURE__*/function (_React$Component) {
         }))))));
       }
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null, "Waiting...");
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", null);
     }
   }]);
 

@@ -84,7 +84,7 @@ export class WeatherWidgetTwo extends React.Component{
         }
         return(
             <div>
-                Waiting...
+                
             </div>
         )
     }

@@ -70989,43 +70989,107 @@ var ParamsWidget = function ParamsWidget() {
 
     switch (key) {
       case "youtube_1":
-        paramsData = "description=".concat(paramsCard[0].description, "&serviceName=").concat(paramsCard[0].service, "&stringParams=\" \"&widgetName=").concat(paramsCard[0].widgetName, "& intParams=", null, "& position=", null);
+        paramsData = {
+          description: paramsCard[0].description,
+          serviceName: paramsCard[0].service,
+          stringParams: "",
+          widgetName: paramsCard[0].widgetName,
+          intParams: null,
+          position: null,
+          user: null
+        };
         break;
 
       case "youtube_2":
-        paramsData = "description=".concat(paramsCard[1].description, "&serviceName=").concat(paramsCard[1].service, "&stringParams=\" \"&widgetName=").concat(paramsCard[1].widgetName, "& intParams=", null, "& position=", null);
+        paramsData = {
+          description: paramsCard[1].description,
+          serviceName: paramsCard[1].service,
+          stringParams: "",
+          widgetName: paramsCard[1].widgetName,
+          intParams: null,
+          position: null,
+          user: null
+        };
         break;
 
       case "google_1":
-        paramsData = "description=".concat(paramsCard[2].description, "&serviceName=").concat(paramsCard[2].service, "&stringParams=\" \"&widgetName=").concat(paramsCard[2].widgetName, "& intParams=", null, "& position=", null);
+        paramsData = {
+          description: paramsCard[2].description,
+          serviceName: paramsCard[2].service,
+          stringParams: "",
+          widgetName: paramsCard[2].widgetName,
+          intParams: null,
+          position: null,
+          user: null
+        };
         break;
 
       case "google_2":
-        paramsData = "description=".concat(paramsCard[3].description, "&serviceName=").concat(paramsCard[3].service, "&stringParams=\" \"&widgetName=").concat(paramsCard[3].widgetName, "& intParams=", null, "& position=", null);
+        paramsData = {
+          description: paramsCard[3].description,
+          serviceName: paramsCard[3].service,
+          stringParams: "",
+          widgetName: paramsCard[3].widgetName,
+          intParams: null,
+          position: null,
+          user: null
+        };
         break;
 
       case "weather_1":
-        var city = window.prompt('Which city do you want the weather forecast for ?');
-        var stringParams = {
-          city: city.charAt(0).toUpperCase() + city.substring(1).toLowerCase()
+        var stringParams = window.prompt('Which city do you want the weather forecast for ?');
+        stringParams = stringParams.charAt(0).toUpperCase() + stringParams.substring(1).toLowerCase();
+        paramsData = {
+          description: paramsCard[4].description,
+          serviceName: paramsCard[4].service,
+          stringParams: {
+            city: stringParams
+          },
+          widgetName: paramsCard[4].widgetName,
+          intParams: null,
+          position: null,
+          user: null
         };
-        paramsData = "description=".concat(paramsCard[4].description, "&serviceName=").concat(paramsCard[4].service, "&stringParams=").concat(stringParams, "&widgetName=").concat(paramsCard[4].widgetName, "&intParams=", null, "&position=", null);
         break;
 
       case "weather_2":
-        var city = window.prompt('Which city would you like more information from?');
-        var stringParams = {
-          city: city.charAt(0).toUpperCase() + city.substring(1).toLowerCase()
+        var stringParams = window.prompt('Which city would you like more information from?');
+        stringParams = stringParams.charAt(0).toUpperCase() + stringParams.substring(1).toLowerCase();
+        paramsData = {
+          description: paramsCard[5].description,
+          serviceName: paramsCard[5].service,
+          stringParams: {
+            city: stringParams
+          },
+          widgetName: paramsCard[5].widgetName,
+          intParams: null,
+          position: null,
+          user: null
         };
-        paramsData = "description=".concat(paramsCard[5].description, "&serviceName=").concat(paramsCard[5].service, "&stringParams=").concat(stringParams, "&widgetName=").concat(paramsCard[5].widgetName, "&intParams=", null, "&position=", null);
         break;
 
       case "facebook_1":
-        paramsData = "description=".concat(paramsCard[6].description, "&serviceName=").concat(paramsCard[6].service, "&stringParams=\" \"&widgetName=").concat(paramsCard[6].widgetName, "& intParams=", null, "& position=", null);
+        paramsData = {
+          description: paramsCard[6].description,
+          serviceName: paramsCard[6].service,
+          stringParams: "",
+          widgetName: paramsCard[6].widgetName,
+          intParams: null,
+          position: null,
+          user: null
+        };
         break;
 
       case "facebook_2":
-        paramsData = "description=".concat(paramsCard[7].description, "&serviceName=").concat(paramsCard[7].service, "&stringParams=\" \"&widgetName=").concat(paramsCard[7].widgetName, "& intParams=", null, "& position=", null);
+        paramsData = {
+          description: paramsCard[7].description,
+          serviceName: paramsCard[7].service,
+          stringParams: "",
+          widgetName: paramsCard[7].widgetName,
+          intParams: null,
+          position: null,
+          user: null
+        };
         break;
 
       default:
@@ -71143,8 +71207,9 @@ var DashBoard = function DashBoard() {
             case 2:
               result = _context.sent;
               setData(result.data);
+              console.log(result.data);
 
-            case 4:
+            case 5:
             case "end":
               return _context.stop();
           }
@@ -71171,7 +71236,8 @@ var DashBoard = function DashBoard() {
             uid: 'Weather1.' + index,
             div: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_Widget_WeatherOne__WEBPACK_IMPORTED_MODULE_10__["WeatherWidgetOne"], {
               widgetInstanceId: item.id,
-              keyUnique: index
+              keyUnique: index,
+              widgetName: item.widgetName
             })
           };
           card.push(instance);
@@ -71183,7 +71249,8 @@ var DashBoard = function DashBoard() {
             uid: 'Weather2.' + index,
             div: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_Widget_WeatherTwo__WEBPACK_IMPORTED_MODULE_11__["WeatherWidgetTwo"], {
               widgetInstanceId: item.id,
-              keyUnique: index
+              keyUnique: index,
+              widgetName: item.widgetName
             })
           };
           card.push(instance);
@@ -71475,10 +71542,28 @@ function CloseOption(event) {
   elmt.style.display = 'none';
 }
 
-function DeleteCard(event) {
-  var id = event.target.name;
-  var elmt = document.getElementById(cards + id);
-  elmt.style.display = "none";
+function Delete(event) {
+  var id = event.target.id;
+  axios__WEBPACK_IMPORTED_MODULE_11___default.a.delete("https://jsonplaceholder.typicode.com/users/".concat(id)).then(function (res) {
+    console.log(res);
+    console.log(res.data);
+  });
+}
+
+function Edit(event) {
+  var id = event.target.id;
+  var name = event.target.name;
+  var stringParams = window.prompt('Which city do you want the weather forecast for ?');
+  stringParams = stringParams.charAt(0).toUpperCase() + stringParams.substring(1).toLowerCase();
+  var paramsData = {
+    stringParams: {
+      city: stringParams
+    }
+  };
+  axios__WEBPACK_IMPORTED_MODULE_11___default.a.put("https://jsonplaceholder.typicode.com/users/".concat(id), paramsData).then(function (res) {
+    console.log(res);
+    console.log(res.data);
+  });
 }
 
 var WeatherWidgetOne = /*#__PURE__*/function (_React$Component) {
@@ -71527,9 +71612,8 @@ var WeatherWidgetOne = /*#__PURE__*/function (_React$Component) {
                 this.setState({
                   serverResponse: data
                 });
-                console.log(data, 'widget one data');
 
-              case 9:
+              case 8:
               case "end":
                 return _context.stop();
             }
@@ -71562,6 +71646,14 @@ var WeatherWidgetOne = /*#__PURE__*/function (_React$Component) {
           action: true,
           variant: "secondary"
         }, "Application"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_10__["default"].Item, {
+          onClick: Edit,
+          id: this.props.widgetInstanceId,
+          name: this.props.widgetName,
+          action: true,
+          variant: "secondary"
+        }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_10__["default"].Item, {
+          onClick: Delete,
+          id: this.props.widgetInstanceId,
           action: true,
           variant: "secondary"
         }, "Delete"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
@@ -71660,10 +71752,13 @@ function CloseOption(event) {
   elmt.style.display = 'none';
 }
 
-function DeleteCard(event) {
-  var id = event.target.name;
-  var elmt = document.getElementById(cards + id);
-  elmt.style.display = "none";
+function Delete(event) {
+  var id = event.target.id;
+  console.log('in delete');
+  axios__WEBPACK_IMPORTED_MODULE_11___default.a.delete("https://jsonplaceholder.typicode.com/users/".concat(id)).then(function (res) {
+    console.log(res);
+    console.log(res.data);
+  });
 }
 
 var WeatherWidgetTwo = /*#__PURE__*/function (_React$Component) {
@@ -71747,6 +71842,14 @@ var WeatherWidgetTwo = /*#__PURE__*/function (_React$Component) {
           action: true,
           variant: "secondary"
         }, "Application"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_10__["default"].Item, {
+          onClick: Delete,
+          id: this.props.widgetInstanceId,
+          name: this.props.widgetName,
+          action: true,
+          variant: "secondary"
+        }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_10__["default"].Item, {
+          onClick: Delete,
+          id: this.props.widgetInstanceId,
           action: true,
           variant: "secondary"
         }, "Delete"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_8__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {

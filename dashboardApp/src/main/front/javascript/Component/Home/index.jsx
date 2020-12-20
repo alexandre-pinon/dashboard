@@ -185,7 +185,7 @@ export const DashBoard = () => {
         data.map((item, index) => {
             switch (item.widgetName) {
                 case 'weather_1':
-                    var instance = {id: item.id, uid: 'Weather1.' + index , div: <WeatherWidgetOne widgetInstanceId= {item.id} keyUnique={index} /> }
+                    var instance = {id: item.id, uid: 'Weather1.' + index , div: <WeatherWidgetOne widgetInstanceId= {item.id} keyUnique={index}/> }
                     card.push(instance)
                     break;
                 case 'weather_2':

@@ -24,10 +24,28 @@ function CloseOption(event) {
     elmt.style.display = 'none'
 }
 
-function DeleteCard(event) {
-    var id = event.target.name
-    var elmt = document.getElementById(cards+id)
-    elmt.style.display = "none";
+function Delete(event) {
+    var id = event.target.id
+
+    axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`)
+    .then(res => {
+      console.log(res);
+      console.log(res.data);
+    })
+}
+
+function Edit(event) {
+    var id = event.target.id
+
+    var stringParams = window.prompt('Which city do you want the weather forecast for ?')
+    stringParams = stringParams.charAt(0).toUpperCase() + stringParams.substring(1).toLowerCase()
+    var paramsData = {stringParams : {city : stringParams}}
+
+    axios.put(`https://jsonplaceholder.typicode.com/users/${id}`, paramsData)
+    .then(res => {
+      console.log(res);
+      console.log(res.data);
+    })
 }
 
 export class WeatherWidgetOne extends React.Component{
@@ -45,7 +63,6 @@ export class WeatherWidgetOne extends React.Component{
         const res = await axios.get('http://localhost:8080/api/weather/' + this.props.widgetInstanceId);
         const { data } = await res;
         this.setState({serverResponse: data})
-        console.log(data, 'widget one data')
       }
     
     render () {
@@ -62,7 +79,10 @@ export class WeatherWidgetOne extends React.Component{
                                     <ListGroup.Item action variant="secondary">
                                         Application
                                     </ListGroup.Item>
-                                    <ListGroup.Item action variant="secondary">
+                                    <ListGroup.Item onClick={Edit} id={this.props.widgetInstanceId} action variant="secondary">
+                                        Edit
+                                    </ListGroup.Item>
+                                    <ListGroup.Item onClick={Delete} id={this.props.widgetInstanceId} action variant="secondary">
                                         Delete
                                     </ListGroup.Item>
                                 </ListGroup>

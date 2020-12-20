@@ -20,10 +20,28 @@ function CloseOption(event) {
     elmt.style.display = 'none'
 }
 
-function DeleteCard(event) {
-    var id = event.target.name
-    var elmt = document.getElementById(cards+id)
-    elmt.style.display = "none";
+function Delete(event) {
+    var id = event.target.id
+    console.log('in delete')
+    axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`)
+    .then(res => {
+      console.log(res);
+      console.log(res.data);
+    })
+}
+
+function Edit(event) {
+    var id = event.target.id
+
+    var stringParams = window.prompt('Which city do you want the weather forecast for ?')
+    stringParams = stringParams.charAt(0).toUpperCase() + stringParams.substring(1).toLowerCase()
+    var paramsData = {stringParams : {city : stringParams}}
+
+    axios.put(`https://jsonplaceholder.typicode.com/users/${id}`, paramsData)
+    .then(res => {
+      console.log(res);
+      console.log(res.data);
+    })
 }
 
 export class WeatherWidgetTwo extends React.Component{
@@ -58,7 +76,10 @@ export class WeatherWidgetTwo extends React.Component{
                                     <ListGroup.Item action variant="secondary">
                                         Application
                                     </ListGroup.Item>
-                                    <ListGroup.Item action variant="secondary">
+                                    <ListGroup.Item onClick={Delete} id={this.props.widgetInstanceId} action variant="secondary">
+                                        Edit
+                                    </ListGroup.Item>
+                                    <ListGroup.Item onClick={Delete} id={this.props.widgetInstanceId} action variant="secondary">
                                         Delete
                                     </ListGroup.Item>
                                 </ListGroup>

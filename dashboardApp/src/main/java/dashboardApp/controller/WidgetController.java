@@ -114,6 +114,19 @@ public class WidgetController {
         return redditService.getLastNPosts(numberOfPosts, subredditName);
     }
 
+    @GetMapping("/reddit/reddit_2/{widgetInstanceId}")
+    public ResponseEntity<String> getTopNMostPopularSubreddits(@PathVariable Long widgetInstanceId, Principal principal) {
+        Optional<WidgetInstance> instance = widgetInstanceService.getWidgetInstanceById(widgetInstanceId);
+        int numberOfSubreddits = 1;
+        if (!instance.isEmpty()) {
+            numberOfSubreddits = instance.get().getIntParams().get("number_of_subreddits");
+        } else {
+            System.out.println("INCORRECT WIDGET INSTANCE ID!");
+        }
+
+        return redditService.getTopNMostPopularSubreddits(numberOfSubreddits);
+    }
+
     @PostMapping("/create")
     public String postWeather(@RequestBody WidgetInstance widgetInstance, Principal principal) {
         CustomUserDetails userDetails = (CustomUserDetails) userService.loadUserByUsername(principal.getName());

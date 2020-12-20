@@ -30,4 +30,20 @@ public class RedditService {
 
         return response;
     }
+    
+    public ResponseEntity<String> getTopNMostPopularSubreddits(int numberOfSubreddits) {
+        String completeUrl = baseUrl + "/subreddits/popular/.json?limit={numberOfSubreddits}";
+        
+        UriTemplate uriTemplate = new UriTemplate(completeUrl);
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+
+        URI url = uriTemplate.expand(numberOfSubreddits);
+        headers.set("User-Agent", "dashboard");
+        HttpEntity<String> entity = new HttpEntity<String>(headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);                
+
+        return response;
+    }
 }

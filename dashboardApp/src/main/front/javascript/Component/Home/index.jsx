@@ -5,6 +5,10 @@ import {DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 import Button from 'react-bootstrap/Button'
 import { WeatherWidgetOne } from '../Widget/WeatherOne'
 import { WeatherWidgetTwo } from '../Widget/WeatherTwo'
+import { YoutubeWidgetOne } from '../Widget/YoutubeOne'
+import { YoutubeWidgetTwo } from '../Widget/YoutubeTwo'
+import { YoutubeWidgetThree } from '../Widget/YoutubeThree'
+
 import axios from 'axios'
 import { Component } from 'react';
 
@@ -177,21 +181,21 @@ export const DashBoard = () => {
         setData(result.data)
         console.log(result.data)
     }
-
+/* 
     const testYoutube1 = async () => {
         const result = await axios.get('http://localhost:8080/api/youtube/youtube_1/4', {withCredentials: true})
         console.log("YOUTUBE 1", result.data)
     }
-
-    const testYoutube2 = async () => {
+ */
+/*     const testYoutube2 = async () => {
         const result = await axios.get('http://localhost:8080/api/youtube/youtube_2/5', {withCredentials: true})
         console.log("YOUTUBE 2", result.data)
-    }
+    } */
 
-    const testYoutube3 = async () => {
+/*     const testYoutube3 = async () => {
         const result = await axios.get('http://localhost:8080/api/youtube/youtube_3/6', {withCredentials: true})
         console.log("YOUTUBE 3", result.data)
-    }
+    } */
 
     const testReddit1 = async () => {
         const result = await axios.get('http://localhost:8080/api/reddit/reddit_1/7', {withCredentials: true})
@@ -200,10 +204,10 @@ export const DashBoard = () => {
 
     useEffect(() => {
         fetchData()
-        // testYoutube1()
-        // testYoutube2()
-        // testYoutube3()
-        testReddit1()
+/*             testYoutube1()
+            testYoutube2()
+            testYoutube3()
+            testReddit1() */
     }, [])
 
     useEffect(() => {
@@ -215,6 +219,18 @@ export const DashBoard = () => {
                     break;
                 case 'weather_2':
                     var instance = {id: item.id, uid: 'Weather2.' + index , div: <WeatherWidgetTwo widgetInstanceId= {item.id} keyUnique={index}/> }
+                    card.push(instance)
+                    break;
+                case 'youtube_1':
+                    var instance = {id: item.id, uid: 'Youtube2.' + index , div: <YoutubeWidgetOne widgetInstanceId= {item.id} keyUnique={index}/> }
+                    card.push(instance)
+                    break;
+                case 'youtube_2':
+                    var instance = {id: item.id, uid: 'Youtube2.' + index , div: <YoutubeWidgetTwo widgetInstanceId= {item.id} keyUnique={index}/> }
+                    card.push(instance)
+                    break;
+                case 'youtube_3':
+                    var instance = {id: item.id, uid: 'Youtube2.' + index , div: <YoutubeWidgetThree widgetInstanceId= {item.id} keyUnique={index}/> }
                     card.push(instance)
                     break;
                 default:

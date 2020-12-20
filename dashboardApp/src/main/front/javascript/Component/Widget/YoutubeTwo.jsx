@@ -60,7 +60,7 @@ export class YoutubeWidgetTwo extends React.Component{
           this.getData();
        }
        async getData(){
-        const res = await axios.get('http://localhost:8080/api/weather/' + this.props.widgetInstanceId);
+        const res = await axios.get('http://localhost:8080/api/youtube/youtube_2/' + this.props.widgetInstanceId);
         const { data } = await res;
         this.setState({serverResponse: data})
       }
@@ -69,10 +69,9 @@ export class YoutubeWidgetTwo extends React.Component{
 
         if (this.state.serverResponse != undefined) {
 
-            var icon = "http://openweathermap.org/img/wn/"+this.state.serverResponse.weather[0].icon+"@2x.png"
-
             return(
                     <Card id={"Card"+ this.props.keyUnique}>
+                        <Card.Img id={'img' + this.props.keyUnique} className='img' variant="top" style={{display : 'none'}} />
                         <div className={"options"} id={ 'options' + this.props.keyUnique}>
                                 <ListGroup>
                                     <ListGroup.Item action variant="secondary">
@@ -89,8 +88,12 @@ export class YoutubeWidgetTwo extends React.Component{
                             <Card.Body>
                                 <div className="row">
                                     <div className='col-8'>
-                                        <h1> {this.state.serverResponse.name}</h1>
-                                        <Card.Text>{this.state.serverResponse.weather[0].description} &nbsp; {this.state.serverResponse.main['temp']}º</Card.Text>   
+                                        <h1>Your Last Video</h1>
+                                        <Card.Text>Comments : {this.state.serverResponse.items[0].statistics.commentCount}</Card.Text>
+                                        <Card.Text>Dislikes : {this.state.serverResponse.items[0].statistics.dislikeCount}</Card.Text>   
+                                        <Card.Text>Favorites : {this.state.serverResponse.items[0].statistics.favoriteCount}</Card.Text>
+                                        <Card.Text>Likes : {this.state.serverResponse.items[0].statistics.likeCount}</Card.Text>
+                                        <Card.Text>Views : {this.state.serverResponse.items[0].statistics.viewCount}</Card.Text>
                                     </div>
                                     <div className="col-2">
                                         <button name={this.props.keyUnique} onClick={OpenOption} className="btn btn-light">

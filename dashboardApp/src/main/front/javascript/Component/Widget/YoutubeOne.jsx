@@ -60,7 +60,7 @@ export class YoutubeWidgetOne extends React.Component{
           this.getData();
        }
        async getData(){
-        const res = await axios.get('http://localhost:8080/api/weather/' + this.props.widgetInstanceId);
+        const res = await axios.get('http://localhost:8080/api/youtube/youtube_1/' + this.props.widgetInstanceId);
         const { data } = await res;
         this.setState({serverResponse: data})
       }
@@ -69,11 +69,9 @@ export class YoutubeWidgetOne extends React.Component{
 
         if (this.state.serverResponse != undefined) {
 
-            var icon = "http://openweathermap.org/img/wn/"+this.state.serverResponse.weather[0].icon+"@2x.png"
-
             return(
                     <Card id={"Card"+ this.props.keyUnique}>
-                        <Card.Img id={'img' + this.props.keyUnique} className='img' variant="top" src={icon} />
+                        <Card.Img id={'img' + this.props.keyUnique} className='img' variant="top" style={{display : 'none'}} />
                         <div className={"options"} id={ 'options' + this.props.keyUnique}>
                                 <ListGroup>
                                     <ListGroup.Item action variant="secondary">
@@ -90,8 +88,10 @@ export class YoutubeWidgetOne extends React.Component{
                             <Card.Body>
                                 <div className="row">
                                     <div className='col-8'>
-                                        <h1> {this.state.serverResponse.name}</h1>
-                                        <Card.Text>{this.state.serverResponse.weather[0].description} &nbsp; {this.state.serverResponse.main['temp']}º</Card.Text>   
+                                        <h1>Youtube Channel</h1>
+                                        <Card.Text>Views : {this.state.serverResponse.items[0].statistics.viewCount}</Card.Text>
+                                        <Card.Text>Videos : {this.state.serverResponse.items[0].statistics.videoCount}</Card.Text>   
+                                        <Card.Text>Subscribers : {this.state.serverResponse.items[0].statistics.subscriberCount}</Card.Text>
                                     </div>
                                     <div className="col-2">
                                         <button name={this.props.keyUnique} onClick={OpenOption} className="btn btn-light">

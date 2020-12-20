@@ -8,11 +8,12 @@ import Logo from "./logo.png"
 
 
 const links = [
-    {name : "Identifiant" , img : "http://via.placeholder.com/640x360" },
-    {name : "Home" , img : "http://via.placeholder.com/640x360" },
-    {name : "Paramètres" , img : "http://via.placeholder.com/640x360" },
-    {name : "About" , img : "http://via.placeholder.com/640x360" },
-    {name : "Contact Us" , img : "http://via.placeholder.com/640x360" },
+    {name : "Identifiant" , img : "http://via.placeholder.com/640x360", route: "#", theme: "secondary" },
+    {name : "Home" , img : "http://via.placeholder.com/640x360", route: "#", theme: "secondary" },
+    {name : "Paramètres" , img : "http://via.placeholder.com/640x360", route: "#", theme: "secondary" },
+    {name : "About" , img : "http://via.placeholder.com/640x360", route: "#", theme: "secondary" },
+    {name : "Contact Us" , img : "http://via.placeholder.com/640x360", route: "#", theme: "secondary" },
+    {name : "Sign out" , img : "http://via.placeholder.com/640x360", route: "#", theme: "danger" },
 ]
 
 function anime(params) {
@@ -66,24 +67,11 @@ export const Menu = () => {
                         <Navbar.Brand href="#home">ashBoard</Navbar.Brand>
                     </div>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <Nav.Link href="#link">Link</Nav.Link>
-                    <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#">Action</NavDropdown.Item>
-                        <NavDropdown.Item href="#">Another action</NavDropdown.Item>
-                        <NavDropdown.Item href="#">Something</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="#">Separated link</NavDropdown.Item>
-                    </NavDropdown>
-                    </Nav>
-                </Navbar.Collapse>
                 </Navbar>                   
                 <div id="sidebar">
                     <ListGroup>
                         {links.map(item => (
-                            <ListGroup.Item action variant="secondary">
+                            <ListGroup.Item action variant={item.theme}>
                                 {item.name}
                             </ListGroup.Item>
                         ))}

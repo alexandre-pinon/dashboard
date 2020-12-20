@@ -71236,8 +71236,7 @@ var DashBoard = function DashBoard() {
             uid: 'Weather1.' + index,
             div: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_Widget_WeatherOne__WEBPACK_IMPORTED_MODULE_10__["WeatherWidgetOne"], {
               widgetInstanceId: item.id,
-              keyUnique: index,
-              widgetName: item.widgetName
+              keyUnique: index
             })
           };
           card.push(instance);
@@ -71249,8 +71248,7 @@ var DashBoard = function DashBoard() {
             uid: 'Weather2.' + index,
             div: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_Widget_WeatherTwo__WEBPACK_IMPORTED_MODULE_11__["WeatherWidgetTwo"], {
               widgetInstanceId: item.id,
-              keyUnique: index,
-              widgetName: item.widgetName
+              keyUnique: index
             })
           };
           card.push(instance);
@@ -71362,19 +71360,34 @@ __webpack_require__.r(__webpack_exports__);
 
 var links = [{
   name: "Identifiant",
-  img: "http://via.placeholder.com/640x360"
+  img: "http://via.placeholder.com/640x360",
+  route: "#",
+  theme: "secondary"
 }, {
   name: "Home",
-  img: "http://via.placeholder.com/640x360"
+  img: "http://via.placeholder.com/640x360",
+  route: "#",
+  theme: "secondary"
 }, {
   name: "Paramètres",
-  img: "http://via.placeholder.com/640x360"
+  img: "http://via.placeholder.com/640x360",
+  route: "#",
+  theme: "secondary"
 }, {
   name: "About",
-  img: "http://via.placeholder.com/640x360"
+  img: "http://via.placeholder.com/640x360",
+  route: "#",
+  theme: "secondary"
 }, {
   name: "Contact Us",
-  img: "http://via.placeholder.com/640x360"
+  img: "http://via.placeholder.com/640x360",
+  route: "#",
+  theme: "secondary"
+}, {
+  name: "Sign out",
+  img: "http://via.placeholder.com/640x360",
+  route: "#",
+  theme: "danger"
 }];
 
 function anime(params) {
@@ -71431,31 +71444,12 @@ var Menu = function Menu() {
     href: "#home"
   }, "ashBoard")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"].Toggle, {
     "aria-controls": "basic-navbar-nav"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"].Collapse, {
-    id: "basic-navbar-nav"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    className: "mr-auto"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_2__["default"].Link, {
-    href: "#home"
-  }, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_2__["default"].Link, {
-    href: "#link"
-  }, "Link"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_NavDropdown__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    title: "Dropdown",
-    id: "basic-nav-dropdown"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_NavDropdown__WEBPACK_IMPORTED_MODULE_3__["default"].Item, {
-    href: "#"
-  }, "Action"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_NavDropdown__WEBPACK_IMPORTED_MODULE_3__["default"].Item, {
-    href: "#"
-  }, "Another action"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_NavDropdown__WEBPACK_IMPORTED_MODULE_3__["default"].Item, {
-    href: "#"
-  }, "Something"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_NavDropdown__WEBPACK_IMPORTED_MODULE_3__["default"].Divider, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_NavDropdown__WEBPACK_IMPORTED_MODULE_3__["default"].Item, {
-    href: "#"
-  }, "Separated link"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "sidebar"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_4__["default"], null, links.map(function (item) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_4__["default"].Item, {
       action: true,
-      variant: "secondary"
+      variant: item.theme
     }, item.name);
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "contain",
@@ -71552,7 +71546,6 @@ function Delete(event) {
 
 function Edit(event) {
   var id = event.target.id;
-  var name = event.target.name;
   var stringParams = window.prompt('Which city do you want the weather forecast for ?');
   stringParams = stringParams.charAt(0).toUpperCase() + stringParams.substring(1).toLowerCase();
   var paramsData = {
@@ -71648,7 +71641,6 @@ var WeatherWidgetOne = /*#__PURE__*/function (_React$Component) {
         }, "Application"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_10__["default"].Item, {
           onClick: Edit,
           id: this.props.widgetInstanceId,
-          name: this.props.widgetName,
           action: true,
           variant: "secondary"
         }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_10__["default"].Item, {
@@ -71761,6 +71753,21 @@ function Delete(event) {
   });
 }
 
+function Edit(event) {
+  var id = event.target.id;
+  var stringParams = window.prompt('Which city do you want the weather forecast for ?');
+  stringParams = stringParams.charAt(0).toUpperCase() + stringParams.substring(1).toLowerCase();
+  var paramsData = {
+    stringParams: {
+      city: stringParams
+    }
+  };
+  axios__WEBPACK_IMPORTED_MODULE_11___default.a.put("https://jsonplaceholder.typicode.com/users/".concat(id), paramsData).then(function (res) {
+    console.log(res);
+    console.log(res.data);
+  });
+}
+
 var WeatherWidgetTwo = /*#__PURE__*/function (_React$Component) {
   _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(WeatherWidgetTwo, _React$Component);
 
@@ -71844,7 +71851,6 @@ var WeatherWidgetTwo = /*#__PURE__*/function (_React$Component) {
         }, "Application"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_10__["default"].Item, {
           onClick: Delete,
           id: this.props.widgetInstanceId,
-          name: this.props.widgetName,
           action: true,
           variant: "secondary"
         }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_10__["default"].Item, {
